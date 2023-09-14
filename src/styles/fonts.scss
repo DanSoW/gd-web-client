@@ -619,3 +619,21 @@
     font-weight: 900;
     src: local("Futura PT"), url("../resources/fonts/Futura PT/FuturaPT-Heavy.ttf");
   }
+
+
+/*--------------------------*/
+/* Подключение шрифта Intro*/
+@font-face {
+    font-family: "Intro";
+    font-weight: 900;
+    src: local("IntroDemo-BlackCAPS"), url("../resources/fonts/Intro/IntroDemo-BlackCAPS.otf");
+}
+
+
+/*--------------------------*/
+/* Подключение шрифта Futura PT Heavy Italic*/
+@font-face {
+    font-family: "Futura PT Heavy Italic";
+    font-weight: 400;
+    src: local("IntroDemo-BlackCAPS"), url("../resources/fonts//Futura PT Heavy Italic/2551ad289aa6b36b7e3d196555658495.ttf");
+}

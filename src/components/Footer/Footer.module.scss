@@ -1,0 +1,159 @@
+@import "../../styles/fonts";
+
+.footerWrapper {
+    width: 100%;
+    height: auto;
+}
+
+.footer {
+    margin: 0 auto;
+    width: 1440px;
+    height: 150px;
+    border-radius: 40px 40px 0 0;
+    background-color: #137039;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px;
+}
+
+.logoBlock {
+    width: 182px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.logoWrapper {
+    width: 117px;
+    height: 53px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.logoText {
+    width: 87px;
+    height: 52px;
+    font-family: 'Intro';
+    font-weight: 900;
+    font-size: 21px;
+    line-height: 26.23px;
+    color: #FFFFFF;
+    margin-left: 15px;
+}
+
+.sertInfo {
+    width: 181px;
+    height: 15px;
+    font-family: 'Futura PT';
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15.38px;
+    color: #FFFFFF80;
+}
+
+
+
+
+.footerContactsWrapper {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.cintactPhone {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 40px;
+}
+
+.contactText {
+    width: 141px;
+    height: 17px;
+    font-size: 14px;
+    font-family: 'Inter';
+    font-weight: 700;
+    line-height: 16.94px;
+    color: #ffffff;
+    margin-left: 10px;
+}
+
+.contactMail {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 40px;
+}
+
+.contactGeo {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 40px;
+
+    a {
+        width: 414px;
+        color: white;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    a:hover {
+        width: 414px;
+        color: rgb(141, 215, 132);
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    img {
+        margin-right: 10px;
+    }
+}
+
+.subApply {
+    width: 191px;
+    height: 44px;
+    border-radius: 9px;
+    background-color: white;
+    display: flex;
+    // align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.phoneCallBlock {
+    width: auto;
+    height: auto;
+}
+
+.phoneCallIcon {
+    position: relative;
+    left: -38px;
+    top: -10px;
+}
+
+.sendApplytext {
+    width: 116px;
+    height: 17px;
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16.94px;
+    color: #000000;
+    position: relative;
+    left: -13px;
+    cursor: pointer;
+    // margin-right: 10px;
+}

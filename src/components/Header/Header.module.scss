@@ -1,0 +1,236 @@
+@import "../../styles/fonts";
+
+.headerWrapper {
+    width: 100%;
+    height: auto;
+    // display: flex;
+    // align-items: flex-start;
+    // justify-content: center;
+    // flex-wrap: wrap;
+}
+
+.header {
+    width: 1400px;
+    height: auto;
+    margin: 0 auto;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+}
+
+.headerTopBlock {
+    width: 100%;
+    height: auto;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 25px;
+}
+
+.headerLogoWrapper {
+    width: auto;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.headerLogoTextDoor {
+    font-size: 32px;
+    font-family: 'Intro';
+    font-weight: 900;
+    padding-left: 10px;
+    color: #12AB51;
+}
+
+.headerLogoTextGran {
+    font-size: 32px;
+    font-family: 'Intro';
+    font-weight: 900;
+    padding-left: 10px;
+    color: #137039;
+}
+
+.headerContactsWrapper {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.cintactPhone {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 50px;
+}
+
+.contactText {
+    width: 141px;
+    height: 17px;
+    font-size: 14px;
+    font-family: 'Inter';
+    font-weight: 700;
+    line-height: 16.94px;
+    color: #000000;
+    margin-left: 10px;
+}
+
+.contactMail {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 50px;
+}
+
+.subApply {
+    width: 191px;
+    height: 44px;
+    border-radius: 8px;
+    background-color: #12AB51;
+    display: flex;
+    // align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.phoneCallBlock {
+    width: auto;
+    height: auto;
+}
+
+.phoneCallIcon {
+    position: relative;
+    left: -38px;
+    top: -10px;
+}
+
+.sendApplytext {
+    width: 116px;
+    height: 17px;
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16.94px;
+    color: #FFFFFF;
+    position: relative;
+    left: -13px;
+    cursor: pointer;
+    // margin-right: 10px;
+}
+
+.headerMainBlock {
+    width: 1400px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.headerContentWrapper {
+    width: 1400px;
+    height: 348px;
+    position: relative;
+    margin-top: -352px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sliderLeftSide {
+    width: 590px;
+    height: 100%;
+    margin-left: 100px;
+    padding-top: 7px;
+}
+
+.leftSideMainText {
+    font-family: 'Futura PT Heavy Italic';
+    font-weight: 400;
+    font-style: italic;
+    font-size: 49px;
+    line-height: 62.82px;
+    color: #FFFFFF;
+}
+
+.leftSideBottomText {
+    font-family: 'Futura PT';
+    font-weight: 400;
+    font-size: 29px;
+    line-height: 37.18px;
+    color: #FFFFFF;
+    margin-top: -55px;
+}
+
+.sliderBtnsBlock {
+    width: 102px;
+    height: 48px;
+    border-radius: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 65px;
+}
+
+.sliderPrevBtn {
+    width: 51px;
+    height: 48px;
+    border-radius: 17px 0px 0px 17px;
+    background-color: #137039;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sliderNextBtn {
+    width: 51px;
+    height: 48px;
+    border-radius: 0px 17px 17px 0px;
+    background-color: #12AB51;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        transform: rotate(180deg);
+    }
+}
+
+.sliderRightSide {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    grid-gap: 27px;
+    margin-top: 195px;
+    margin-right: 13px;
+}
+
+.sliderInfoElement {
+    width: 119px;
+    height: 124px;
+    border-radius: 27px;
+    background-color: #12AB51BF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 14px;
+    grid-gap: 1px;
+
+    p {
+        width: 65px;
+        font-family: 'Inter';
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 16.94px;
+        text-align: center;
+        color: #FFFFFF;
+        margin-top: 6px;
+    }
+}
