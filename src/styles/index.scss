@@ -1,0 +1,55 @@
+@import './fonts';
+@import './colors';
+
+body {
+    background: #FFF;
+
+    overflow-x: hidden;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* ------------------- */
+/* Настройка курсора */
+p {
+    cursor: default;
+}
+
+span {
+    cursor: default;
+}
+
+h2 {
+    cursor: default;
+}
+
+button {
+    p {
+        cursor: pointer;
+    }
+}
+
+/* ------------------- */
+
+a {
+    transition: all 0.3s;
+
+    &:hover {
+        cursor: pointer;
+        color: #3d8baf;
+    }
+}
+
+.emoji {
+    position: relative;
+
+    svg {
+        font-size: 1.5rem;
+        color: #080420;
+        cursor: pointer;
+    }
+
+    
+}

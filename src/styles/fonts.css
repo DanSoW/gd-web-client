@@ -1,0 +1,382 @@
+@charset "UTF-8";
+/*--------------------------*/
+/* Подключение шрифта Inter */
+@font-face {
+  font-family: "Inter";
+  src: url("../resources/fonts/Inter/Inter-BoldItalic.eot");
+  src: local("Inter Bold Italic"), local("Inter-BoldItalic"), url("../resources/fonts/Inter/Inter-BoldItalic.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Inter/Inter-BoldItalic.woff2") format("woff2"), url("../resources/fonts/Inter/Inter-BoldItalic.woff") format("woff"), url("../resources/fonts/Inter/Inter-BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../resources/fonts/Inter/Inter-MediumItalic.eot");
+  src: local("Inter Medium Italic"), local("Inter-MediumItalic"), url("../resources/fonts/Inter/Inter-MediumItalic.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Inter/Inter-MediumItalic.woff2") format("woff2"), url("../resources/fonts/Inter/Inter-MediumItalic.woff") format("woff"), url("../resources/fonts/Inter/Inter-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../resources/fonts/Inter/Inter-ThinItalicBETA.eot");
+  src: local("Inter Thin Italic BETA"), local("Inter-ThinItalicBETA"), url("../resources/fonts/Inter/Inter-ThinItalicBETA.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Inter/Inter-ThinItalicBETA.woff2") format("woff2"), url("../resources/fonts/Inter/Inter-ThinItalicBETA.woff") format("woff"), url("../resources/fonts/Inter/Inter-ThinItalicBETA.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../resources/fonts/Inter/Inter-Regular.eot");
+  src: local("Inter Regular"), local("Inter-Regular"), url("../resources/fonts/Inter/Inter-Regular.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Inter/Inter-Regular.woff2") format("woff2"), url("../resources/fonts/Inter/Inter-Regular.woff") format("woff"), url("../resources/fonts/Inter/Inter-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../resources/fonts/Inter/Inter-Black.eot");
+  src: local("Inter Black"), local("Inter-Black"), url("../resources/fonts/Inter/Inter-Black.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Inter/Inter-Black.woff2") format("woff2"), url("../resources/fonts/Inter/Inter-Black.woff") format("woff"), url("../resources/fonts/Inter/Inter-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../resources/fonts/Inter/Inter-BlackItalic.eot");
+  src: local("Inter Black Italic"), local("Inter-BlackItalic"), url("../resources/fonts/Inter/Inter-BlackItalic.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Inter/Inter-BlackItalic.woff2") format("woff2"), url("../resources/fonts/Inter/Inter-BlackItalic.woff") format("woff"), url("../resources/fonts/Inter/Inter-BlackItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../resources/fonts/Inter/Inter-LightBETA.eot");
+  src: local("Inter Light BETA"), local("Inter-LightBETA"), url("../resources/fonts/Inter/Inter-LightBETA.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Inter/Inter-LightBETA.woff2") format("woff2"), url("../resources/fonts/Inter/Inter-LightBETA.woff") format("woff"), url("../resources/fonts/Inter/Inter-LightBETA.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../resources/fonts/Inter/Inter-SemiBold.eot");
+  src: local("Inter Semi Bold"), local("Inter-SemiBold"), url("../resources/fonts/Inter/Inter-SemiBold.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Inter/Inter-SemiBold.woff2") format("woff2"), url("../resources/fonts/Inter/Inter-SemiBold.woff") format("woff"), url("../resources/fonts/Inter/Inter-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../resources/fonts/Inter/Inter-ExtraBoldItalic.eot");
+  src: local("Inter Extra Bold Italic"), local("Inter-ExtraBoldItalic"), url("../resources/fonts/Inter/Inter-ExtraBoldItalic.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Inter/Inter-ExtraBoldItalic.woff2") format("woff2"), url("../resources/fonts/Inter/Inter-ExtraBoldItalic.woff") format("woff"), url("../resources/fonts/Inter/Inter-ExtraBoldItalic.ttf") format("truetype");
+  font-weight: 800;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../resources/fonts/Inter/Inter-Bold.eot");
+  src: local("Inter Bold"), local("Inter-Bold"), url("../resources/fonts/Inter/Inter-Bold.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Inter/Inter-Bold.woff2") format("woff2"), url("../resources/fonts/Inter/Inter-Bold.woff") format("woff"), url("../resources/fonts/Inter/Inter-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../resources/fonts/Inter/Inter-ExtraLightItalicBETA.eot");
+  src: local("Inter Extra Light Italic BETA"), local("Inter-ExtraLightItalicBETA"), url("../resources/fonts/Inter/Inter-ExtraLightItalicBETA.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Inter/Inter-ExtraLightItalicBETA.woff2") format("woff2"), url("../resources/fonts/Inter/Inter-ExtraLightItalicBETA.woff") format("woff"), url("../resources/fonts/Inter/Inter-ExtraLightItalicBETA.ttf") format("truetype");
+  font-weight: 200;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../resources/fonts/Inter/Inter-ExtraLightBETA.eot");
+  src: local("Inter Extra Light BETA"), local("Inter-ExtraLightBETA"), url("../resources/fonts/Inter/Inter-ExtraLightBETA.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Inter/Inter-ExtraLightBETA.woff2") format("woff2"), url("../resources/fonts/Inter/Inter-ExtraLightBETA.woff") format("woff"), url("../resources/fonts/Inter/Inter-ExtraLightBETA.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../resources/fonts/Inter/Inter-ExtraBold.eot");
+  src: local("Inter Extra Bold"), local("Inter-ExtraBold"), url("../resources/fonts/Inter/Inter-ExtraBold.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Inter/Inter-ExtraBold.woff2") format("woff2"), url("../resources/fonts/Inter/Inter-ExtraBold.woff") format("woff"), url("../resources/fonts/Inter/Inter-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../resources/fonts/Inter/Inter-ThinBETA.eot");
+  src: local("Inter Thin BETA"), local("Inter-ThinBETA"), url("../resources/fonts/Inter/Inter-ThinBETA.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Inter/Inter-ThinBETA.woff2") format("woff2"), url("../resources/fonts/Inter/Inter-ThinBETA.woff") format("woff"), url("../resources/fonts/Inter/Inter-ThinBETA.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../resources/fonts/Inter/Inter-LightItalicBETA.eot");
+  src: local("Inter Light Italic BETA"), local("Inter-LightItalicBETA"), url("../resources/fonts/Inter/Inter-LightItalicBETA.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Inter/Inter-LightItalicBETA.woff2") format("woff2"), url("../resources/fonts/Inter/Inter-LightItalicBETA.woff") format("woff"), url("../resources/fonts/Inter/Inter-LightItalicBETA.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../resources/fonts/Inter/Inter-Italic.eot");
+  src: local("Inter Italic"), local("Inter-Italic"), url("../resources/fonts/Inter/Inter-Italic.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Inter/Inter-Italic.woff2") format("woff2"), url("../resources/fonts/Inter/Inter-Italic.woff") format("woff"), url("../resources/fonts/Inter/Inter-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../resources/fonts/Inter/Inter-SemiBoldItalic.eot");
+  src: local("Inter Semi Bold Italic"), local("Inter-SemiBoldItalic"), url("../resources/fonts/Inter/Inter-SemiBoldItalic.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Inter/Inter-SemiBoldItalic.woff2") format("woff2"), url("../resources/fonts/Inter/Inter-SemiBoldItalic.woff") format("woff"), url("../resources/fonts/Inter/Inter-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("../resources/fonts/Inter/Inter-Medium.eot");
+  src: local("Inter Medium"), local("Inter-Medium"), url("../resources/fonts/Inter/Inter-Medium.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Inter/Inter-Medium.woff2") format("woff2"), url("../resources/fonts/Inter/Inter-Medium.woff") format("woff"), url("../resources/fonts/Inter/Inter-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+/*--------------------------*/
+/* Подключение шрифта Proxima Soft */
+@font-face {
+  font-family: "Proxima Soft";
+  src: url("../resources/fonts/Proxima Soft/ProximaSoft-SemiBold.eot");
+  src: local("Proxima Soft SemiBold"), local("ProximaSoft-SemiBold"), url("../resources/fonts/Proxima Soft/ProximaSoft-SemiBold.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Proxima Soft/ProximaSoft-SemiBold.woff2") format("woff2"), url("../resources/fonts/Proxima Soft/ProximaSoft-SemiBold.woff") format("woff"), url("../resources/fonts/Proxima Soft/ProximaSoft-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Proxima Soft";
+  src: url("../resources/fonts/Proxima Soft/ProximaSoft-BoldIt.eot");
+  src: local("Proxima Soft Bold Italic"), local("ProximaSoft-BoldIt"), url("../resources/fonts/Proxima Soft/ProximaSoft-BoldIt.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Proxima Soft/ProximaSoft-BoldIt.woff2") format("woff2"), url("../resources/fonts/Proxima Soft/ProximaSoft-BoldIt.woff") format("woff"), url("../resources/fonts/Proxima Soft/ProximaSoft-BoldIt.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Proxima Soft";
+  src: url("../resources/fonts/Proxima Soft/ProximaSoft-Light.eot");
+  src: local("Proxima Soft Light"), local("ProximaSoft-Light"), url("../resources/fonts/Proxima Soft/ProximaSoft-Light.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Proxima Soft/ProximaSoft-Light.woff2") format("woff2"), url("../resources/fonts/Proxima Soft/ProximaSoft-Light.woff") format("woff"), url("../resources/fonts/Proxima Soft/ProximaSoft-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Proxima Soft";
+  src: url("../resources/fonts/Proxima Soft/ProximaSoft-Thin.eot");
+  src: local("Proxima Soft Thin"), local("ProximaSoft-Thin"), url("../resources/fonts/Proxima Soft/ProximaSoft-Thin.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Proxima Soft/ProximaSoft-Thin.woff2") format("woff2"), url("../resources/fonts/Proxima Soft/ProximaSoft-Thin.woff") format("woff"), url("../resources/fonts/Proxima Soft/ProximaSoft-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Proxima Soft";
+  src: url("../resources/fonts/Proxima Soft/ProximaSoft-LightIt.eot");
+  src: local("Proxima Soft Light Italic"), local("ProximaSoft-LightIt"), url("../resources/fonts/Proxima Soft/ProximaSoft-LightIt.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Proxima Soft/ProximaSoft-LightIt.woff2") format("woff2"), url("../resources/fonts/Proxima Soft/ProximaSoft-LightIt.woff") format("woff"), url("../resources/fonts/Proxima Soft/ProximaSoft-LightIt.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Proxima Soft";
+  src: url("../resources/fonts/Proxima Soft/ProximaSoft-Medium.eot");
+  src: local("Proxima Soft Medium"), local("ProximaSoft-Medium"), url("../resources/fonts/Proxima Soft/ProximaSoft-Medium.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Proxima Soft/ProximaSoft-Medium.woff2") format("woff2"), url("../resources/fonts/Proxima Soft/ProximaSoft-Medium.woff") format("woff"), url("../resources/fonts/Proxima Soft/ProximaSoft-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Proxima Soft";
+  src: url("../resources/fonts/Proxima Soft/ProximaSoft-SemiBoldIt.eot");
+  src: local("Proxima Soft SemiBold Italic"), local("ProximaSoft-SemiBoldIt"), url("../resources/fonts/Proxima Soft/ProximaSoft-SemiBoldIt.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Proxima Soft/ProximaSoft-SemiBoldIt.woff2") format("woff2"), url("../resources/fonts/Proxima Soft/ProximaSoft-SemiBoldIt.woff") format("woff"), url("../resources/fonts/Proxima Soft/ProximaSoft-SemiBoldIt.ttf") format("truetype");
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Proxima Soft";
+  src: url("../resources/fonts/Proxima Soft/ProximaSoft-Bold.eot");
+  src: local("Proxima Soft Bold"), local("ProximaSoft-Bold"), url("../resources/fonts/Proxima Soft/ProximaSoft-Bold.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Proxima Soft/ProximaSoft-Bold.woff2") format("woff2"), url("../resources/fonts/Proxima Soft/ProximaSoft-Bold.woff") format("woff"), url("../resources/fonts/Proxima Soft/ProximaSoft-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Proxima Soft";
+  src: url("../resources/fonts/Proxima Soft/ProximaSoft-Black.eot");
+  src: local("Proxima Soft Black"), local("ProximaSoft-Black"), url("../resources/fonts/Proxima Soft/ProximaSoft-Black.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Proxima Soft/ProximaSoft-Black.woff2") format("woff2"), url("../resources/fonts/Proxima Soft/ProximaSoft-Black.woff") format("woff"), url("../resources/fonts/Proxima Soft/ProximaSoft-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Proxima Soft";
+  src: url("../resources/fonts/Proxima Soft/ProximaSoft-RegularIt.eot");
+  src: local("Proxima Soft Regular Italic"), local("ProximaSoft-RegularIt"), url("../resources/fonts/Proxima Soft/ProximaSoft-RegularIt.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Proxima Soft/ProximaSoft-RegularIt.woff2") format("woff2"), url("../resources/fonts/Proxima Soft/ProximaSoft-RegularIt.woff") format("woff"), url("../resources/fonts/Proxima Soft/ProximaSoft-RegularIt.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Proxima Soft";
+  src: url("../resources/fonts/Proxima Soft/ProximaSoft-Regular.eot");
+  src: local("Proxima Soft Regular"), local("ProximaSoft-Regular"), url("../resources/fonts/Proxima Soft/ProximaSoft-Regular.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Proxima Soft/ProximaSoft-Regular.woff2") format("woff2"), url("../resources/fonts/Proxima Soft/ProximaSoft-Regular.woff") format("woff"), url("../resources/fonts/Proxima Soft/ProximaSoft-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Proxima Soft";
+  src: url("../resources/fonts/Proxima Soft/ProximaSoft-MediumIt.eot");
+  src: local("Proxima Soft Medium Italic"), local("ProximaSoft-MediumIt"), url("../resources/fonts/Proxima Soft/ProximaSoft-MediumIt.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Proxima Soft/ProximaSoft-MediumIt.woff2") format("woff2"), url("../resources/fonts/Proxima Soft/ProximaSoft-MediumIt.woff") format("woff"), url("../resources/fonts/Proxima Soft/ProximaSoft-MediumIt.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Proxima Soft";
+  src: url("../resources/fonts/Proxima Soft/ProximaSoft-BlackIt.eot");
+  src: local("Proxima Soft Black Italic"), local("ProximaSoft-BlackIt"), url("../resources/fonts/Proxima Soft/ProximaSoft-BlackIt.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Proxima Soft/ProximaSoft-BlackIt.woff2") format("woff2"), url("../resources/fonts/Proxima Soft/ProximaSoft-BlackIt.woff") format("woff"), url("../resources/fonts/Proxima Soft/ProximaSoft-BlackIt.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Proxima Soft";
+  src: url("../resources/fonts/Proxima Soft/ProximaSoft-ExtraBoldIt.eot");
+  src: local("Proxima Soft ExtraBold Italic"), local("ProximaSoft-ExtraBoldIt"), url("../resources/fonts/Proxima Soft/ProximaSoft-ExtraBoldIt.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Proxima Soft/ProximaSoft-ExtraBoldIt.woff2") format("woff2"), url("../resources/fonts/Proxima Soft/ProximaSoft-ExtraBoldIt.woff") format("woff"), url("../resources/fonts/Proxima Soft/ProximaSoft-ExtraBoldIt.ttf") format("truetype");
+  font-weight: 800;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Proxima Soft";
+  src: url("../resources/fonts/Proxima Soft/ProximaSoft-ThinIt.eot");
+  src: local("Proxima Soft Thin Italic"), local("ProximaSoft-ThinIt"), url("../resources/fonts/Proxima Soft/ProximaSoft-ThinIt.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Proxima Soft/ProximaSoft-ThinIt.woff2") format("woff2"), url("../resources/fonts/Proxima Soft/ProximaSoft-ThinIt.woff") format("woff"), url("../resources/fonts/Proxima Soft/ProximaSoft-ThinIt.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Proxima Soft";
+  src: url("../resources/fonts/Proxima Soft/ProximaSoft-ExtraBold.eot");
+  src: local("Proxima Soft ExtraBold"), local("ProximaSoft-ExtraBold"), url("../resources/fonts/Proxima Soft/ProximaSoft-ExtraBold.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Proxima Soft/ProximaSoft-ExtraBold.woff2") format("woff2"), url("../resources/fonts/Proxima Soft/ProximaSoft-ExtraBold.woff") format("woff"), url("../resources/fonts/Proxima Soft/ProximaSoft-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+/*--------------------------*/
+/* Подключение шрифта Arial */
+@font-face {
+  font-family: "Arial";
+  src: url("../resources/fonts/Arial/Arial-ItalicMT.eot");
+  src: local("Arial Italic"), local("Arial-ItalicMT"), url("../resources/fonts/Arial/Arial-ItalicMT.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Arial/Arial-ItalicMT.woff2") format("woff2"), url("../resources/fonts/Arial/Arial-ItalicMT.woff") format("woff"), url("../resources/fonts/Arial/Arial-ItalicMT.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Arial";
+  src: url("../resources/fonts/Arial/ArialMT.eot");
+  src: local("Arial"), local("ArialMT"), url("../resources/fonts/Arial/ArialMT.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Arial/ArialMT.woff2") format("woff2"), url("../resources/fonts/Arial/ArialMT.woff") format("woff"), url("../resources/fonts/Arial/ArialMT.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Arial";
+  src: url("../resources/fonts/Arial/Arial-BoldItalicMT.eot");
+  src: local("Arial Bold Italic"), local("Arial-BoldItalicMT"), url("../resources/fonts/Arial/Arial-BoldItalicMT.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Arial/Arial-BoldItalicMT.woff2") format("woff2"), url("../resources/fonts/Arial/Arial-BoldItalicMT.woff") format("woff"), url("../resources/fonts/Arial/Arial-BoldItalicMT.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Arial Narrow";
+  src: url("../resources/fonts/Arial/ArialNarrow-BoldItalic.eot");
+  src: local("Arial Narrow Bold Italic"), local("ArialNarrow-BoldItalic"), url("../resources/fonts/Arial/ArialNarrow-BoldItalic.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Arial/ArialNarrow-BoldItalic.woff2") format("woff2"), url("../resources/fonts/Arial/ArialNarrow-BoldItalic.woff") format("woff"), url("../resources/fonts/Arial/ArialNarrow-BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Arial Narrow";
+  src: url("../resources/fonts/Arial/ArialNarrow-Bold.eot");
+  src: local("Arial Narrow Bold"), local("ArialNarrow-Bold"), url("../resources/fonts/Arial/ArialNarrow-Bold.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Arial/ArialNarrow-Bold.woff2") format("woff2"), url("../resources/fonts/Arial/ArialNarrow-Bold.woff") format("woff"), url("../resources/fonts/Arial/ArialNarrow-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Arial Narrow";
+  src: url("../resources/fonts/Arial/ArialNarrow-Italic.eot");
+  src: local("Arial Narrow Italic"), local("ArialNarrow-Italic"), url("../resources/fonts/Arial/ArialNarrow-Italic.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Arial/ArialNarrow-Italic.woff2") format("woff2"), url("../resources/fonts/Arial/ArialNarrow-Italic.woff") format("woff"), url("../resources/fonts/Arial/ArialNarrow-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Arial Narrow";
+  src: url("../resources/fonts/Arial/ArialNarrow.eot");
+  src: local("Arial Narrow"), local("ArialNarrow"), url("../resources/fonts/Arial/ArialNarrow.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Arial/ArialNarrow.woff2") format("woff2"), url("../resources/fonts/Arial/ArialNarrow.woff") format("woff"), url("../resources/fonts/Arial/ArialNarrow.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Arial";
+  src: url("../resources/fonts/Arial/Arial-BoldMT.eot");
+  src: local("Arial Bold"), local("Arial-BoldMT"), url("../resources/fonts/Arial/Arial-BoldMT.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/Arial/Arial-BoldMT.woff2") format("woff2"), url("../resources/fonts/Arial/Arial-BoldMT.woff") format("woff"), url("../resources/fonts/Arial/Arial-BoldMT.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+/*--------------------------*/
+/* Подключение шрифта DM Sans */
+@font-face {
+  font-family: "DM Sans";
+  src: url("../resources/fonts/DM Sans/DMSans-Regular.eot");
+  src: local("DM Sans Regular"), local("DMSans-Regular"), url("../resources/fonts/DM Sans/DMSans-Regular.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/DM Sans/DMSans-Regular.woff2") format("woff2"), url("../resources/fonts/DM Sans/DMSans-Regular.woff") format("woff"), url("../resources/fonts/DM Sans/DMSans-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DM Sans";
+  src: url("../resources/fonts/DM Sans/DMSans-Medium.eot");
+  src: local("DM Sans Medium"), local("DMSans-Medium"), url("../resources/fonts/DM Sans/DMSans-Medium.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/DM Sans/DMSans-Medium.woff2") format("woff2"), url("../resources/fonts/DM Sans/DMSans-Medium.woff") format("woff"), url("../resources/fonts/DM Sans/DMSans-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "DM Sans";
+  src: url("../resources/fonts/DM Sans/DMSans-MediumItalic.eot");
+  src: local("DM Sans Medium Italic"), local("DMSans-MediumItalic"), url("../resources/fonts/DM Sans/DMSans-MediumItalic.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/DM Sans/DMSans-MediumItalic.woff2") format("woff2"), url("../resources/fonts/DM Sans/DMSans-MediumItalic.woff") format("woff"), url("../resources/fonts/DM Sans/DMSans-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: "DM Sans";
+  src: url("../resources/fonts/DM Sans/DMSans-BoldItalic.eot");
+  src: local("DM Sans Bold Italic"), local("DMSans-BoldItalic"), url("../resources/fonts/DM Sans/DMSans-BoldItalic.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/DM Sans/DMSans-BoldItalic.woff2") format("woff2"), url("../resources/fonts/DM Sans/DMSans-BoldItalic.woff") format("woff"), url("../resources/fonts/DM Sans/DMSans-BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: "DM Sans";
+  src: url("../resources/fonts/DM Sans/DMSans-Italic.eot");
+  src: local("DM Sans Italic"), local("DMSans-Italic"), url("../resources/fonts/DM Sans/DMSans-Italic.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/DM Sans/DMSans-Italic.woff2") format("woff2"), url("../resources/fonts/DM Sans/DMSans-Italic.woff") format("woff"), url("../resources/fonts/DM Sans/DMSans-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "DM Sans";
+  src: url("../resources/fonts/DM Sans/DMSans-Bold.eot");
+  src: local("DM Sans Bold"), local("DMSans-Bold"), url("../resources/fonts/DM Sans/DMSans-Bold.eot?#iefix") format("embedded-opentype"), url("../resources/fonts/DM Sans/DMSans-Bold.woff2") format("woff2"), url("../resources/fonts/DM Sans/DMSans-Bold.woff") format("woff"), url("../resources/fonts/DM Sans/DMSans-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+/*--------------------------*/
+/* Подключение шрифта Futura PT*/
+@font-face {
+  font-family: "Futura PT";
+  font-weight: 300;
+  src: local("Futura PT"), url("../resources/fonts/Futura PT/FuturaPT-Light.ttf");
+}
+@font-face {
+  font-family: "Futura PT";
+  font-weight: 400;
+  src: local("Futura PT"), url("../resources/fonts/Futura PT/FuturaPT-Book.ttf");
+}
+@font-face {
+  font-family: "Futura PT";
+  font-weight: 500;
+  src: local("Futura PT"), url("../resources/fonts/Futura PT/FuturaPT-Medium.ttf");
+}
+@font-face {
+  font-family: "Futura PT";
+  font-weight: 600;
+  src: local("Futura PT"), url("../resources/fonts/Futura PT/FuturaPT-Demi.ttf");
+}
+@font-face {
+  font-family: "Futura PT";
+  font-weight: 700;
+  src: local("Futura PT"), url("../resources/fonts/Futura PT/FuturaPT-Bold.ttf");
+}
+@font-face {
+  font-family: "Futura PT";
+  font-weight: 800;
+  src: local("Futura PT"), url("../resources/fonts/Futura PT/FuturaPT-ExtraBold.ttf");
+}
+@font-face {
+  font-family: "Futura PT";
+  font-weight: 900;
+  src: local("Futura PT"), url("../resources/fonts/Futura PT/FuturaPT-Heavy.ttf");
+}

@@ -1,0 +1,15 @@
+$mobile_min_width: 320px;
+$mobile_max_width: 480px;
+$tablet_min_width: 768px;
+$tablet_max_width: 992px;
+
+
+
+@media only screen and (min-width: $mobile_min_width) and (max-width: $mobile_max_width) {
+}
+
+@media only screen and (min-width: $mobile_max_width) and (max-width: $tablet_min_width) {
+}
+
+@media only screen and (min-width: $tablet_min_width) and (max-width: $tablet_max_width) {
+}
