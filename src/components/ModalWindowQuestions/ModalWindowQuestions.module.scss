@@ -1,0 +1,161 @@
+.modalBody {
+    width: 100%;
+    height: calc(100% - 40px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    grid-gap: 20px;
+    padding: 7px;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 83px;
+}
+
+.headerTitle {
+    font-family: 'Futura PT';
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 38.46px;
+    color: #333333;
+    margin: 0;
+}
+
+.headerText {
+    width: 363px;
+    font-family: 'Futura PT';
+    font-weight: 450;
+    font-size: 18px;
+    line-height: 23.08px;
+    margin: 0;
+}
+
+.main {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mainInput {
+    width: 238px;
+    padding: 13px;
+    border: 1px solid #C6C6C6;
+    border-radius: 6px;
+    font-family: 'Futura PT';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 23.08px;
+}
+
+.footer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.subApply {
+    width: 238px;
+    height: 44px;
+    top: 0;
+    border-radius: 8px;
+    background-color: #12AB51;
+    display: flex;
+    // align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.headerMobileWrapBlock {
+    display: flex;
+}
+
+.phoneCallBlock {
+    width: auto;
+    height: auto;
+}
+
+.phoneCallIcon {
+    position: relative;
+    left: -38px;
+    top: -10px;
+}
+
+.sendApplytext {
+    width: 116px;
+    height: 17px;
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16.94px;
+    color: #FFFFFF;
+    position: relative;
+    left: -40px;
+    cursor: pointer;
+    // margin-right: 10px;
+}
+
+.agreeText {
+    width: 238px;
+    height: 39px;
+    font-family: 'Futura PT';
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 13px;
+    color: #121212;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 600px) {
+    .header {
+        align-items: center;
+    }
+
+    .headerTitle {
+        width: 301px;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 30.77px;
+        text-align: Center;
+    }
+
+    .headerText {
+        width: 301px;
+        font-size: 16px;
+        line-height: 20.51px;
+        text-align: center;
+    }
+
+    .main {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        grid-gap: 20px;
+        height: auto;
+        margin-top: 40px;
+    }
+
+    .mainInput {
+        width: 300px;
+    }
+
+    .footer {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        grid-gap: 20px;
+        margin-top: 40px;
+    }
+
+    .agreeText {
+        text-align: center;
+    }
+}

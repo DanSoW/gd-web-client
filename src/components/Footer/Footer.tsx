@@ -7,7 +7,15 @@ import footerGeoIcon from '../../resources/images/footerGeoIcon.svg';
 import footerPhoneIcon from '../../resources/images/footerPhoneIcon.svg';
 import footerMailIcon from '../../resources/images/footerMailIcon.svg';
 
+import ModalWindow from "../ModalWindow/ModalWindow";
+import useModal from "../../hooks/useModal";
+
+import ModalWindowQuestions from "../ModalWindowQuestions";
+
 const Footer: FC<any> = () => {
+
+  const { isOpen, toggle } = useModal();
+
   return (
     <>
         <div className={styles.footerWrapper}>
@@ -33,7 +41,7 @@ const Footer: FC<any> = () => {
                   <img src={footerMailIcon} alt="mailIcon" />
                   <p className={styles.contactText}>info@corp.com</p>
                 </div>
-                <div className={styles.subApply}>
+                <div className={styles.subApply} onClick={toggle}>
                   {/* <div className={styles.phoneBlock}></div> */}
                   <div className={styles.phoneCallBlock}>
                     <img src={footerCallRectangle} alt="phoneBack" />
@@ -44,6 +52,12 @@ const Footer: FC<any> = () => {
               </div>
             </div>
         </div>
+        <ModalWindow isOpen={isOpen} toggle={toggle}>
+        <ModalWindowQuestions
+          title="Ваш заказ"
+          text="Для покупки оставьте ваши данные и мы скоро с вами свяжемся"
+        />
+        </ModalWindow>
     </>
   );
 };

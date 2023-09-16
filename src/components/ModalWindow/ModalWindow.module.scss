@@ -1,0 +1,45 @@
+.modalOverlay {
+    z-index: 999;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modalBox {
+    z-index: 1000;
+    display: block;
+    background: white;
+    width: 90%;
+    height: 90%;
+    max-width: 550px;
+    max-height: 384px;
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+.closeBlock {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  img {
+    cursor: pointer;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 600px) {
+  .modalBox {
+    height: 100%;
+    max-height: 100%;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0px
+  };
+}

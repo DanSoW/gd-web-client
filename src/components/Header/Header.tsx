@@ -1,11 +1,11 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC } from "react";
 import styles from './Header.module.scss';
 import logo from '../../resources/images/logo1.svg'
 import phoneIcon from '../../resources/images/phoneIcon.svg';
 import mailIcon from '../../resources/images/phoneIcon.svg';
 import phoneRectangle from '../../resources/images/phoneRectangle.svg';
 import PhoneCallIcon from '../../resources/images/PhoneCallIcon.svg';
-import headerSliderBackground from '../../resources/images/headerSliderBackground.png';
+// import headerSliderBackground from '../../resources/images/headerSliderBackground.png';
 import headerContentIcon1 from '../../resources/images/headerIcon1.svg';
 import headerContentIcon2 from '../../resources/images/headerIcon2.svg';
 import headerContentIcon3 from '../../resources/images/headerIcon3.svg';
@@ -13,11 +13,18 @@ import swiperArrow from '../../resources/images/swiperArrow.svg';
 import headerFullSlide from '../../resources/images/headerFullSlide.png';
 import classNames from "classnames";
 
+import ModalWindow from "../ModalWindow/ModalWindow";
+import useModal from "../../hooks/useModal";
+
+import ModalWindowQuestions from "../ModalWindowQuestions";
+
 import "./swiper.duplicate.css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, FreeMode } from "swiper";
+import { Navigation } from "swiper";
 
 const Header: FC<any> = () => {
+
+  const { isOpen, toggle } = useModal();
 
   return (
     <>
@@ -42,7 +49,7 @@ const Header: FC<any> = () => {
                   <img src={mailIcon} alt="mailIcon" />
                   <p className={styles.contactText}>info@corp.com</p>
                 </div>
-                <div className={styles.subApply}>
+                <div className={styles.subApply} onClick={toggle}>
                   {/* <div className={styles.phoneBlock}></div> */}
                   <div className={styles.phoneCallBlock}>
                     <img src={phoneRectangle} alt="phoneBack" />
@@ -162,6 +169,12 @@ const Header: FC<any> = () => {
                     </div>
         </div>
       </div>
+      <ModalWindow isOpen={isOpen} toggle={toggle}>
+        <ModalWindowQuestions
+          title="Остались вопросы?"
+          text="Мы свяжемся с вами, чтобы подробно обсудить заказ и рассчитать стоимость"
+        />
+      </ModalWindow>
     </>
   );
 };
