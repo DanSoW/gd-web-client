@@ -10,9 +10,15 @@ import headerContentIcon1 from '../../resources/images/headerIcon1.svg';
 import headerContentIcon2 from '../../resources/images/headerIcon2.svg';
 import headerContentIcon3 from '../../resources/images/headerIcon3.svg';
 import swiperArrow from '../../resources/images/swiperArrow.svg';
+import headerFullSlide from '../../resources/images/headerFullSlide.png';
+import classNames from "classnames";
 
+import "./swiper.duplicate.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, FreeMode } from "swiper";
 
 const Header: FC<any> = () => {
+
   return (
     <>
       <div className={styles.headerWrapper}>
@@ -20,66 +26,140 @@ const Header: FC<any> = () => {
           <div className={styles.headerTopBlock}>
             <div className={styles.headerLogoWrapper}>
               <img src={logo} alt="" />
-              <p className={styles.headerLogoTextDoor}>ДВЕРИ</p>
-              <p className={styles.headerLogoTextGran}>ГРАНИТ</p>
+              <div className="">
+                <p className={styles.headerLogoTextDoor}>ДВЕРИ</p>
+                <p className={styles.headerLogoTextGran}>ГРАНИТ</p>
+              </div>
             </div>
             <div className={styles.headerContactsWrapper}>
               <div className={styles.cintactPhone}>
                 <img src={phoneIcon} alt="phoneIcon" />
                 <p className={styles.contactText}>+7 (999) 999-99-99</p>
               </div>
-              <div className={styles.contactMail}>
-                <img src={mailIcon} alt="mailIcon" />
-                <p className={styles.contactText}>info@corp.com</p>
-              </div>
-              <div className={styles.subApply}>
-                {/* <div className={styles.phoneBlock}></div> */}
-                <div className={styles.phoneCallBlock}>
-                  <img src={phoneRectangle} alt="phoneBack" />
-                  <img src={PhoneCallIcon} alt="phone" className={styles.phoneCallIcon} />
+
+              <div className={styles.headerMobileWrapBlock}>
+                <div className={styles.contactMail}>
+                  <img src={mailIcon} alt="mailIcon" />
+                  <p className={styles.contactText}>info@corp.com</p>
                 </div>
-                <p className={styles.sendApplytext}>Оставить заявку</p>
+                <div className={styles.subApply}>
+                  {/* <div className={styles.phoneBlock}></div> */}
+                  <div className={styles.phoneCallBlock}>
+                    <img src={phoneRectangle} alt="phoneBack" />
+                    <img src={PhoneCallIcon} alt="phone" className={styles.phoneCallIcon} />
+                  </div>
+                  <p className={styles.sendApplytext}>Оставить заявку</p>
+                </div>
               </div>
+            
             </div>
           </div>
         </div>
         <div className={styles.headerMainBlock}>
-          <img src={headerSliderBackground} alt="slide" />
-          <div className={styles.headerContentWrapper}>
-            <div className={styles.sliderLeftSide}>
-              <div className="">
-                <p className={styles.leftSideMainText}>
-                ЛУЧШИЕ ПРЕДЛОЖЕНИЯ
-                НА РЫНКЕ ДВЕРЕЙ
-                </p>
-                <p className={styles.leftSideBottomText}>
-                от известных производителей
-                </p>
-              </div>
-              <div className={styles.sliderBtnsBlock}>
-                <div className={styles.sliderPrevBtn}>
-                  <img src={swiperArrow} alt="arrow" />
+          <Swiper
+                    modules={[Navigation]}
+                    className={styles.customSwiper}
+                    slidesPerView={1}
+                    spaceBetween={200}
+                    speed={500}
+                    navigation={{
+                        prevEl: '#btn_prev',
+                        nextEl: '#btn_next'
+                    }}
+          >
+            {/* <div className="swiper-wrapper" style={{display: 'flex'}}> */}
+              <SwiperSlide className={styles.customSlide}>
+                <div className={styles.headerSlideFull} style={{backgroundImage: `url(${headerFullSlide})`}}>
+
                 </div>
-                <div className={styles.sliderNextBtn}>
-                  <img src={swiperArrow} alt="arrow" />
+                <div className={styles.headerContentWrapper}>
+                  <div className={styles.sliderLeftSide}>
+                    <div className="">
+                      <p className={styles.leftSideMainText}>
+                      ЛУЧШИЕ ПРЕДЛОЖЕНИЯ
+                      НА РЫНКЕ ДВЕРЕЙ
+                      </p>
+                      <p className={styles.leftSideBottomText}>
+                      от известных производителей
+                      </p>
+                    </div>
+                    {/* <div className={styles.sliderBtnsBlock}>
+                      <div className={styles.sliderPrevBtn}>
+                        <img src={swiperArrow} alt="arrow" />
+                      </div>
+                      <div className={styles.sliderNextBtn}>
+                        <img src={swiperArrow} alt="arrow" />
+                      </div>
+                    </div> */}
+                  </div>
+                  <div className={styles.sliderRightSide}>
+                    <div className={styles.sliderInfoElement}>
+                      <img src={headerContentIcon3} alt="icon1" />
+                      <p>Качество сборки</p>
+                    </div>
+                    <div className={styles.sliderInfoElement}>
+                      <img src={headerContentIcon2} alt="icon1" />
+                      <p>Гарантия товара</p>
+                    </div>
+                    <div className={styles.sliderInfoElement}>
+                      <img src={headerContentIcon1} alt="icon1" />
+                      <p>Доверие клиентов</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className={styles.sliderRightSide}>
-              <div className={styles.sliderInfoElement}>
-                <img src={headerContentIcon3} alt="icon1" />
-                <p>Качество сборки</p>
-              </div>
-              <div className={styles.sliderInfoElement}>
-                <img src={headerContentIcon2} alt="icon1" />
-                <p>Гарантия товара</p>
-              </div>
-              <div className={styles.sliderInfoElement}>
-                <img src={headerContentIcon1} alt="icon1" />
-                <p>Доверие клиентов</p>
-              </div>
-            </div>
-          </div>
+              </SwiperSlide>
+                
+
+              <SwiperSlide>
+                <div className={styles.headerSlideFull} style={{backgroundImage: `url(${headerFullSlide})`}}>
+
+                </div>
+                <div className={styles.headerContentWrapper}>
+                  <div className={styles.sliderLeftSide}>
+                    <div className="">
+                      <p className={styles.leftSideMainText}>
+                      ЛУЧШИЕ ПРЕДЛОЖЕНИЯ
+                      НА РЫНКЕ ДВЕРЕЙ
+                      </p>
+                      <p className={styles.leftSideBottomText}>
+                      от известных производителей
+                      </p>
+                    </div>
+                    {/* <div className={styles.sliderBtnsBlock}>
+                      <div className={styles.sliderPrevBtn}>
+                        <img src={swiperArrow} alt="arrow" />
+                      </div>
+                      <div className={styles.sliderNextBtn}>
+                        <img src={swiperArrow} alt="arrow" />
+                      </div>
+                    </div> */}
+                  </div>
+                  <div className={styles.sliderRightSide}>
+                    <div className={styles.sliderInfoElement}>
+                      <img src={headerContentIcon3} alt="icon1" />
+                      <p>Качество сборки</p>
+                    </div>
+                    <div className={styles.sliderInfoElement}>
+                      <img src={headerContentIcon2} alt="icon1" />
+                      <p>Гарантия товара</p>
+                    </div>
+                    <div className={styles.sliderInfoElement}>
+                      <img src={headerContentIcon1} alt="icon1" />
+                      <p>Доверие клиентов</p>
+                    </div>
+                  </div>
+                </div>
+              </SwiperSlide>
+            {/* </div> */}
+          </Swiper>
+                    <div className={styles.sliderBtnsBlock}>
+                      <div className={classNames('swiperButtonPrev', styles.sliderPrevBtn)} id="btn_prev">
+                        <img src={swiperArrow} alt="arrow" />
+                      </div>
+                      <div className={classNames('swiperButtonNext', styles.sliderNextBtn)} id="btn_next">
+                        <img src={swiperArrow} alt="arrow" />
+                      </div>
+                    </div>
         </div>
       </div>
     </>

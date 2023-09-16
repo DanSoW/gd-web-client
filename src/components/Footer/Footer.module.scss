@@ -157,3 +157,224 @@
     cursor: pointer;
     // margin-right: 10px;
 }
+
+
+$mobile_min_width: 320px;
+$mobile_max_width: 480px;
+$tablet_min_width: 768px;
+$tablet_max_width: 992px;
+$pc_min_width: 1400px;
+
+
+
+@media only screen and (min-width: $mobile_min_width) and (max-width: $mobile_max_width) {
+    .footer {
+        padding: 45px 15px 20px 15px;
+        width: 100%;
+        height: auto;
+        flex-direction: column-reverse;
+    }
+
+    .footerContactsWrapper {
+        flex-direction: column;
+        grid-gap: 15px;
+    }
+
+    .contactGeo,
+    .cintactPhone,
+    .contactMail {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        justify-content: flex-start;
+    }
+
+    .subApply {
+        width: 100%;
+    }
+
+    .sendApplytext {
+        width: 65%;
+    }
+
+    .logoBlock {
+        width: 95%;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+    .logoWrapper {
+        width: auto;
+    }
+
+    .logoText {
+        width: auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .sertInfo {
+        font-size: 8px;
+        line-height: 10.26px;
+        text-align: center;
+    }
+}
+
+@media only screen and (min-width: $mobile_max_width) and (max-width: $tablet_min_width) {
+    .footer {
+        padding: 45px 15px 20px 15px;
+        width: 100%;
+        height: auto;
+        flex-direction: column-reverse;
+    }
+
+    .footerContactsWrapper {
+        flex-direction: column;
+        grid-gap: 15px;
+    }
+
+    .contactGeo,
+    .cintactPhone,
+    .contactMail {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        justify-content: flex-start;
+    }
+
+    .subApply {
+        width: 100%;
+    }
+
+    .sendApplytext {
+        width: 65%;
+    }
+
+    .logoBlock {
+        width: 95%;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+    .logoWrapper {
+        width: auto;
+    }
+
+    .logoText {
+        width: auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .sertInfo {
+        font-size: 8px;
+        line-height: 10.26px;
+        text-align: center;
+    }
+}
+
+@media only screen and (min-width: $tablet_min_width) and (max-width: $tablet_max_width) {
+    .footer {
+        padding: 45px 15px 20px 15px;
+        width: 100%;
+        height: auto;
+        flex-direction: column-reverse;
+    }
+
+    .footerContactsWrapper {
+        flex-direction: column;
+        grid-gap: 15px;
+    }
+
+    .contactGeo,
+    .cintactPhone,
+    .contactMail {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        justify-content: flex-start;
+    }
+
+    .subApply {
+        width: 100%;
+    }
+
+    .sendApplytext {
+        width: 65%;
+    }
+
+    .logoBlock {
+        width: 95%;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+    .logoWrapper {
+        width: auto;
+    }
+
+    .logoText {
+        width: auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .sertInfo {
+        font-size: 8px;
+        line-height: 10.26px;
+        text-align: center;
+    }
+}
+
+@media only screen and (min-width: $tablet_max_width) and (max-width: $pc_min_width) {
+    .footer {
+        padding: 45px 15px 20px 15px;
+        width: 100%;
+        height: auto;
+        flex-direction: column-reverse;
+    }
+
+    .footerContactsWrapper {
+        flex-direction: column;
+        grid-gap: 15px;
+    }
+
+    .contactGeo,
+    .cintactPhone,
+    .contactMail {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        justify-content: flex-start;
+    }
+
+    .subApply {
+        width: 100%;
+    }
+
+    .sendApplytext {
+        width: 65%;
+    }
+
+    .logoBlock {
+        width: 95%;
+        align-items: center;
+        margin-top: 30px;
+    }
+
+    .logoWrapper {
+        width: auto;
+    }
+
+    .logoText {
+        width: auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .sertInfo {
+        font-size: 8px;
+        line-height: 10.26px;
+        text-align: center;
+    }
+}

@@ -1,0 +1,7 @@
+.swiper-wrapper {
+    display: flex;
+}
+
+.swiper-button-disabled {
+    background-color: #137039 !important;
+}
