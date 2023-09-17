@@ -10,16 +10,23 @@
 }
 
 .container {
-  margin-top: 30px;
+  margin-top: 0px;
   margin-left: 22px;
   margin-right: 22px;
   margin-bottom: 124px;
-  min-height: 920px;
+  height: -moz-max-content;
+  height: max-content;
 }
 
 .item {
   display: flex;
   flex-direction: column;
+  height: 100%;
+  padding-left: 283px;
+}
+.item .doorList {
+  margin-top: 37px;
+  width: 100%;
 }
 
 .control {
@@ -40,5 +47,11 @@
 }
 .control p:hover {
   cursor: pointer;
-  color: rgb(125, 125, 220);
+  color: rgb(86, 86, 182);
+}
+
+.doorList {
+  display: flex;
+  flex-direction: column;
+  gap: 57px;
 }

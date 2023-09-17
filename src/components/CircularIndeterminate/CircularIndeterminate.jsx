@@ -22,7 +22,7 @@ const CircularIndeterminate = () => {
 const boxDesktopStyle = {
     width: 70,
     height: 70,
-    position: "absolute",
+    position: "fixed",
     left: "50%",
     top: "50%",
     transform: 'translate(-50%, -50%)',
@@ -32,7 +32,7 @@ const boxDesktopStyle = {
 const boxMobileStyle = {
     width: 70,
     height: 70,
-    position: "absolute",
+    position: "fixed",
     left: "50%",
     top: "50%",
     transform: 'translate(-50%, -50%)',

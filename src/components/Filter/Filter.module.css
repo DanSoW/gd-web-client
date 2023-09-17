@@ -1,10 +1,48 @@
 .container {
   position: absolute;
-  left: 22px;
+  left: 20px;
   width: 216px;
   margin-top: 57px;
 }
 
+.fixedButton {
+  position: fixed;
+  top: 14px;
+  left: 20px;
+  width: 216px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #12AB51;
+  color: #FFF;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.5s;
+  animation: fadeIn 0.5s;
+}
+.fixedButton:hover {
+  background-color: rgb(86, 86, 182);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .textH {
   color: #333;
   font-family: Futura PT;
@@ -36,6 +74,10 @@
   line-height: normal;
   margin: 0;
   padding: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 
 .control {
@@ -61,4 +103,35 @@
   flex-direction: row;
   gap: 10px;
   align-items: center;
+}
+.selectItem p {
+  cursor: pointer;
+}
+
+.selectItemSwitch {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+.selectItemSwitch p {
+  cursor: pointer;
+}
+
+.default {
+  color: #C3C3C3;
+  font-family: Futura PT;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  cursor: pointer;
+  transition: color 0.5s;
+}
+.default:hover {
+  color: rgb(86, 86, 182);
 }

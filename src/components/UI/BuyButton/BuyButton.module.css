@@ -1,0 +1,31 @@
+.btn {
+  position: relative;
+  width: 192px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #12AB51;
+  color: #FFF;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.5s;
+}
+.btn:hover {
+  background-color: rgb(86, 86, 182);
+}
+.btn img {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.btn .buyIcon {
+  position: absolute;
+  left: 11px;
+  top: 11px;
+}

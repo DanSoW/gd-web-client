@@ -1,0 +1,334 @@
+@import "../../../styles/colors";
+
+.container {
+    height: 410px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 18px;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+
+    .h {
+        color: #333;
+        font-family: Futura PT;
+        font-size: 29px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+
+        padding: 0;
+        margin: 0;
+    }
+
+    .doors {
+        display: flex;
+        flex-direction: row;
+        gap: 40px;
+
+        img {
+            width: 134px;
+            height: 286px;
+        }
+    }
+
+    .description {
+        color: #C3C3C3;
+        font-family: Futura PT;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        width: 329px;
+
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.articles {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    direction: rtl;
+    padding-left: 26px;
+
+    /* Для стилизации полосы прокрутки (опционально) */
+    &::-webkit-scrollbar {
+        width: 6px;
+        border-radius: 13px;
+        background: #F5F5F5;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        width: 6px;
+        border-radius: 13px;
+        background: #C3C3C3;
+    }
+
+    .activeArticle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 13px;
+        background: #12AB51;
+        width: 116px;
+        height: 40px;
+        color: #FFF;
+        font-family: Futura PT;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+
+    .article {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 116px;
+        height: 40px;
+        flex-shrink: 0;
+        border-radius: 13px;
+        background: #F5F5F5;
+        color: #636060;
+        font-family: Futura PT;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        cursor: pointer;
+    }
+}
+
+.characteristic {
+    display: flex;
+    flex-direction: column;
+    margin-left: 13px;
+
+    .title {
+        color: #333;
+        font-family: Futura PT;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        text-decoration-line: underline;
+
+        padding: 0;
+        margin: 0;
+    }
+
+    .property {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        margin-top: 21px;
+
+        .item {
+            padding-left: 14px;
+            padding-right: 14px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border-radius: 10px;
+            background: rgba(245, 245, 245, 0.90);
+            height: 43px;
+
+            span {
+                color: #333;
+                font-family: Futura PT;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                padding: 0;
+                margin: 0;
+            }
+        }
+    }
+
+    .info {
+        margin-top: 19px;
+        display: flex;
+        flex-direction: column;
+
+        .item {
+            display: flex;
+            flex-direction: row;
+            gap: 0;
+            align-items: center;
+            justify-content: space-between;
+
+            p {
+                color: #333;
+                font-family: Futura PT;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 450;
+                line-height: 25px;
+                margin: 0;
+                padding: 0;
+            }
+
+            .dotted {
+                padding: 0;
+                margin: 0;
+                color: #C3C3C3;
+                font-family: Futura PT;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 450;
+                line-height: 25px;
+            }
+        }
+
+
+    }
+
+    .viewPhotoBtn {
+        margin-top: 20px;
+        width: 151px;
+        height: 38px;
+        display: inline-flex;
+        padding: 10px 25px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border-radius: 10px;
+        background: #137039;
+        color: #FFF;
+        font-family: Futura PT;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 450;
+        line-height: normal;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        transition: all 0.5s;
+
+        &:hover {
+            background-color: $basic_hover;
+        }
+    }
+
+    .description {
+        color: #C3C3C3;
+        font-family: Futura PT;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        padding: 0;
+        margin: 0;
+        margin-top: 19px;
+        width: 376px;
+    }
+}
+
+.prices {
+    width: 217px;
+    height: 297px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 27px;
+    background: #F5F5F5;
+    padding-left: 18px;
+    padding-right: 18px;
+
+    .discountBlock {
+        margin-top: 36px;
+        display: flex;
+        flex-direction: row;
+        align-self: flex-start;
+        gap: 4px;
+
+        .price {
+            color: #333;
+            font-family: Futura PT;
+            font-size: 36px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            padding: 0;
+            margin: 0;
+        }
+
+        .discount {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            p {
+                color: #FFF;
+                font-family: Futura PT;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+                padding: 0;
+                margin: 0;
+                width: 42px;
+                height: 42px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                background-image: url("../../../resources/images/discount.svg");
+                background-repeat: no-repeat;
+            }
+        }
+    }
+
+    .withoutDiscountBlock {
+        align-self: flex-start;
+
+        p {
+            color: #B2B1B1;
+            font-family: Futura PT;
+            font-size: 30px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            text-decoration-line: strikethrough;
+            padding: 0;
+            margin: 0;
+        }
+    }
+
+    .inStock {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        align-self: flex-start;
+        margin-top: 61px;
+        gap: 12px;
+
+        p {
+            padding: 0;
+            margin: 0;
+            color: #636363;
+            font-family: Futura PT;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+    }
+}

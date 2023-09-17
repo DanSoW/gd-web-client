@@ -1,3 +1,5 @@
+@import "../../styles/colors";
+
 .textH {
     color: #333;
     font-family: Futura PT;
@@ -11,16 +13,23 @@
 }
 
 .container {
-    margin-top: 30px;
+    margin-top: 0px;
     margin-left: 22px;
     margin-right: 22px;
     margin-bottom: 124px;
-    min-height: 920px;
+    height: max-content;
 }
 
 .item {
     display: flex;
     flex-direction: column;
+    height: 100%;
+    padding-left: 283px;
+
+    .doorList {
+        margin-top: 37px;
+        width: 100%;
+    }
 }
 
 .control {
@@ -43,6 +52,12 @@
     p:hover {
         cursor: pointer;
 
-        color: rgb(125, 125, 220);
+        color: $basic_hover;
     }
+}
+
+.doorList {
+    display: flex;
+    flex-direction: column;
+    gap: 57px;
 }

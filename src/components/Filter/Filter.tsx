@@ -1,9 +1,68 @@
-import { FC, memo } from "react";
+import { FC, memo, useState, useEffect, useRef } from "react";
 import styles from "./Filter.module.css";
 import setting from "src/resources/images/setting.svg";
+import settingWhite from "src/resources/images/setting_white.svg";
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Checkbox, { CheckboxProps } from "@mui/material/Checkbox";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch, { SwitchProps } from "@mui/material/Switch";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import Button from "../UI/Button";
+import CircularIndeterminate from "../CircularIndeterminate";
+
+const IOSSwitch = styled((props: SwitchProps) => (
+  <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
+))(({ theme }) => ({
+  width: "58px",
+  height: "33px",
+  padding: 0,
+  "& .MuiSwitch-switchBase": {
+    padding: 0,
+    margin: 3,
+    transitionDuration: "300ms",
+    "&.Mui-checked": {
+      transform: "translateX(25px)",
+      color: "#fff",
+      "& + .MuiSwitch-track": {
+        backgroundColor: theme.palette.mode === "dark" ? "#137039" : "#137039",
+        opacity: 1,
+        border: 0,
+      },
+      "&.Mui-disabled + .MuiSwitch-track": {
+        opacity: 0.5,
+      },
+    },
+    "&.Mui-focusVisible .MuiSwitch-thumb": {
+      color: "#33cf4d",
+      border: "6px solid #fff",
+    },
+    "&.Mui-disabled .MuiSwitch-thumb": {
+      color:
+        theme.palette.mode === "light"
+          ? theme.palette.grey[100]
+          : theme.palette.grey[600],
+    },
+    "&.Mui-disabled + .MuiSwitch-track": {
+      opacity: theme.palette.mode === "light" ? 0.7 : 0.3,
+    },
+  },
+  "& .MuiSwitch-thumb": {
+    boxSizing: "border-box",
+    width: "27px",
+    height: "27px",
+  },
+  "& .MuiSwitch-track": {
+    borderRadius: "23px",
+    backgroundColor: theme.palette.mode === "light" ? "#E9E9EA" : "#39393D",
+    opacity: 1,
+    transition: theme.transitions.create(["background-color"], {
+      duration: 500,
+    }),
+  },
+}));
 
 const BpIcon = styled("span")(({ theme }) => ({
   borderRadius: "5px",
@@ -40,14 +99,12 @@ const BpCheckedIcon = styled(BpIcon)({
     "linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0))",
   "&:before": {
     display: "block",
-    width: 16,
-    height: 16,
-    marginTop: "1.5px",
+    width: "16px",
+    height: "16px",
+    marginTop: "1.7px",
     marginLeft: "1.9px",
     backgroundImage:
-      "url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath" +
-      " fill-rule='evenodd' clip-rule='evenodd' d='M12 5c-.28 0-.53.11-.71.29L7 9.59l-2.29-2.3a1.003 " +
-      "1.003 0 00-1.42 1.42l3 3c.18.18.43.29.71.29s.53-.11.71-.29l5-5A1.003 1.003 0 0012 5z' fill='%23fff'/%3E%3C/svg%3E\")",
+      "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M10.9697 4.96999C11.1105 4.83588 11.298 4.76173 11.4925 4.76321C11.687 4.76468 11.8733 4.84165 12.0121 4.97787C12.1509 5.1141 12.2314 5.29893 12.2366 5.49336C12.2417 5.68779 12.1711 5.87661 12.0397 6.01999L8.04967 11.01C7.98106 11.0839 7.89825 11.1432 7.8062 11.1844C7.71415 11.2255 7.61474 11.2477 7.51392 11.2496C7.4131 11.2514 7.31294 11.2329 7.21943 11.1952C7.12591 11.1575 7.04097 11.1013 6.96967 11.03L4.32367 8.38399C4.24998 8.31532 4.19088 8.23252 4.14989 8.14052C4.1089 8.04853 4.08685 7.94921 4.08508 7.84851C4.0833 7.74781 4.10183 7.64778 4.13955 7.55439C4.17727 7.461 4.23341 7.37617 4.30463 7.30495C4.37585 7.23373 4.46068 7.17758 4.55407 7.13986C4.64746 7.10214 4.74749 7.08362 4.84819 7.08539C4.94889 7.08717 5.04821 7.10921 5.14021 7.15021C5.23221 7.1912 5.31501 7.2503 5.38367 7.32399L7.47767 9.41699L10.9507 4.99199C10.9569 4.98429 10.9626 4.97694 10.9697 4.96999Z' fill='white'/%3E%3C/svg%3E\")",
     content: '""',
   },
   "input:hover ~ &": {
@@ -60,7 +117,7 @@ const BpCheckbox = (props: CheckboxProps) => {
     <Checkbox
       sx={{
         "&:hover": { bgcolor: "transparent" },
-        padding: "0px"
+        padding: "0px",
       }}
       disableRipple
       color="default"
@@ -70,52 +127,137 @@ const BpCheckbox = (props: CheckboxProps) => {
       {...props}
     />
   );
+};
+
+export interface ICustomCheckboxProps {
+  title: string;
 }
 
-const Filter: FC<any> = () => {
+const CustomCheckbox: FC<ICustomCheckboxProps> = ({ title }) => {
+  const [value, setValue] = useState<boolean>(false);
+
+  const onChange = () => {
+    setValue(!value);
+  };
+
+  return (
+    <div className={styles.selectItem}>
+      {value && <BpCheckbox checked={true} onClick={onChange} />}
+      {!value && <BpCheckbox checked={false} onClick={onChange} />}
+      <p className={styles.text} onClick={onChange}>
+        {title}
+      </p>
+    </div>
+  );
+};
+
+export interface ICustomSwitchProps {
+  title: string;
+}
+
+const CustomSwitch: FC<ICustomSwitchProps> = ({ title }) => {
+  const [value, setValue] = useState<boolean>(false);
+
+  const onChange = (e: any) => {
+    setValue(e.target.checked);
+  };
+
+  return (
+    <div className={styles.selectItemSwitch}>
+      <p className={styles.text}>{title}</p>
+      <IOSSwitch onClick={onChange} />
+    </div>
+  );
+};
+
+export interface IFilterProps {
+  scrollHandler: () => void;
+}
+
+const Filter: FC<IFilterProps> = ({ scrollHandler }) => {
+  const [visible, setVisible] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const clickHandler = () => {
+    setLoading(!loading);
+  };
+
+  const targetRef = useRef(null);
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        // Если элемент становится невидимым
+        if (!entry.isIntersecting) {
+          setVisible(false);
+        } else {
+          // Если компонент перестал быть видим
+          setVisible(true);
+        }
+      });
+    });
+
+    if (targetRef.current) {
+      observer.observe(targetRef.current);
+    }
+
+    // Отписка от наблюдения при размонтировании компонента
+    return () => {
+      if (targetRef.current) {
+        observer.unobserve(targetRef.current);
+      }
+    };
+  }, []);
+
   return (
     <>
-      <div className={styles.container}>
+      {loading && <CircularIndeterminate />}
+      <div ref={targetRef} className={styles.container}>
         <div className={styles.control}>
           <img src={setting} alt="Настройки" />
           <p className={styles.textH}>Фильтр моделей</p>
         </div>
         <div className={styles.item}>
           <p className={styles.iTextH}>Размеры</p>
-          <div className={styles.selectItem}>
-            <BpCheckbox />
-            <p className={styles.text}>Все размеры</p>
-          </div>
-          <div className={styles.selectItem}>
-            <BpCheckbox />
-            <p className={styles.text}>780х2000 мм</p>
-          </div>
-          <div className={styles.selectItem}>
-            <BpCheckbox />
-            <p className={styles.text}>800х2030 мм</p>
-          </div>
-          <div className={styles.selectItem}>
-            <BpCheckbox />
-            <p className={styles.text}>860х2050 мм</p>
-          </div>
-          <div className={styles.selectItem}>
-            <BpCheckbox />
-            <p className={styles.text}>900х2050 мм</p>
-          </div>
-          <div className={styles.selectItem}>
-            <BpCheckbox />
-            <p className={styles.text}>960х2070 мм</p>
-          </div>
-          <div className={styles.selectItem}>
-            <BpCheckbox />
-            <p className={styles.text}>980х2080 мм</p>
-          </div>
-          <div className={styles.selectItem}>
-            <BpCheckbox />
-            <p className={styles.text}>1050х2070 мм</p>
-          </div>
+          <CustomCheckbox title="Все размеры" />
+          <CustomCheckbox title="780х2000 мм" />
+          <CustomCheckbox title="800х2030 мм" />
+          <CustomCheckbox title="860х2050 мм" />
+          <CustomCheckbox title="900х2050 мм" />
+          <CustomCheckbox title="960х2070 мм" />
+          <CustomCheckbox title="980х2080 мм" />
+          <CustomCheckbox title="1050х2070 мм" />
+        </div>
+        <div className={styles.item} style={{ marginTop: "15px" }}>
+          <p className={styles.iTextH}>Назначение двери</p>
+          <CustomCheckbox title="Квартирная" />
+          <CustomCheckbox title="Для дома и дачи" />
+        </div>
+        <div className={styles.item} style={{ marginTop: "15px" }}>
+          <p className={styles.iTextH}>Открывание двери</p>
+          <CustomCheckbox title="Левое открывание" />
+          <CustomCheckbox title="Правое открывание" />
+        </div>
+        <div className={styles.item} style={{ marginTop: "15px" }}>
+          <CustomSwitch title="С зеркалом" />
+        </div>
+        <div className={styles.item} style={{ marginTop: "15px" }}>
+          <p className={styles.iTextH}>Дополнительные особенности</p>
+          <CustomCheckbox title="Без дефектов" />
+          <CustomCheckbox title="Витринный образец" />
+          <CustomCheckbox title="С дефектом" />
+          <CustomCheckbox title="Устаревшая модель" />
+        </div>
+        <div className={styles.item}>
+          <Button clickHandler={clickHandler} title="Фильтровать" />
+          <p className={styles.default}>Сбросить</p>
         </div>
       </div>
+      {!visible && (
+        <button className={styles.fixedButton} onClick={scrollHandler}>
+          <img src={settingWhite} alt="Настройки" />
+          Фильтр моделей
+        </button>
+      )}
     </>
   );
 };
