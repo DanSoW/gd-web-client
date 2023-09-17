@@ -1,0 +1,64 @@
+.container {
+  position: absolute;
+  left: 22px;
+  width: 216px;
+  margin-top: 57px;
+}
+
+.textH {
+  color: #333;
+  font-family: Futura PT;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.iTextH {
+  color: #333;
+  font-family: Futura PT;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.text {
+  color: #333;
+  font-family: Futura PT;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.control {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: -moz-max-content;
+  width: max-content;
+  align-self: flex-end;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  gap: 13px;
+}
+
+.selectItem {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}

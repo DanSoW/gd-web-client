@@ -1,0 +1,48 @@
+.textH {
+    color: #333;
+    font-family: Futura PT;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin-top: 30px;
+    margin-left: 22px;
+    margin-right: 22px;
+    margin-bottom: 124px;
+    min-height: 920px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+}
+
+.control {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    width: max-content;
+    align-self: flex-end;
+
+    p {
+        transition: all 0.4s;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    p:hover {
+        cursor: pointer;
+
+        color: rgb(125, 125, 220);
+    }
+}
