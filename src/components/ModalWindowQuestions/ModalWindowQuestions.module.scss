@@ -71,8 +71,26 @@
     background-color: #12AB51;
     display: flex;
     // align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
+    position: relative;
+
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    p {
+        padding: 0;
+        margin: 0;
+        left: 0;
+    }
+
+    &:hover {
+        
+    }
 }
 
 .headerMobileWrapBlock {
@@ -155,7 +173,30 @@
         margin-top: 40px;
     }
 
+    .subApply {
+        width: 300px;
+        height: 50px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+        }
+
+        p {
+            padding: 0;
+            margin: 0;
+            left: 0;
+        }
+    }
+
     .agreeText {
         text-align: center;
+        width: 300px;
     }
 }

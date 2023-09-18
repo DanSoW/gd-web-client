@@ -26,9 +26,9 @@ const ModalWindowQuestions = (props: ModalText) => {
             </div>
             <div className={styles.footer}>
                 <div className={styles.subApply}>
-                  <div className={styles.phoneCallBlock}>
+                  
                     <img src={phoneRectangle} alt="phoneBack" />
-                  </div>
+                  
                   <p className={styles.sendApplytext}>Оставить заявку</p>
                 </div>
                 <p className={styles.agreeText}>

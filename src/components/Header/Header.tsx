@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import styles from './Header.module.scss';
 import logo from '../../resources/images/logo1.svg'
 import phoneIcon from '../../resources/images/phoneIcon.svg';
-import mailIcon from '../../resources/images/phoneIcon.svg';
+import mailIcon from '../../resources/images/mailIcon.svg';
 import phoneRectangle from '../../resources/images/phoneRectangle.svg';
 import PhoneCallIcon from '../../resources/images/PhoneCallIcon.svg';
 // import headerSliderBackground from '../../resources/images/headerSliderBackground.png';

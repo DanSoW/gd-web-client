@@ -14,7 +14,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 25px;
+    padding: 20px;
 }
 
 .logoBlock {
@@ -112,7 +112,7 @@
 
     a:hover {
         width: 414px;
-        color: rgb(141, 215, 132);
+        color: rgb(86, 86, 182);
         text-decoration: none;
         transition: 0.3s;
     }
@@ -131,6 +131,16 @@
     // align-items: center;
     justify-content: space-between;
     cursor: pointer;
+    transition: .3s;
+
+    &:hover {
+        background-color: rgb(86, 86, 182);
+        transition: .3s;
+        
+        p {
+            color: white;
+        }
+    }
 }
 
 .phoneCallBlock {
