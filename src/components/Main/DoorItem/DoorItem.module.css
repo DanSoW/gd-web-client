@@ -6,11 +6,84 @@
   justify-content: flex-start;
   gap: 18px;
 }
+@media only screen and (min-width: 300px) and (max-width: 420px) {
+  .container {
+    flex-direction: column;
+    height: -moz-max-content;
+    height: max-content;
+    justify-content: center;
+    align-items: center;
+    width: 380px;
+  }
+  .container .characteristic {
+    width: 100%;
+  }
+  .container .articles {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    padding-bottom: 15px;
+    padding-left: 0px;
+    /* Для стилизации полосы прокрутки (опционально) */
+  }
+  .container .articles::-webkit-scrollbar {
+    height: 6px;
+    border-radius: 13px;
+    background: #F5F5F5;
+  }
+  .container .articles::-webkit-scrollbar-thumb {
+    height: 6px;
+    border-radius: 13px;
+    background: #C3C3C3;
+  }
+}
+@media only screen and (min-width: 420px) and (max-width: 1170px) {
+  .container {
+    flex-direction: column;
+    height: -moz-max-content;
+    height: max-content;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+  }
+  .container .characteristic {
+    width: 100%;
+  }
+  .container .articles {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    padding-bottom: 15px;
+    padding-left: 0px;
+    /* Для стилизации полосы прокрутки (опционально) */
+  }
+  .container .articles::-webkit-scrollbar {
+    height: 6px;
+    border-radius: 13px;
+    background: #F5F5F5;
+  }
+  .container .articles::-webkit-scrollbar-thumb {
+    height: 6px;
+    border-radius: 13px;
+    background: #C3C3C3;
+  }
+}
 
 .title {
   display: flex;
   flex-direction: column;
   gap: 17px;
+}
+@media only screen and (min-width: 300px) and (max-width: 1170px) {
+  .title {
+    width: 100%;
+  }
 }
 .title .h {
   color: #333;
@@ -27,9 +100,23 @@
   flex-direction: row;
   gap: 40px;
 }
+@media only screen and (min-width: 300px) and (max-width: 1170px) {
+  .title .doors {
+    justify-content: center;
+    align-items: center;
+  }
+}
 .title .doors img {
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 134px;
   height: 286px;
+}
+@media only screen and (min-width: 300px) and (max-width: 1170px) {
+  .title .doors img {
+    width: 92.17px;
+    height: 195.004px;
+  }
 }
 .title .description {
   color: #C3C3C3;
@@ -41,6 +128,7 @@
   width: 329px;
   margin: 0;
   padding: 0;
+  word-wrap: break-word;
 }
 
 .articles {
@@ -102,6 +190,11 @@
   display: flex;
   flex-direction: column;
   margin-left: 13px;
+}
+@media only screen and (min-width: 300px) and (max-width: 1170px) {
+  .characteristic {
+    margin-left: 0;
+  }
 }
 .characteristic .title {
   color: #333;
@@ -213,6 +306,7 @@
   margin: 0;
   margin-top: 19px;
   width: 376px;
+  word-wrap: break-word;
 }
 
 .prices {

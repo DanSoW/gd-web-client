@@ -12,6 +12,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Button from "../UI/Button";
 import CircularIndeterminate from "../CircularIndeterminate";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const IOSSwitch = styled((props: SwitchProps) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -175,6 +176,7 @@ export interface IFilterProps {
 }
 
 const Filter: FC<IFilterProps> = ({ scrollHandler }) => {
+  const matches = useMediaQuery("(max-width: 1280px)");
   const [visible, setVisible] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -206,53 +208,55 @@ const Filter: FC<IFilterProps> = ({ scrollHandler }) => {
         observer.unobserve(targetRef.current);
       }
     };
-  }, []);
+  }, [matches]);
 
   return (
     <>
       {loading && <CircularIndeterminate />}
-      <div ref={targetRef} className={styles.container}>
-        <div className={styles.control}>
-          <img src={setting} alt="Настройки" />
-          <p className={styles.textH}>Фильтр моделей</p>
+      {!matches && (
+        <div ref={targetRef} className={styles.container}>
+          <div className={styles.control}>
+            <img src={setting} alt="Настройки" />
+            <p className={styles.textH}>Фильтр моделей</p>
+          </div>
+          <div className={styles.item}>
+            <p className={styles.iTextH}>Размеры</p>
+            <CustomCheckbox title="Все размеры" />
+            <CustomCheckbox title="780х2000 мм" />
+            <CustomCheckbox title="800х2030 мм" />
+            <CustomCheckbox title="860х2050 мм" />
+            <CustomCheckbox title="900х2050 мм" />
+            <CustomCheckbox title="960х2070 мм" />
+            <CustomCheckbox title="980х2080 мм" />
+            <CustomCheckbox title="1050х2070 мм" />
+          </div>
+          <div className={styles.item} style={{ marginTop: "15px" }}>
+            <p className={styles.iTextH}>Назначение двери</p>
+            <CustomCheckbox title="Квартирная" />
+            <CustomCheckbox title="Для дома и дачи" />
+          </div>
+          <div className={styles.item} style={{ marginTop: "15px" }}>
+            <p className={styles.iTextH}>Открывание двери</p>
+            <CustomCheckbox title="Левое открывание" />
+            <CustomCheckbox title="Правое открывание" />
+          </div>
+          <div className={styles.item} style={{ marginTop: "15px" }}>
+            <CustomSwitch title="С зеркалом" />
+          </div>
+          <div className={styles.item} style={{ marginTop: "15px" }}>
+            <p className={styles.iTextH}>Дополнительные особенности</p>
+            <CustomCheckbox title="Без дефектов" />
+            <CustomCheckbox title="Витринный образец" />
+            <CustomCheckbox title="С дефектом" />
+            <CustomCheckbox title="Устаревшая модель" />
+          </div>
+          <div className={styles.item}>
+            <Button clickHandler={clickHandler} title="Фильтровать" />
+            <p className={styles.default}>Сбросить</p>
+          </div>
         </div>
-        <div className={styles.item}>
-          <p className={styles.iTextH}>Размеры</p>
-          <CustomCheckbox title="Все размеры" />
-          <CustomCheckbox title="780х2000 мм" />
-          <CustomCheckbox title="800х2030 мм" />
-          <CustomCheckbox title="860х2050 мм" />
-          <CustomCheckbox title="900х2050 мм" />
-          <CustomCheckbox title="960х2070 мм" />
-          <CustomCheckbox title="980х2080 мм" />
-          <CustomCheckbox title="1050х2070 мм" />
-        </div>
-        <div className={styles.item} style={{ marginTop: "15px" }}>
-          <p className={styles.iTextH}>Назначение двери</p>
-          <CustomCheckbox title="Квартирная" />
-          <CustomCheckbox title="Для дома и дачи" />
-        </div>
-        <div className={styles.item} style={{ marginTop: "15px" }}>
-          <p className={styles.iTextH}>Открывание двери</p>
-          <CustomCheckbox title="Левое открывание" />
-          <CustomCheckbox title="Правое открывание" />
-        </div>
-        <div className={styles.item} style={{ marginTop: "15px" }}>
-          <CustomSwitch title="С зеркалом" />
-        </div>
-        <div className={styles.item} style={{ marginTop: "15px" }}>
-          <p className={styles.iTextH}>Дополнительные особенности</p>
-          <CustomCheckbox title="Без дефектов" />
-          <CustomCheckbox title="Витринный образец" />
-          <CustomCheckbox title="С дефектом" />
-          <CustomCheckbox title="Устаревшая модель" />
-        </div>
-        <div className={styles.item}>
-          <Button clickHandler={clickHandler} title="Фильтровать" />
-          <p className={styles.default}>Сбросить</p>
-        </div>
-      </div>
-      {!visible && (
+      )}
+      {!visible && !matches && (
         <button className={styles.fixedButton} onClick={scrollHandler}>
           <img src={settingWhite} alt="Настройки" />
           Фильтр моделей

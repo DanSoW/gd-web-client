@@ -19,7 +19,7 @@ const mockData = [
         height: 700,
         opening_direction: false,
         main_lock: true,
-        additional_lock: true,
+        additional_lock: false,
         door_leaf_thickness: 150,
         sealing_contours: 4,
         color: "RAL 1334",

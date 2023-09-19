@@ -24,9 +24,17 @@
   height: 100%;
   padding-left: 283px;
 }
+@media only screen and (max-width: 1280px) {
+  .item {
+    padding-left: 0;
+    align-items: center;
+    justify-content: center;
+  }
+}
 .item .doorList {
   margin-top: 37px;
-  width: 100%;
+  width: -moz-max-content;
+  width: max-content;
 }
 
 .control {
