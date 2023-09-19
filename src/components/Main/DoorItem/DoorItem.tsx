@@ -9,6 +9,7 @@ import BuyButton from "src/components/UI/BuyButton";
 import { useMediaQuery } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
+import ViewImageModal from "src/components/ViewImageModal";
 
 export interface IDoorItemProps {
   data: IDoorModel;
@@ -98,6 +99,11 @@ const DoorItem: FC<IDoorItemProps> = ({ data }) => {
       setOffsetLeft(firstDivOffsetLeft);
     }
   }, [containerRef, windowSize]);
+
+  const [show, setShow] = useState<boolean>(false);
+  const showImageHandler = () => {
+    setShow(true);
+  }
 
   return (
     <>
@@ -217,7 +223,7 @@ const DoorItem: FC<IDoorItemProps> = ({ data }) => {
                 <p>{article.mirror ? "Есть" : "Нет"}</p>
               </div>
             </div>
-            <button className={styles.viewPhotoBtn}>Посмотреть фото</button>
+            <button className={styles.viewPhotoBtn} onClick={showImageHandler}>Посмотреть фото</button>
             <p className={styles.description}>{article.description}</p>
           </div>
         )}
@@ -351,7 +357,7 @@ const DoorItem: FC<IDoorItemProps> = ({ data }) => {
                           <p>{item.mirror ? "Есть" : "Нет"}</p>
                         </div>
                       </div>
-                      <button className={styles.viewPhotoBtn}>
+                      <button className={styles.viewPhotoBtn} onClick={showImageHandler}>
                         Посмотреть фото
                       </button>
                       <p className={styles.description}>{item.description}</p>
@@ -383,6 +389,9 @@ const DoorItem: FC<IDoorItemProps> = ({ data }) => {
           </>
         )}
       </div>
+      {
+        article && <ViewImageModal show={show} setShow={setShow} article={article} />
+      }
     </>
   );
 };

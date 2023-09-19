@@ -1,0 +1,130 @@
+.container {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  left: 0;
+  background: rgba(62, 62, 62, 0.62);
+  -webkit-backdrop-filter: blur(7.5px);
+          backdrop-filter: blur(7.5px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: -moz-max-content;
+  height: max-content;
+  position: relative;
+}
+.content .articleLabel {
+  position: absolute;
+  right: 15px;
+  top: 50px;
+  z-index: 1001;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 13px;
+  background: #12AB51;
+  width: 116px;
+  height: 40px;
+  color: #FFF;
+  font-family: Futura PT;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+@media only screen and (min-width: 300px) and (max-width: 420px) {
+  .content .articleLabel {
+    font-size: 14px;
+  }
+}
+
+.contentAdaptive {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  position: relative;
+  gap: 16px;
+}
+.contentAdaptive .articleLabel {
+  position: absolute;
+  z-index: 1005;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 13px;
+  background: #12AB51;
+  width: 116px;
+  height: 40px;
+  color: #FFF;
+  font-family: Futura PT;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+@media only screen and (min-width: 300px) and (max-width: 420px) {
+  .contentAdaptive .articleLabel {
+    font-size: 14px;
+  }
+}
+.contentAdaptive .imageSwiper {
+  z-index: 1002;
+  height: -moz-max-content;
+  height: max-content;
+}
+.contentAdaptive .imageSwiper .slide {
+  height: -moz-max-content;
+  height: max-content;
+}
+
+.closeBtn {
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.imageSwiper {
+  width: 400px;
+  height: 507px;
+  margin-bottom: 25px;
+}
+.imageSwiper .slide img {
+  width: 400px;
+  height: 507px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.thumbsSwiper {
+  height: 127px;
+  width: 400px;
+}
+.thumbsSwiper .slide img {
+  cursor: pointer;
+  height: 100%;
+  width: 107px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}

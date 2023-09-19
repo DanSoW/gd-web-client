@@ -65,7 +65,7 @@ const mockData = [
         in_stock: 456,
         images: [
           {
-            url: doorItem,
+            url: doorDefault,
           },
           {
             url: doorItem,

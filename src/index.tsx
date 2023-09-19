@@ -14,6 +14,8 @@ import "./styles/index.scss";
 import 'swiper/css';
 import 'swiper/css/pagination';
 import "swiper/css/navigation";
+import 'swiper/css/free-mode';
+import 'swiper/css/thumbs';
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
