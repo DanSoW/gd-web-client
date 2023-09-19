@@ -1,5 +1,9 @@
 @import "../../../styles/colors";
 
+.customSwiper {
+    width: 100%;
+}
+
 .container {
     height: 410px;
     display: flex;
@@ -12,7 +16,7 @@
         height: max-content;
         justify-content: center;
         align-items: center;
-        width: 380px;
+        width: 320px;
 
         .characteristic {
             width: 100%;
@@ -101,6 +105,10 @@
 
         padding: 0;
         margin: 0;
+
+        @media only screen and (min-width: 300px) and (max-width: 420px) {
+            font-size: 23px;
+        }
     }
 
     .doors {
@@ -136,6 +144,14 @@
         margin: 0;
         padding: 0;
 
+        @media only screen and (min-width: 300px) and (max-width: 1170px) {
+            width: 100%;
+        }
+
+        @media only screen and (min-width: 300px) and (max-width: 420px) {
+            font-size: 14px;
+        }
+
         word-wrap: break-word;
     }
 }
@@ -148,6 +164,12 @@
     overflow-x: hidden;
     direction: rtl;
     padding-left: 26px;
+
+    @media only screen and (min-width: 300px) and (max-width: 1280px) {
+        font-size: 14px;
+        width: 100%;
+        direction: ltr;
+    }
 
     /* Для стилизации полосы прокрутки (опционально) */
     &::-webkit-scrollbar {
@@ -178,6 +200,10 @@
         line-height: normal;
         cursor: pointer;
         flex-shrink: 0;
+
+        @media only screen and (min-width: 300px) and (max-width: 420px) {
+            font-size: 14px;
+        }
     }
 
     .article {
@@ -196,6 +222,10 @@
         font-weight: 400;
         line-height: normal;
         cursor: pointer;
+
+        @media only screen and (min-width: 300px) and (max-width: 420px) {
+            font-size: 14px;
+        }
     }
 }
 
@@ -220,6 +250,10 @@
 
         padding: 0;
         margin: 0;
+
+        @media only screen and (min-width: 300px) and (max-width: 420px) {
+            font-size: 16px;
+        }
     }
 
     .property {
@@ -227,6 +261,7 @@
         flex-direction: row;
         gap: 15px;
         margin-top: 21px;
+        width: max-content;
 
         .item {
             padding-left: 14px;
@@ -251,6 +286,10 @@
                 line-height: normal;
                 padding: 0;
                 margin: 0;
+
+                @media only screen and (min-width: 300px) and (max-width: 420px) {
+                    font-size: 14px;
+                }
             }
         }
     }
@@ -276,6 +315,10 @@
                 line-height: 25px;
                 margin: 0;
                 padding: 0;
+
+                @media only screen and (min-width: 300px) and (max-width: 420px) {
+                    font-size: 14px;
+                }
             }
 
             .dotted {
@@ -287,6 +330,10 @@
                 font-style: normal;
                 font-weight: 450;
                 line-height: 25px;
+
+                @media only screen and (min-width: 300px) and (max-width: 420px) {
+                    font-size: 14px;
+                }
             }
         }
 
@@ -332,6 +379,11 @@
         margin-top: 19px;
         width: 376px;
         word-wrap: break-word;
+
+        @media only screen and (min-width: 300px) and (max-width: 420px) {
+            font-size: 14px;
+            width: 100%;
+        }
     }
 }
 
@@ -414,6 +466,113 @@
         align-items: center;
         align-self: flex-start;
         margin-top: 61px;
+        gap: 12px;
+
+        p {
+            padding: 0;
+            margin: 0;
+            color: #636363;
+            font-family: Futura PT;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+    }
+
+    .btnWrapper {
+        width: 192px;
+    }
+}
+
+.adaptivePrices {
+    margin-top: 22px;
+    width: 100%;
+    min-height: 132px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-radius: 19px;
+    background: #F5F5F5;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 8px;
+    padding-bottom: 11px;
+
+    .discount {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        right: 12px;
+        top: 8px;
+
+        p {
+            color: #FFF;
+            font-family: Futura PT;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            padding: 0;
+            margin: 0;
+            width: 42px;
+            height: 42px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-image: url("../../../resources/images/discount.svg");
+            background-repeat: no-repeat;
+        }
+    }
+
+    .priceWrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 7px;
+
+        .price {
+            color: #333;
+            font-family: Futura PT;
+            font-size: 36px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            padding: 0;
+            margin: 0;
+
+            @media only screen and (min-width: 300px) and (max-width: 420px) {
+                font-size: 29px;
+            }
+        }
+
+        .priceWithoutDiscount {
+            padding: 0;
+            margin: 0;
+            color: #B2B1B1;
+            font-family: Futura PT;
+            font-size: 30px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            text-decoration-line: strikethrough;
+
+            @media only screen and (min-width: 300px) and (max-width: 420px) {
+                font-size: 25px;
+            }
+        }
+    }
+
+    .inStock {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        align-self: flex-start;
         gap: 12px;
 
         p {

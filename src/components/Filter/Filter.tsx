@@ -262,6 +262,12 @@ const Filter: FC<IFilterProps> = ({ scrollHandler }) => {
           Фильтр моделей
         </button>
       )}
+      {matches && (
+        <button className={styles.adaptiveButton} onClick={scrollHandler}>
+          <img src={settingWhite} alt="Настройки" />
+          Фильтр моделей
+        </button>
+      )}
     </>
   );
 };

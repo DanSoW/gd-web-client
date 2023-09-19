@@ -16,6 +16,9 @@
   margin-bottom: 124px;
   height: -moz-max-content;
   height: max-content;
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
 }
 
 .item {
@@ -32,7 +35,7 @@
   }
 }
 .item .doorList {
-  margin-top: 37px;
+  margin-top: 0;
   width: -moz-max-content;
   width: max-content;
 }
@@ -54,6 +57,31 @@
   cursor: pointer;
 }
 .control p:hover {
+  cursor: pointer;
+  color: rgb(86, 86, 182);
+}
+
+.controlInversion {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  width: -moz-max-content;
+  width: max-content;
+}
+@media (max-width: 992px) {
+  .controlInversion {
+    margin-top: 23px;
+  }
+}
+.controlInversion p {
+  transition: all 0.4s;
+}
+.controlInversion:hover {
+  cursor: pointer;
+}
+.controlInversion p:hover {
   cursor: pointer;
   color: rgb(86, 86, 182);
 }

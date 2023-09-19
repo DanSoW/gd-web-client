@@ -380,6 +380,20 @@
   font-weight: 900;
   src: local("Futura PT"), url("../resources/fonts/Futura PT/FuturaPT-Heavy.ttf");
 }
+/*--------------------------*/
+/* Подключение шрифта Intro*/
+@font-face {
+  font-family: "Intro";
+  font-weight: 900;
+  src: local("IntroDemo-BlackCAPS"), url("../resources/fonts/Intro/IntroDemo-BlackCAPS.otf");
+}
+/*--------------------------*/
+/* Подключение шрифта Futura PT Heavy Italic*/
+@font-face {
+  font-family: "Futura PT Heavy Italic";
+  font-weight: 400;
+  src: local("IntroDemo-BlackCAPS"), url("../resources/fonts//Futura PT Heavy Italic/2551ad289aa6b36b7e3d196555658495.ttf");
+}
 body {
   background: #FFF;
   overflow-x: hidden;
@@ -421,4 +435,49 @@ a:hover {
   font-size: 1.5rem;
   color: #080420;
   cursor: pointer;
+}
+
+.swiper-pagination {
+  position: relative !important;
+  margin-top: 25px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-pagination-bullet {
+  background: #C3C3C3;
+  height: 21px;
+  width: 21px;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: #585858;
+  height: 10px;
+  width: 10px;
+}
+
+.swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
+  background: #C3C3C3 !important;
+  opacity: 1;
+  height: 8px !important;
+  width: 8px !important;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: -moz-max-content;
+  height: max-content;
+  width: -moz-max-content !important;
+  width: max-content !important;
+}
+
+.pagination .selected {
+  background-color: #007bff !important;
+  border-color: #007bff !important;
+  color: #fff !important;
+  height: 25px;
+  width: 25px;
 }

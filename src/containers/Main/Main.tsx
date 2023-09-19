@@ -3,6 +3,7 @@ import styles from "./Main.module.scss";
 import filterMin from "src/resources/images/filter_min.svg";
 import Filter from "src/components/Filter";
 import mockData from "./mock.data";
+import { useMediaQuery } from "@mui/material";
 
 import {
   Link,
@@ -15,6 +16,9 @@ import {
 import DoorItem from "src/components/Main/DoorItem";
 
 const Main: FC<any> = () => {
+  const matches = useMediaQuery(
+    "only screen and (min-width: 300px) and (max-width: 1280px)"
+  );
   const scrollToFilter = () => {
     scroller.scrollTo("filter", {
       duration: 800,
@@ -25,14 +29,27 @@ const Main: FC<any> = () => {
 
   return (
     <>
-      <Filter scrollHandler={scrollToFilter} />
+      {!matches && <Filter scrollHandler={scrollToFilter} />}
       <div className={styles.container}>
         <div className={styles.item}>
-          <Element name="filter" className={styles.control}>
-            <p className={styles.textH}>По убыванию цены</p>
-            <img src={filterMin} alt="По убыванию цены" />
-          </Element>
+          {!matches && (
+            <Element name="filter" className={styles.control}>
+              <p className={styles.textH}>По убыванию цены</p>
+              <img src={filterMin} alt="По убыванию цены" />
+            </Element>
+          )}
+          {matches && (
+            <div className={styles.controlInversion}>
+              <img src={filterMin} alt="По убыванию цены" />
+              <p className={styles.textH}>По убыванию цены</p>
+            </div>
+          )}
         </div>
+        {matches && (
+          <div className={styles.item}>
+            <Filter scrollHandler={scrollToFilter} />
+          </div>
+        )}
         <div className={styles.item}>
           <div className={styles.doorList}>
             {mockData.map((item) => {
