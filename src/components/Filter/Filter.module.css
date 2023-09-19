@@ -5,6 +5,61 @@
   margin-top: 57px;
 }
 
+.containerModal {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  display: block;
+  background: white;
+  width: 90%;
+  height: 90%;
+  height: 100%;
+  max-height: 100%;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 0px;
+  padding: 10px;
+  overflow-y: scroll;
+  padding-left: 12%;
+  padding-right: 12%;
+}
+.containerModal .itemFilter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+  gap: 13px;
+}
+.containerModal .adaptiveButton {
+  left: 20px;
+  top: 84px;
+  height: 44px;
+  width: 100%;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #585858;
+  color: #FFF;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.5s;
+  animation: fadeIn 0.5s;
+}
+.containerModal .adaptiveButton:hover {
+  background-color: rgb(86, 86, 182);
+}
+
 .fixedButton {
   position: fixed;
   top: 14px;

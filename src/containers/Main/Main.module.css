@@ -91,3 +91,8 @@
   flex-direction: column;
   gap: 57px;
 }
+
+.doorBtn {
+  margin-top: 72px;
+  align-self: center;
+}

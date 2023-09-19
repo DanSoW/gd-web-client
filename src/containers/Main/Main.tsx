@@ -14,8 +14,10 @@ import {
   scroller,
 } from "react-scroll";
 import DoorItem from "src/components/Main/DoorItem";
+import Button from "src/components/UI/Button";
 
 const Main: FC<any> = () => {
+  const [showModal, setShowModal] = useState<boolean>(false);
   const matches = useMediaQuery(
     "only screen and (min-width: 300px) and (max-width: 1280px)"
   );
@@ -47,7 +49,11 @@ const Main: FC<any> = () => {
         </div>
         {matches && (
           <div className={styles.item}>
-            <Filter scrollHandler={scrollToFilter} />
+            <Filter
+              scrollHandler={scrollToFilter}
+              showModal={showModal}
+              setShowModal={setShowModal}
+            />
           </div>
         )}
         <div className={styles.item}>
@@ -55,6 +61,14 @@ const Main: FC<any> = () => {
             {mockData.map((item) => {
               return <DoorItem data={item} />;
             })}
+          </div>
+          <div className={styles.doorBtn}>
+            <Button
+              title="Загрузить ещё"
+              clickHandler={function (): void {
+                throw new Error("Function not implemented.");
+              }}
+            />
           </div>
         </div>
       </div>
