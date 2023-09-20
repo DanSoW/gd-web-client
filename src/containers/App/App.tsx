@@ -15,9 +15,7 @@ const App: FC<any> = () => {
   return (
     <>
       <BrowserRouter>
-        <Header />
         {routes}
-        <Footer />
         <ToastContainer
             position="bottom-right"
             autoClose={2000}

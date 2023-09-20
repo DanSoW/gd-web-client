@@ -14,11 +14,13 @@ import storage from "redux-persist/lib/storage";
 
 /* Контекст */
 import messageQueueReducer from "./reducers/MessageQueueSlice";
+import authReducer from "./reducers/AuthSlice";
 import StoreConstants from "src/constants/store";
 
 /* Главный Reducer */
 const rootReducer = combineReducers({
   messageQueueReducer,
+  authReducer
 });
 
 // Конфигурация Persist

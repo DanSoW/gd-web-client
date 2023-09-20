@@ -1,0 +1,111 @@
+.textH {
+  color: #333;
+  font-family: Futura PT;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin-top: 36px;
+  margin-left: 22px;
+  margin-right: 22px;
+  margin-bottom: 124px;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-left: 283px;
+}
+@media only screen and (max-width: 1280px) {
+  .item {
+    padding-left: 0;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.item .doorList {
+  margin-top: 0;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.itemAddBtn {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+@media only screen and (max-width: 1280px) {
+  .itemAddBtn {
+    padding-left: 0;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.control {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  width: -moz-max-content;
+  width: max-content;
+  align-self: flex-end;
+}
+.control p {
+  transition: all 0.4s;
+}
+.control:hover {
+  cursor: pointer;
+}
+.control p:hover {
+  cursor: pointer;
+  color: rgb(86, 86, 182);
+}
+
+.controlInversion {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  width: -moz-max-content;
+  width: max-content;
+}
+@media (max-width: 992px) {
+  .controlInversion {
+    margin-top: 23px;
+  }
+}
+.controlInversion p {
+  transition: all 0.4s;
+}
+.controlInversion:hover {
+  cursor: pointer;
+}
+.controlInversion p:hover {
+  cursor: pointer;
+  color: rgb(86, 86, 182);
+}
+
+.doorList {
+  display: flex;
+  flex-direction: column;
+  gap: 57px;
+}
+
+.doorBtn {
+  margin-top: 72px;
+  align-self: center;
+}

@@ -1,0 +1,570 @@
+@charset "UTF-8";
+.customSwiper {
+  width: 100%;
+}
+
+.container {
+  height: 410px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 18px;
+}
+@media only screen and (min-width: 300px) and (max-width: 420px) {
+  .container {
+    flex-direction: column;
+    height: -moz-max-content;
+    height: max-content;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+  }
+  .container .characteristic {
+    width: 100%;
+  }
+  .container .articles {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    padding-bottom: 15px;
+    padding-left: 0px;
+    /* Для стилизации полосы прокрутки (опционально) */
+  }
+  .container .articles::-webkit-scrollbar {
+    height: 6px;
+    border-radius: 13px;
+    background: #F5F5F5;
+  }
+  .container .articles::-webkit-scrollbar-thumb {
+    height: 6px;
+    border-radius: 13px;
+    background: #C3C3C3;
+  }
+}
+@media only screen and (min-width: 420px) and (max-width: 1170px) {
+  .container {
+    flex-direction: column;
+    height: -moz-max-content;
+    height: max-content;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+  }
+  .container .characteristic {
+    width: 100%;
+  }
+  .container .articles {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    padding-bottom: 15px;
+    padding-left: 0px;
+    /* Для стилизации полосы прокрутки (опционально) */
+  }
+  .container .articles::-webkit-scrollbar {
+    height: 6px;
+    border-radius: 13px;
+    background: #F5F5F5;
+  }
+  .container .articles::-webkit-scrollbar-thumb {
+    height: 6px;
+    border-radius: 13px;
+    background: #C3C3C3;
+  }
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+@media only screen and (min-width: 300px) and (max-width: 1170px) {
+  .title {
+    width: 100%;
+  }
+}
+.title .h {
+  color: #333;
+  font-family: Futura PT;
+  font-size: 29px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  padding: 0;
+  margin: 0;
+}
+@media only screen and (min-width: 300px) and (max-width: 420px) {
+  .title .h {
+    font-size: 23px;
+  }
+}
+.title .doors {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+@media only screen and (min-width: 300px) and (max-width: 1170px) {
+  .title .doors {
+    justify-content: center;
+    align-items: center;
+  }
+}
+.title .doors img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 134px;
+  height: 286px;
+}
+@media only screen and (min-width: 300px) and (max-width: 1170px) {
+  .title .doors img {
+    width: 92.17px;
+    height: 195.004px;
+  }
+}
+.title .description {
+  color: #C3C3C3;
+  font-family: Futura PT;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 329px;
+  margin: 0;
+  padding: 0;
+  word-wrap: break-word;
+}
+@media only screen and (min-width: 300px) and (max-width: 1170px) {
+  .title .description {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 300px) and (max-width: 420px) {
+  .title .description {
+    font-size: 14px;
+  }
+}
+
+.articles {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  direction: rtl;
+  padding-left: 26px;
+  /* Для стилизации полосы прокрутки (опционально) */
+}
+@media only screen and (min-width: 300px) and (max-width: 1280px) {
+  .articles {
+    font-size: 14px;
+    width: 100%;
+    direction: ltr;
+  }
+}
+.articles::-webkit-scrollbar {
+  width: 6px;
+  border-radius: 13px;
+  background: #F5F5F5;
+}
+.articles::-webkit-scrollbar-thumb {
+  width: 6px;
+  border-radius: 13px;
+  background: #C3C3C3;
+}
+.articles .activeArticle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 13px;
+  background: #12AB51;
+  width: 116px;
+  height: 40px;
+  color: #FFF;
+  font-family: Futura PT;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+@media only screen and (min-width: 300px) and (max-width: 420px) {
+  .articles .activeArticle {
+    font-size: 14px;
+  }
+}
+.articles .article {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 116px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 13px;
+  background: #F5F5F5;
+  color: #636060;
+  font-family: Futura PT;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+}
+@media only screen and (min-width: 300px) and (max-width: 420px) {
+  .articles .article {
+    font-size: 14px;
+  }
+}
+
+.characteristic {
+  display: flex;
+  flex-direction: column;
+  margin-left: 13px;
+}
+@media only screen and (min-width: 300px) and (max-width: 1170px) {
+  .characteristic {
+    margin-left: 0;
+  }
+}
+.characteristic .title {
+  color: #333;
+  font-family: Futura PT;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+  padding: 0;
+  margin: 0;
+}
+@media only screen and (min-width: 300px) and (max-width: 420px) {
+  .characteristic .title {
+    font-size: 16px;
+  }
+}
+.characteristic .property {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  margin-top: 21px;
+  width: -moz-max-content;
+  width: max-content;
+}
+.characteristic .property .item {
+  padding-left: 14px;
+  padding-right: 14px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  background: rgba(245, 245, 245, 0.9);
+  height: 43px;
+}
+.characteristic .property .item span {
+  color: #333;
+  font-family: Futura PT;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 0;
+  margin: 0;
+}
+@media only screen and (min-width: 300px) and (max-width: 420px) {
+  .characteristic .property .item span {
+    font-size: 14px;
+  }
+}
+.characteristic .info {
+  margin-top: 19px;
+  display: flex;
+  flex-direction: column;
+}
+.characteristic .info .item {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  align-items: center;
+  justify-content: space-between;
+}
+.characteristic .info .item p {
+  color: #333;
+  font-family: Futura PT;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 25px;
+  margin: 0;
+  padding: 0;
+}
+@media only screen and (min-width: 300px) and (max-width: 420px) {
+  .characteristic .info .item p {
+    font-size: 14px;
+  }
+}
+.characteristic .info .item .dotted {
+  padding: 0;
+  margin: 0;
+  color: #C3C3C3;
+  font-family: Futura PT;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 25px;
+}
+@media only screen and (min-width: 300px) and (max-width: 420px) {
+  .characteristic .info .item .dotted {
+    font-size: 14px;
+  }
+}
+.characteristic .viewPhotoBtn {
+  margin-top: 20px;
+  width: 151px;
+  height: 38px;
+  display: inline-flex;
+  padding: 10px 25px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  background: #137039;
+  color: #FFF;
+  font-family: Futura PT;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: normal;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.characteristic .viewPhotoBtn:hover {
+  background-color: rgb(86, 86, 182);
+}
+.characteristic .description {
+  color: #C3C3C3;
+  font-family: Futura PT;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 0;
+  margin: 0;
+  margin-top: 19px;
+  width: 376px;
+  word-wrap: break-word;
+}
+@media only screen and (min-width: 300px) and (max-width: 420px) {
+  .characteristic .description {
+    font-size: 14px;
+    width: 100%;
+  }
+}
+
+.prices {
+  width: 217px;
+  height: 297px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 27px;
+  background: #F5F5F5;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+.prices .discountBlock {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+  gap: 4px;
+}
+.prices .discountBlock .price {
+  color: #333;
+  font-family: Futura PT;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  padding: 0;
+  margin: 0;
+}
+.prices .discountBlock .discount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.prices .discountBlock .discount p {
+  color: #FFF;
+  font-family: Futura PT;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  padding: 0;
+  margin: 0;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-image: url("../../../resources/images/discount.svg");
+  background-repeat: no-repeat;
+}
+.prices .withoutDiscountBlock {
+  align-self: flex-start;
+}
+.prices .withoutDiscountBlock p {
+  color: #B2B1B1;
+  font-family: Futura PT;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  -webkit-text-decoration-line: strikethrough;
+          text-decoration-line: strikethrough;
+  padding: 0;
+  margin: 0;
+}
+.prices .inStock {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-start;
+  margin-top: 61px;
+  gap: 12px;
+}
+.prices .inStock p {
+  padding: 0;
+  margin: 0;
+  color: #636363;
+  font-family: Futura PT;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.prices .btnWrapper {
+  width: 192px;
+}
+
+.adaptivePrices {
+  margin-top: 22px;
+  width: 100%;
+  min-height: 132px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-radius: 19px;
+  background: #F5F5F5;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 8px;
+  padding-bottom: 11px;
+}
+.adaptivePrices .discount {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 12px;
+  top: 8px;
+}
+.adaptivePrices .discount p {
+  color: #FFF;
+  font-family: Futura PT;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  padding: 0;
+  margin: 0;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-image: url("../../../resources/images/discount.svg");
+  background-repeat: no-repeat;
+}
+.adaptivePrices .priceWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+}
+.adaptivePrices .priceWrapper .price {
+  color: #333;
+  font-family: Futura PT;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  padding: 0;
+  margin: 0;
+}
+@media only screen and (min-width: 300px) and (max-width: 420px) {
+  .adaptivePrices .priceWrapper .price {
+    font-size: 29px;
+  }
+}
+.adaptivePrices .priceWrapper .priceWithoutDiscount {
+  padding: 0;
+  margin: 0;
+  color: #B2B1B1;
+  font-family: Futura PT;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  -webkit-text-decoration-line: strikethrough;
+          text-decoration-line: strikethrough;
+}
+@media only screen and (min-width: 300px) and (max-width: 420px) {
+  .adaptivePrices .priceWrapper .priceWithoutDiscount {
+    font-size: 25px;
+  }
+}
+.adaptivePrices .inStock {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-self: flex-start;
+  gap: 12px;
+}
+.adaptivePrices .inStock p {
+  padding: 0;
+  margin: 0;
+  color: #636363;
+  font-family: Futura PT;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.titleWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  align-items: center;
+}
