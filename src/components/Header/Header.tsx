@@ -10,7 +10,7 @@ import headerContentIcon1 from '../../resources/images/headerIcon1.svg';
 import headerContentIcon2 from '../../resources/images/headerIcon2.svg';
 import headerContentIcon3 from '../../resources/images/headerIcon3.svg';
 import swiperArrow from '../../resources/images/swiperArrow.svg';
-import headerFullSlide from '../../resources/images/headerFullSlide.png';
+import headerFullSlide from '../../resources/images/headerFullSlide.jpg';
 import classNames from "classnames";
 
 import ModalWindow from "../ModalWindow/ModalWindow";
