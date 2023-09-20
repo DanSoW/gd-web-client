@@ -209,6 +209,7 @@
     position: relative;
     left: 100px;
     top: -75px;
+    z-index: 100;
 }
 
 .sliderPrevBtn {
@@ -256,7 +257,7 @@
 .sliderInfoElement {
     width: 119px;
     height: 124px;
-    // border-radius: 27px;
+    border-radius: 27px;
     background-color: #12AB51BF;
     display: flex;
     flex-direction: column;
