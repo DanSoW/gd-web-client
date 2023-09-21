@@ -25,11 +25,19 @@ import ImageUpload from "src/components/ImageUpload";
 import Checkbox from "src/components/UI/Checkbox";
 
 export interface ICreateContentProps {
+  addHandler: (
+    values: IArticleValues,
+    images: Array<{ data_url: string; file?: File }>
+  ) => void;
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const CharactetisticAdd: FC<ICreateContentProps> = ({ open, setOpen }) => {
+const CharactetisticAdd: FC<ICreateContentProps> = ({
+  addHandler,
+  open,
+  setOpen,
+}) => {
   const authSelector = useAppSelector((reducer) => reducer.authReducer);
   const dispatch = useAppDispatch();
   const handleOpen = () => setOpen(true);
@@ -112,6 +120,8 @@ const CharactetisticAdd: FC<ICreateContentProps> = ({ open, setOpen }) => {
       return;
     }
 
+    addHandler(form, images);
+
     /*dispatch(
       updateContent(
         {
@@ -137,6 +147,7 @@ const CharactetisticAdd: FC<ICreateContentProps> = ({ open, setOpen }) => {
             <div className={styles.content}>
               <br />
               <TextField
+                required={true}
                 id="outlined-basic"
                 label="Название артикула"
                 variant="outlined"
@@ -148,6 +159,7 @@ const CharactetisticAdd: FC<ICreateContentProps> = ({ open, setOpen }) => {
               />
               <br />
               <TextField
+                required={true}
                 id="outlined-basic"
                 label="Описание"
                 variant="outlined"
@@ -159,6 +171,7 @@ const CharactetisticAdd: FC<ICreateContentProps> = ({ open, setOpen }) => {
               />
               <br />
               <TextField
+                required={true}
                 id="outlined-basic"
                 label="Ширина (мм)"
                 variant="outlined"
@@ -171,6 +184,7 @@ const CharactetisticAdd: FC<ICreateContentProps> = ({ open, setOpen }) => {
               />
               <br />
               <TextField
+                required={true}
                 id="outlined-basic"
                 label="Высота (мм)"
                 variant="outlined"
@@ -228,6 +242,7 @@ const CharactetisticAdd: FC<ICreateContentProps> = ({ open, setOpen }) => {
               <br />
               <br />
               <TextField
+                required={true}
                 id="outlined-basic"
                 label="Толщина дверного полотна (мм)"
                 variant="outlined"
@@ -240,6 +255,7 @@ const CharactetisticAdd: FC<ICreateContentProps> = ({ open, setOpen }) => {
               />
               <br />
               <TextField
+                required={true}
                 id="outlined-basic"
                 label="Количество контуров уплотнения"
                 variant="outlined"
@@ -252,6 +268,7 @@ const CharactetisticAdd: FC<ICreateContentProps> = ({ open, setOpen }) => {
               />
               <br />
               <TextField
+                required={true}
                 id="outlined-basic"
                 label="Цвет"
                 variant="outlined"
@@ -264,6 +281,7 @@ const CharactetisticAdd: FC<ICreateContentProps> = ({ open, setOpen }) => {
               />
               <br />
               <TextField
+                required={true}
                 id="outlined-basic"
                 label="Назначение двери"
                 variant="outlined"
@@ -276,6 +294,7 @@ const CharactetisticAdd: FC<ICreateContentProps> = ({ open, setOpen }) => {
               />
               <br />
               <TextField
+                required={true}
                 id="outlined-basic"
                 label="Скидка (%)"
                 variant="outlined"
@@ -288,6 +307,7 @@ const CharactetisticAdd: FC<ICreateContentProps> = ({ open, setOpen }) => {
               />
               <br />
               <TextField
+                required={true}
                 id="outlined-basic"
                 label="Цена со скидкой"
                 variant="outlined"
@@ -300,11 +320,12 @@ const CharactetisticAdd: FC<ICreateContentProps> = ({ open, setOpen }) => {
               />
               <br />
               <TextField
+                required={true}
                 id="outlined-basic"
                 label="Цена без скидки"
                 variant="outlined"
                 type="number"
-                name="price"
+                name="price_without_discount"
                 onChange={onChange}
                 sx={{
                   width: "100%",
@@ -312,6 +333,7 @@ const CharactetisticAdd: FC<ICreateContentProps> = ({ open, setOpen }) => {
               />
               <br />
               <TextField
+                required={true}
                 id="outlined-basic"
                 label="В наличии (шт.)"
                 variant="outlined"

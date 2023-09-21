@@ -25,7 +25,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding-left: 283px;
+  padding-left: 235px;
 }
 @media only screen and (max-width: 1280px) {
   .item {
@@ -43,6 +43,8 @@
 .itemAddBtn {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100%;
 }
 @media only screen and (max-width: 1280px) {
@@ -102,7 +104,7 @@
 .doorList {
   display: flex;
   flex-direction: column;
-  gap: 57px;
+  gap: 16px;
 }
 
 .doorBtn {

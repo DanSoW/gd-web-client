@@ -7,6 +7,11 @@ export interface IDoorModel {
   articles: Array<IArticleModel>;
 }
 
+export interface IDoorValues {
+  title: string;
+  description: string;
+}
+
 export interface IArticleModel {
   id: number;
   title: string;

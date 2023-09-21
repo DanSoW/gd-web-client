@@ -83,6 +83,7 @@
   display: flex;
   flex-direction: column;
   gap: 17px;
+  width: 329px;
 }
 @media only screen and (min-width: 300px) and (max-width: 1170px) {
   .title {
@@ -98,6 +99,7 @@
   line-height: normal;
   padding: 0;
   margin: 0;
+  word-wrap: break-word;
 }
 @media only screen and (min-width: 300px) and (max-width: 420px) {
   .title .h {
@@ -464,6 +466,7 @@
 }
 
 .adaptivePrices {
+  position: relative;
   margin-top: 22px;
   width: 100%;
   min-height: 132px;
@@ -567,4 +570,36 @@
   flex-direction: row;
   justify-self: center;
   align-items: center;
+}
+.titleWrapper .title {
+  color: #333;
+  font-family: Futura PT;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+  padding: 0;
+  margin: 0;
+}
+@media only screen and (min-width: 300px) and (max-width: 420px) {
+  .titleWrapper .title {
+    font-size: 16px;
+  }
+}
+.titleWrapper .h {
+  color: #333;
+  font-family: Futura PT;
+  font-size: 29px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  padding: 0;
+  margin: 0;
+}
+@media only screen and (min-width: 300px) and (max-width: 420px) {
+  .titleWrapper .h {
+    font-size: 23px;
+  }
 }

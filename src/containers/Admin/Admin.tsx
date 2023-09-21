@@ -15,12 +15,43 @@ import {
 } from "react-scroll";
 import DoorItem from "src/components/Admin/DoorItem";
 import Button from "src/components/UI/Button";
+import { IDoorValues } from "src/models/IDoorModel";
+import DoorAdd from "src/components/Admin/DoorAdd";
+import { useAppDispatch, useAppSelector } from "src/hooks/redux.hook";
+import AdminAction from "src/store/actions/AdminAction";
+import messageQueueAction from "src/store/actions/MessageQueueAction";
+import CircularIndeterminate from "src/components/CircularIndeterminate";
 
 const Admin: FC<any> = () => {
+  const adminSelector = useAppSelector((s) => s.adminReducer);
+  const dispatch = useAppDispatch();
   const [showModal, setShowModal] = useState<boolean>(false);
   const matches = useMediaQuery(
     "only screen and (min-width: 300px) and (max-width: 1280px)"
   );
+
+  const [doorAdd, setDoorAdd] = useState<boolean>(false);
+  const doorAddHandler = (
+    values: IDoorValues,
+    imageEntry: Array<{ data_url: string; file?: File }>,
+    imageExit: Array<{ data_url: string; file?: File }>
+  ) => {
+    dispatch(
+      // @ts-ignore
+      AdminAction.doorAdd(values, imageEntry, imageExit, () => {
+        dispatch(
+          messageQueueAction.addMessage(
+            null,
+            "success",
+            "Новая дверь успешно добавлена!"
+          )
+        );
+        dispatch(AdminAction.doorGetAll());
+        setDoorAdd(false);
+      })
+    );
+  };
+
   const scrollToFilter = () => {
     scroller.scrollTo("filter", {
       duration: 800,
@@ -29,15 +60,20 @@ const Admin: FC<any> = () => {
     });
   };
 
+  useEffect(() => {
+    dispatch(AdminAction.doorGetAll());
+  }, []);
+
   return (
     <>
       {!matches && <Filter scrollHandler={scrollToFilter} />}
+      {adminSelector.isLoading && <CircularIndeterminate />}
       <div className={styles.container}>
         <div className={styles.itemAddBtn}>
           <Button
             title="Добавить"
-            clickHandler={function (): void {
-              throw new Error("Function not implemented.");
+            clickHandler={() => {
+              setDoorAdd(true);
             }}
           />
         </div>
@@ -66,20 +102,17 @@ const Admin: FC<any> = () => {
         )}
         <div className={styles.item}>
           <div className={styles.doorList}>
-            {mockData.map((item) => {
-              return <DoorItem data={item} />;
+            {adminSelector.doors.map((item) => {
+              return <DoorItem key={item.id} data={item} />;
             })}
-          </div>
-          <div className={styles.doorBtn}>
-            <Button
-              title="Загрузить ещё"
-              clickHandler={function (): void {
-                throw new Error("Function not implemented.");
-              }}
-            />
           </div>
         </div>
       </div>
+      <DoorAdd
+        open={doorAdd}
+        setOpen={setDoorAdd}
+        addHandler={doorAddHandler}
+      />
     </>
   );
 };

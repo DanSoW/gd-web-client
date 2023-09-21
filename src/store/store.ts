@@ -15,21 +15,23 @@ import storage from "redux-persist/lib/storage";
 /* Контекст */
 import messageQueueReducer from "./reducers/MessageQueueSlice";
 import authReducer from "./reducers/AuthSlice";
+import adminReducer from "./reducers/AdminSlice";
+import userReducer from "./reducers/UserSlice";
 import StoreConstants from "src/constants/store";
 
 /* Главный Reducer */
 const rootReducer = combineReducers({
   messageQueueReducer,
-  authReducer
+  authReducer,
+  adminReducer,
+  userReducer,
 });
 
 // Конфигурация Persist
 const persistConfig = {
   key: StoreConstants.MAIN_STORE,
   storage,
-  blacklist: [
-    "messageQueueReducer",
-  ],
+  blacklist: ["messageQueueReducer", "adminReducer", "userReducer"],
 };
 
 // Создание Persist Reducer

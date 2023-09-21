@@ -153,3 +153,22 @@ export const authLogout = () => async (dispatch: any) => {
     dispatch(messageQueueAction.errorMessage(e));
   }
 };
+
+/**
+ * Обновление токена доступа
+ * @param {*} data Данные для обновления токена
+ * @returns
+ */
+export const refreshAccessToken =
+  (data: { refresh_token: string | null }) => async (dispatch: any) => {
+    dispatch(authSlice.actions.loadingStart());
+
+    try {
+      dispatch(authSlice.actions.signInSuccess(data));
+    } catch (e) {
+      // @ts-ignore
+      dispatch(messageQueueAction.errorMessage(e));
+    }
+
+    dispatch(authSlice.actions.loadingEnd());
+  };

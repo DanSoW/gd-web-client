@@ -23,17 +23,20 @@ import messageQueueAction from "src/store/actions/MessageQueueAction";
 import { IArticleModel, IArticleValues } from "src/models/IDoorModel";
 import ImageUpload from "src/components/ImageUpload";
 import Checkbox from "src/components/UI/Checkbox";
+import AdminAction from "src/store/actions/AdminAction";
 
 export interface ICreateContentProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   content: IArticleModel | null;
+  doors_id: number;
 }
 
 const CharacteristicEdit: FC<ICreateContentProps> = ({
   open,
   setOpen,
   content,
+  doors_id,
 }) => {
   const authSelector = useAppSelector((reducer) => reducer.authReducer);
   const dispatch = useAppDispatch();
@@ -93,39 +96,55 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
       return;
     }
 
-    if (
-      form.title.length === 0 ||
-      form.description.length === 0 ||
-      form.price <= 0
-    ) {
-      dispatch(
-        messageQueueAction.addMessage(
-          null,
-          "error",
-          "Необходимо добавить данные для контента (название, описание и цену)"
-        )
-      );
+    if (!content) {
       return;
     }
 
-    /*dispatch(
-      updateContent(
-        {
-          ...form,
-          content_sales_id: content?.id as number,
-        },
-        image[0].file ? (image[0].file as File) : null,
+    // Определение изображений, которые будут удалены из квартиры
+    const deleteImages: Array<string> = [];
+
+    for (let i = 0; i < content.images.length; i++) {
+      const image = content.images[i];
+      if (
+        !images.find((item) => {
+          return item.data_url === image.url;
+        })
+      ) {
+        const sepArr = image.url.split("/");
+        deleteImages.push(sepArr[sepArr.length - 1]);
+      }
+    }
+
+    // Определение изображений, которые будут добавлены в квартиру
+    const addImages = images.filter((value) => {
+      return value.file;
+    });
+
+    dispatch(
+      AdminAction.doorCharacteristicEdit(
+        doors_id,
+        content?.id,
+        form,
+        addImages,
+        deleteImages,
         () => {
-          handleClose();
+          dispatch(
+            messageQueueAction.addMessage(
+              null,
+              "success",
+              "Информация о артикле изменена"
+            )
+          );
+          setOpen(false);
         }
       )
-    );*/
+    );
   };
 
   return (
     <>
       <div>
-        <Dialog open={open} onClose={handleClose}>
+        <Dialog open={true} onClose={handleClose}>
           {false && <CircularIndeterminate />}
           <DialogTitle>Редактирование артикула {content?.title}</DialogTitle>
           <DialogContent>
@@ -133,11 +152,12 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
             <div className={styles.content}>
               <br />
               <TextField
+                required={true}
                 id="outlined-basic"
                 label="Название артикула"
                 variant="outlined"
                 name="title"
-                defaultValue={content?.title}
+                defaultValue={form.title}
                 onChange={onChange}
                 sx={{
                   width: "100%",
@@ -145,11 +165,12 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
               />
               <br />
               <TextField
+                required={true}
                 id="outlined-basic"
                 label="Описание"
                 variant="outlined"
                 name="description"
-                defaultValue={content?.description}
+                defaultValue={form.description}
                 onChange={onChange}
                 sx={{
                   width: "100%",
@@ -157,12 +178,13 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
               />
               <br />
               <TextField
+                required={true}
                 id="outlined-basic"
                 label="Ширина (мм)"
                 variant="outlined"
                 name="width"
                 type="number"
-                defaultValue={content?.width}
+                defaultValue={form.width}
                 onChange={onChange}
                 sx={{
                   width: "100%",
@@ -170,12 +192,13 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
               />
               <br />
               <TextField
+                required={true}
                 id="outlined-basic"
                 label="Высота (мм)"
                 variant="outlined"
                 type="number"
                 name="height"
-                defaultValue={content?.height}
+                defaultValue={form.height}
                 onChange={onChange}
                 sx={{
                   width: "100%",
@@ -184,8 +207,9 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
               <br />
               <Checkbox
                 title="Открывание (левое / правое)"
-                value={content?.opening_direction || false}
+                value={form.opening_direction}
                 setValue={(value) => {
+                  setDisable(false);
                   setForm({
                     ...form,
                     opening_direction: value,
@@ -195,8 +219,10 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
               <br />
               <Checkbox
                 title="Основной замок (Нет / Есть)"
-                value={content?.main_lock || false}
+                // @ts-ignore
+                value={form.main_lock}
                 setValue={(value) => {
+                  setDisable(false);
                   setForm({
                     ...form,
                     main_lock: value,
@@ -206,8 +232,9 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
               <br />
               <Checkbox
                 title="Дополнительный замок (Нет / Есть)"
-                value={content?.additional_lock || false}
+                value={form.additional_lock}
                 setValue={(value) => {
+                  setDisable(false);
                   setForm({
                     ...form,
                     additional_lock: value,
@@ -217,8 +244,9 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
               <br />
               <Checkbox
                 title="Наличие зеркала (Нет / Есть)"
-                value={content?.mirror || false}
+                value={form.mirror}
                 setValue={(value) => {
+                  setDisable(false);
                   setForm({
                     ...form,
                     mirror: value,
@@ -228,12 +256,13 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
               <br />
               <br />
               <TextField
+                required={true}
                 id="outlined-basic"
                 label="Толщина дверного полотна (мм)"
                 variant="outlined"
                 type="number"
                 name="door_leaf_thickness"
-                defaultValue={content?.door_leaf_thickness}
+                defaultValue={form.door_leaf_thickness}
                 onChange={onChange}
                 sx={{
                   width: "100%",
@@ -241,12 +270,13 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
               />
               <br />
               <TextField
+                required={true}
                 id="outlined-basic"
                 label="Количество контуров уплотнения"
                 variant="outlined"
                 type="number"
                 name="sealing_contours"
-                defaultValue={content?.sealing_contours}
+                defaultValue={form.sealing_contours}
                 onChange={onChange}
                 sx={{
                   width: "100%",
@@ -254,12 +284,13 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
               />
               <br />
               <TextField
+                required={true}
                 id="outlined-basic"
                 label="Цвет"
                 variant="outlined"
                 type="text"
                 name="color"
-                defaultValue={content?.color}
+                defaultValue={form.color}
                 onChange={onChange}
                 sx={{
                   width: "100%",
@@ -267,12 +298,13 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
               />
               <br />
               <TextField
+                required={true}
                 id="outlined-basic"
                 label="Назначение двери"
                 variant="outlined"
                 type="text"
                 name="target"
-                defaultValue={content?.target}
+                defaultValue={form.target}
                 onChange={onChange}
                 sx={{
                   width: "100%",
@@ -280,12 +312,13 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
               />
               <br />
               <TextField
+                required={true}
                 id="outlined-basic"
                 label="Скидка (%)"
                 variant="outlined"
                 type="number"
                 name="discount"
-                defaultValue={content?.discount}
+                defaultValue={form.discount}
                 onChange={onChange}
                 sx={{
                   width: "100%",
@@ -293,12 +326,13 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
               />
               <br />
               <TextField
+                required={true}
                 id="outlined-basic"
                 label="Цена со скидкой"
                 variant="outlined"
                 type="number"
                 name="price"
-                defaultValue={content?.price}
+                defaultValue={form.price}
                 onChange={onChange}
                 sx={{
                   width: "100%",
@@ -306,12 +340,13 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
               />
               <br />
               <TextField
+                required={true}
                 id="outlined-basic"
                 label="Цена без скидки"
                 variant="outlined"
                 type="number"
                 name="price"
-                defaultValue={content?.price_without_discount}
+                defaultValue={form.price_without_discount}
                 onChange={onChange}
                 sx={{
                   width: "100%",
@@ -319,12 +354,13 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
               />
               <br />
               <TextField
+                required={true}
                 id="outlined-basic"
                 label="В наличии (шт.)"
                 variant="outlined"
                 type="number"
                 name="in_stock"
-                defaultValue={content?.in_stock}
+                defaultValue={form.in_stock}
                 onChange={onChange}
                 sx={{
                   width: "100%",

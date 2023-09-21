@@ -1,6 +1,11 @@
 import { FC, memo, useEffect, useRef, useState } from "react";
 import styles from "./DoorItem.module.css";
-import { IArticleModel, IDoorModel } from "src/models/IDoorModel";
+import {
+  IArticleModel,
+  IArticleValues,
+  IDoorModel,
+  IDoorValues,
+} from "src/models/IDoorModel";
 import door from "src/resources/images/door.svg";
 import size from "src/resources/images/size.svg";
 import discount from "src/resources/images/discount.svg";
@@ -14,6 +19,12 @@ import EditIcon from "@mui/icons-material/Edit";
 import CharacteristicEdit from "../CharacteristicEdit";
 import AddIcon from "@mui/icons-material/Add";
 import CharacteristicAdd from "../CharacteristicAdd";
+import DeleteIcon from "@mui/icons-material/Delete";
+import QuestionDialog from "src/components/QuestionDialog";
+import DoorEdit from "../DoorEdit";
+import { useAppDispatch } from "src/hooks/redux.hook";
+import AdminAction from "src/store/actions/AdminAction";
+import messageQueueAction from "src/store/actions/MessageQueueAction";
 
 export interface IDoorItemProps {
   data: IDoorModel;
@@ -29,9 +40,13 @@ const DoorItem: FC<IDoorItemProps> = ({ data }) => {
   const matches = useMediaQuery(
     "only screen and (min-width: 300px) and (max-width: 1170px)"
   );
-  const [activeId, setActiveId] = useState<number>(data.articles[0].id);
+  const [activeId, setActiveId] = useState<number>(
+    data.articles.length > 0 ? data.articles[0].id : -1
+  );
   const [article, setArticle] = useState<IArticleModel | null>(
-    data.articles.find((item) => item.id === activeId) || null
+    data.articles.length > 0
+      ? data.articles.find((item) => item.id === activeId) || null
+      : null
   );
   const swiperRef = useRef(null);
 
@@ -105,17 +120,138 @@ const DoorItem: FC<IDoorItemProps> = ({ data }) => {
   }, [containerRef, windowSize]);
 
   const [show, setShow] = useState<boolean>(false);
-  const [edit, setEdit] = useState<boolean>(false);
-  const [add, setAdd] = useState<boolean>(false);
+  const [characteristicEdit, setCharactetisticEdit] = useState<boolean>(false);
+  const [characteristicAdd, setCharacteristicAdd] = useState<boolean>(false);
+  const [characteristicDelete, setCharacteristicDelete] =
+    useState<boolean>(false);
   const showImageHandler = () => {
     setShow(true);
+  };
+
+  const dispatch = useAppDispatch();
+  const addCharacteristic = (
+    values: IArticleValues,
+    images: Array<{ data_url: string; file?: File }>
+  ) => {
+    dispatch(
+      // @ts-ignore
+      AdminAction.doorCharacteristicAdd(data.id, values, images, () => {
+        dispatch(
+          messageQueueAction.addMessage(
+            null,
+            "success",
+            "Новый артикул добавлен!"
+          )
+        );
+        setCharacteristicAdd(false);
+      })
+    );
+  };
+
+  const editCharactetistic = (
+    values: IArticleValues,
+    images: Array<{ data_url: string; file?: File }>
+  ) => {
+    console.log(values);
+    console.log(images);
+  };
+
+  const deleteCharacteristic = () => {
+    if (!article) {
+      dispatch(
+        messageQueueAction.addMessage(
+          null,
+          "error",
+          "Необходимо выбрать артикул"
+        )
+      );
+      return;
+    }
+
+    // @ts-ignore
+    dispatch(
+      AdminAction.doorCharacteristicDelete(data.id, article?.id, () => {
+        dispatch(
+          messageQueueAction.addMessage(
+            null,
+            "success",
+            `Артикул ${article.title} удалён`
+          )
+        );
+        setArticle(null);
+        setActiveId(-1);
+
+        setCharacteristicDelete(false);
+      })
+    );
+  };
+
+  const [doorEdit, setDoorEdit] = useState<boolean>(false);
+  const [doorDelete, setDoorDelete] = useState<boolean>(false);
+
+  const doorEditHandler = (
+    values: IDoorValues,
+    imageEntry: Array<{ data_url: string; file?: File }>,
+    imageExit: Array<{ data_url: string; file?: File }>
+  ) => {
+    dispatch(
+      AdminAction.doorEdit(
+        data.id,
+        values,
+        imageEntry.length > 0 && imageEntry[0].file ? imageEntry[0].file : null,
+        imageExit.length > 0 && imageExit[0].file ? imageExit[0].file : null,
+        () => {
+          dispatch(
+            messageQueueAction.addMessage(
+              null,
+              "success",
+              `Информация о двери ${data.title} была изменена`
+            )
+          );
+          setDoorEdit(false);
+        }
+      )
+    );
+  };
+
+  const doorDeleteHandler = () => {
+    // @ts-ignore
+    dispatch(
+      AdminAction.doorDelete(data.id, () => {
+        dispatch(
+          messageQueueAction.addMessage(
+            null,
+            "success",
+            `Дверь ${data.title} удалена`
+          )
+        );
+
+        setDoorDelete(false);
+      })
+    );
   };
 
   return (
     <>
       <div className={styles.container}>
         <div className={styles.title}>
-          <p className={styles.h}>{data.title}</p>
+          <div className={styles.titleWrapper}>
+            <p className={styles.h}>{data.title}</p>
+            <IconButton
+              onClick={() => {
+                setDoorEdit(true);
+              }}
+            >
+              <EditIcon />
+            </IconButton>
+            <IconButton
+              onClick={() => {
+                setDoorDelete(true);
+              }}
+            >
+              <DeleteIcon />
+            </IconButton>
+          </div>
           <div className={styles.doors}>
             <img src={data.image_entry} alt="передняя сторона" />
             <img src={data.image_exit} alt="обратная стороная" />
@@ -126,7 +262,7 @@ const DoorItem: FC<IDoorItemProps> = ({ data }) => {
           <IconButton
             className={styles.article}
             onClick={() => {
-              setAdd(true);
+              setCharacteristicAdd(true);
             }}
           >
             <AddIcon />
@@ -153,10 +289,17 @@ const DoorItem: FC<IDoorItemProps> = ({ data }) => {
               <p className={styles.title}>Характеристика</p>
               <IconButton
                 onClick={() => {
-                  setEdit(true);
+                  setCharactetisticEdit(true);
                 }}
               >
                 <EditIcon />
+              </IconButton>
+              <IconButton
+                onClick={() => {
+                  setCharacteristicDelete(true);
+                }}
+              >
+                <DeleteIcon />
               </IconButton>
             </div>
             <div className={styles.property}>
@@ -288,9 +431,25 @@ const DoorItem: FC<IDoorItemProps> = ({ data }) => {
             >
               {data.articles.map((item) => {
                 return (
-                  <SwiperSlide>
+                  <SwiperSlide key={item.id}>
                     <div className={styles.characteristic}>
-                      <p className={styles.title}>Характеристика</p>
+                      <div className={styles.titleWrapper}>
+                        <p className={styles.title}>Характеристика</p>
+                        <IconButton
+                          onClick={() => {
+                            setCharactetisticEdit(true);
+                          }}
+                        >
+                          <EditIcon />
+                        </IconButton>
+                        <IconButton
+                          onClick={() => {
+                            setCharacteristicDelete(true);
+                          }}
+                        >
+                          <DeleteIcon />
+                        </IconButton>
+                      </div>
                       <div className={styles.property}>
                         <div className={styles.item}>
                           <img src={size} alt="размер" />
@@ -417,13 +576,50 @@ const DoorItem: FC<IDoorItemProps> = ({ data }) => {
           </>
         )}
       </div>
-      {article && (
+      {article && show && (
         <ViewImageModal show={show} setShow={setShow} article={article} />
       )}
-      {article && (
-        <CharacteristicEdit open={edit} setOpen={setEdit} content={article} />
+      {article && characteristicEdit && (
+        <CharacteristicEdit
+          open={characteristicEdit}
+          setOpen={setCharactetisticEdit}
+          content={article}
+          doors_id={data.id}
+        />
       )}
-      {article && <CharacteristicAdd open={add} setOpen={setAdd} />}
+      {characteristicAdd && (
+        <CharacteristicAdd
+          open={characteristicAdd}
+          setOpen={setCharacteristicAdd}
+          addHandler={addCharacteristic}
+        />
+      )}
+      {article && characteristicDelete && (
+        <QuestionDialog
+          open={characteristicDelete}
+          setOpen={setCharacteristicDelete}
+          text={`Вы действительно хотите удалить ${article.title} ?`}
+          action={deleteCharacteristic}
+          subText={""}
+        />
+      )}
+      {doorEdit && (
+        <DoorEdit
+          open={doorEdit}
+          setOpen={setDoorEdit}
+          content={data}
+          editHandler={doorEditHandler}
+        />
+      )}
+      {doorDelete && (
+        <QuestionDialog
+          open={doorDelete}
+          setOpen={setDoorDelete}
+          text={`Вы действительно хотите удалить ${data.title} ?`}
+          action={doorDeleteHandler}
+          subText={""}
+        />
+      )}
     </>
   );
 };

@@ -17,6 +17,9 @@ import DoorItem from "src/components/Main/DoorItem";
 import Button from "src/components/UI/Button";
 import Header from "src/components/Header";
 import Footer from "src/components/Footer";
+import { useAppDispatch, useAppSelector } from "src/hooks/redux.hook";
+import UserAction from "src/store/actions/UserAction";
+import CircularIndeterminate from "src/components/CircularIndeterminate";
 
 const Main: FC<any> = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -31,10 +34,22 @@ const Main: FC<any> = () => {
     });
   };
 
+  const userSelector = useAppSelector((s) => s.userReducer);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(UserAction.doorGetAll(0, 5));
+  }, []);
+
+  const onMoreClick = () => {
+    dispatch(UserAction.doorGetAll(userSelector.doors?.length, 5, true));
+  };
+
   return (
     <>
       <Header />
       {!matches && <Filter scrollHandler={scrollToFilter} />}
+      {userSelector.isLoading && <CircularIndeterminate />}
       <div className={styles.container}>
         <div className={styles.item}>
           {!matches && (
@@ -61,17 +76,12 @@ const Main: FC<any> = () => {
         )}
         <div className={styles.item}>
           <div className={styles.doorList}>
-            {mockData.map((item) => {
+            {userSelector.doors.map((item) => {
               return <DoorItem data={item} />;
             })}
           </div>
           <div className={styles.doorBtn}>
-            <Button
-              title="Загрузить ещё"
-              clickHandler={function (): void {
-                throw new Error("Function not implemented.");
-              }}
-            />
+            <Button title="Загрузить ещё" clickHandler={onMoreClick} />
           </div>
         </div>
       </div>
