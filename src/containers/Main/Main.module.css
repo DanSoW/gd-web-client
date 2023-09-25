@@ -36,8 +36,13 @@
 }
 .item .doorList {
   margin-top: 0;
-  width: -moz-max-content;
-  width: max-content;
+  width: 100%;
+}
+@media only screen and (max-width: 1280px) {
+  .item .doorList {
+    width: -moz-max-content;
+    width: max-content;
+  }
 }
 
 .control {

@@ -38,7 +38,11 @@
 
     .doorList {
         margin-top: 0;
-        width: max-content;
+        width: 100%;
+
+        @media only screen and (max-width: 1280px) {
+            width: max-content;
+        }
     }
 }
 
@@ -70,7 +74,7 @@
     @media (max-width: 992px) {
         margin-top: 23px;
     }
-    
+
     display: flex;
     flex-direction: row;
     justify-content: center;

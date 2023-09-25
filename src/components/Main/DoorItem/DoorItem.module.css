@@ -9,6 +9,19 @@
   flex-direction: row;
   justify-content: flex-start;
   gap: 18px;
+  align-self: flex-end;
+}
+@media only screen and (min-width: 1680px) {
+  .container {
+    gap: 84px;
+    align-self: flex-end;
+  }
+}
+@media only screen and (min-width: 2000px) {
+  .container {
+    gap: 128px;
+    align-self: flex-end;
+  }
 }
 @media only screen and (min-width: 300px) and (max-width: 420px) {
   .container {

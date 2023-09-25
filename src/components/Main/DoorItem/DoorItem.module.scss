@@ -10,6 +10,17 @@
     flex-direction: row;
     justify-content: flex-start;
     gap: 18px;
+    align-self: flex-end;
+
+    @media only screen and (min-width: 1680px) {
+        gap: 84px;
+        align-self: flex-end;
+    }
+
+    @media only screen and (min-width: 2000px) {
+        gap: 128px;
+        align-self: flex-end;
+    }
 
     @media only screen and (min-width: 300px) and (max-width: 420px) {
         flex-direction: column;

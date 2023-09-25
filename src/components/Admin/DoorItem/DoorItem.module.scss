@@ -1,20 +1,5 @@
 @import "../../../styles/colors";
 
-.itemC {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-
-    p {
-        margin: 0;
-        padding: 0;
-    }
-
-    .dots {
-        display: flex;
-        align-items: flex-end;
-    }
-}
 
 .customSwiper {
     width: 100%;

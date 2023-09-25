@@ -1,18 +1,4 @@
 @charset "UTF-8";
-.itemC {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-.itemC p {
-  margin: 0;
-  padding: 0;
-}
-.itemC .dots {
-  display: flex;
-  align-items: flex-end;
-}
-
 .customSwiper {
   width: 100%;
 }
