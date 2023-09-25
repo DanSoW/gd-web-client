@@ -11,6 +11,45 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
 import ViewImageModal from "src/components/ViewImageModal";
 
+interface ItemProps {
+  children: [React.ReactNode, React.ReactNode];
+  targetSize?: number;
+  targetValue?: number;
+}
+
+const Item: React.FC<ItemProps> = ({
+  children,
+  targetSize = 380,
+  targetValue = 5.5,
+}) => {
+  const [p1, p2] = children;
+  const p1Ref = useRef<HTMLParagraphElement>(null);
+  const p2Ref = useRef<HTMLParagraphElement>(null);
+  const [dots, setDots] = useState<number>(0);
+  useEffect(() => {
+    if (p1Ref.current && p2Ref.current) {
+      const p1Width = p1Ref.current.offsetWidth;
+      const p2Width = p2Ref.current.offsetWidth;
+
+      const availableWidth = targetSize - p1Width - p2Width;
+      const dotsCount = Math.floor(availableWidth / targetValue);
+      setDots(dotsCount);
+    }
+  }, [p1Ref, p2Ref]);
+
+  return (
+    <div className={styles.item}>
+      <p ref={p1Ref}>{p1}</p>
+      <p className={styles.dotted}>
+        {Array.from({ length: dots }).map((_, i) => (
+          <span key={i}>.</span>
+        ))}
+      </p>
+      <p ref={p2Ref}>{p2}</p>
+    </div>
+  );
+};
+
 export interface IDoorItemProps {
   data: IDoorModel;
 }
@@ -67,20 +106,6 @@ const DoorItem: FC<IDoorItemProps> = ({ data }) => {
     }
   };
 
-  const generateDot = (firstStr: string, lastStr: string, plus: number = 0) => {
-    const res = 58 - (firstStr.length + lastStr.length + plus);
-    if (res < 0) {
-      return "";
-    }
-    const c = ".";
-    let resStr = "";
-    for (let i = 0; i < res; i++) {
-      resStr += c;
-    }
-
-    return resStr;
-  };
-
   const handleSlideChange = (swiper: any) => {
     const art = data.articles[swiper.activeIndex];
     setActiveId(art.id);
@@ -103,7 +128,12 @@ const DoorItem: FC<IDoorItemProps> = ({ data }) => {
   const [show, setShow] = useState<boolean>(false);
   const showImageHandler = () => {
     setShow(true);
-  }
+  };
+
+  const [showDoor, setShowDoor] = useState<boolean>(false);
+  const showDoorHandler = () => {
+    setShowDoor(true);
+  };
 
   return (
     <>
@@ -111,8 +141,16 @@ const DoorItem: FC<IDoorItemProps> = ({ data }) => {
         <div className={styles.title}>
           <p className={styles.h}>{data.title}</p>
           <div className={styles.doors}>
-            <img src={data.image_entry} alt="передняя сторона" />
-            <img src={data.image_exit} alt="обратная стороная" />
+            <img
+              src={data.image_entry}
+              alt="передняя сторона"
+              onClick={showDoorHandler}
+            />
+            <img
+              src={data.image_exit}
+              alt="обратная стороная"
+              onClick={showDoorHandler}
+            />
           </div>
           <p className={styles.description}>{data.description}</p>
         </div>
@@ -153,77 +191,61 @@ const DoorItem: FC<IDoorItemProps> = ({ data }) => {
               </div>
             </div>
             <div className={styles.info}>
-              <div className={styles.item}>
-                <p>Основной замок:</p>
-                <p className={styles.dotted}>
-                  {generateDot(
-                    "Основной замок:",
-                    article.main_lock ? "Есть" : "Нет",
-                    -8
-                  )}
-                </p>
-                <p>{article.main_lock ? "Есть" : "Нет"}</p>
-              </div>
-              <div className={styles.item}>
-                <p>Дополнительный замок:</p>
-                <p className={styles.dotted}>
-                  {generateDot(
-                    "Дополнительный замок:",
-                    article.additional_lock ? "Есть" : "Нет",
-                    -5
-                  )}
-                </p>
-                <p>{article.additional_lock ? "Есть" : "Нет"}</p>
-              </div>
-              <div className={styles.item}>
-                <p>Толщина дверного полотна:</p>
-                <p className={styles.dotted}>
-                  {generateDot(
-                    "Толщина дверного полотна:",
-                    `${article.door_leaf_thickness} мм`,
-                    -2
-                  )}
-                </p>
-                <p>{`${article.door_leaf_thickness} мм`}</p>
-              </div>
-              <div className={styles.item}>
-                <p>Количество контуров уплотнения:</p>
-                <p className={styles.dotted}>
-                  {generateDot(
-                    "Количество контуров уплотнения:",
-                    `${article.sealing_contours}`,
-                    -2
-                  )}
-                </p>
-                <p>{`${article.sealing_contours}`}</p>
-              </div>
-              <div className={styles.item}>
-                <p>Цвет покраски:</p>
-                <p className={styles.dotted}>
-                  {generateDot("Цвет покраски:", `${article.color}`, -7)}
-                </p>
-                <p>{`${article.color}`}</p>
-              </div>
-              <div className={styles.item}>
-                <p>Назначение двери:</p>
-                <p className={styles.dotted}>
-                  {generateDot("Назначение двери:", `${article.target}`, -7)}
-                </p>
-                <p>{`${article.target}`}</p>
-              </div>
-              <div className={styles.item}>
-                <p>Наличие зеркала:</p>
-                <p className={styles.dotted}>
-                  {generateDot(
-                    "Наличие зеркала:",
-                    article.mirror ? "Есть" : "Нет",
-                    -10
-                  )}
-                </p>
-                <p>{article.mirror ? "Есть" : "Нет"}</p>
-              </div>
+              <Item
+                children={[
+                  <p>Основной замок:</p>,
+                  <p>{article.main_lock ? "Есть" : "Нет"}</p>,
+                ]}
+              />
+              <Item
+                children={[
+                  <p>Дополнительный замок:</p>,
+                  <p>{article.additional_lock ? "Есть" : "Есть"}</p>,
+                ]}
+              />
+              <Item
+                children={[
+                  <p>Толщина дверного полотна:</p>,
+                  <p>{`${article.door_leaf_thickness} мм`}</p>,
+                ]}
+              />
+              <Item
+                children={[
+                  <p>Количество контуров уплотнения:</p>,
+                  <p>{`${article.sealing_contours}`}</p>,
+                ]}
+              />
+              <Item
+                children={[<p>Цвет покраски:</p>, <p>{`${article.color}`}</p>]}
+              />
+              <Item
+                children={[
+                  <p>Назначение двери:</p>,
+                  <p>{`${article.target}`}</p>,
+                ]}
+              />
+              <Item
+                children={[
+                  <p>Наличие зеркала:</p>,
+                  <p>{article.mirror ? "Есть" : "Нет"}</p>,
+                ]}
+              />
+              <Item
+                children={[
+                  <p>Особенности:</p>,
+                  <p>{article.additional_features}</p>,
+                ]}
+              />
+              <Item
+                children={[
+                  <p>Наличие дефектов:</p>,
+                  <p>{article.is_defect ? "Есть" : "Нет"}</p>,
+                ]}
+              />
             </div>
-            <button className={styles.viewPhotoBtn} onClick={showImageHandler}>Посмотреть фото</button>
+            <button className={styles.viewPhotoBtn} onClick={showImageHandler}>
+              Посмотреть фото
+            </button>
             <p className={styles.description}>{article.description}</p>
           </div>
         )}
@@ -243,7 +265,7 @@ const DoorItem: FC<IDoorItemProps> = ({ data }) => {
             </div>
             <div className={styles.inStock}>
               <img src={greenPoint} alt="зелёная точка" />
-              <p>В наличии {article.in_stock} шт.</p>
+              <p>В наличии</p>
             </div>
             <div className={styles.btnWrapper} style={{ marginTop: "18px" }}>
               <BuyButton title="Заказать" clickHandler={() => {}} />{" "}
@@ -283,81 +305,68 @@ const DoorItem: FC<IDoorItemProps> = ({ data }) => {
                         </div>
                       </div>
                       <div className={styles.info}>
-                        <div className={styles.item}>
-                          <p>Основной замок:</p>
-                          <p className={styles.dotted}>
-                            {generateDot(
-                              "Основной замок:",
-                              item.main_lock ? "Есть" : "Нет",
-                              -8
-                            )}
-                          </p>
-                          <p>{item.main_lock ? "Есть" : "Нет"}</p>
-                        </div>
-                        <div className={styles.item}>
-                          <p>Дополнительный замок:</p>
-                          <p className={styles.dotted}>
-                            {generateDot(
-                              "Дополнительный замок:",
-                              item.additional_lock ? "Есть" : "Нет",
-                              -5
-                            )}
-                          </p>
-                          <p>{item.additional_lock ? "Есть" : "Нет"}</p>
-                        </div>
-                        <div className={styles.item}>
-                          <p>Толщина дверного полотна:</p>
-                          <p className={styles.dotted}>
-                            {generateDot(
-                              "Толщина дверного полотна:",
-                              `${item.door_leaf_thickness} мм`,
-                              -2
-                            )}
-                          </p>
-                          <p>{`${item.door_leaf_thickness} мм`}</p>
-                        </div>
-                        <div className={styles.item}>
-                          <p>Количество контуров уплотнения:</p>
-                          <p className={styles.dotted}>
-                            {generateDot(
-                              "Количество контуров уплотнения:",
-                              `${item.sealing_contours}`,
-                              -2
-                            )}
-                          </p>
-                          <p>{`${item.sealing_contours}`}</p>
-                        </div>
-                        <div className={styles.item}>
-                          <p>Цвет покраски:</p>
-                          <p className={styles.dotted}>
-                            {generateDot("Цвет покраски:", `${item.color}`, -7)}
-                          </p>
-                          <p>{`${item.color}`}</p>
-                        </div>
-                        <div className={styles.item}>
-                          <p>Назначение двери:</p>
-                          <p className={styles.dotted}>
-                            {generateDot(
-                              "Назначение двери:",
-                              `${item.target}`,
-                              -7
-                            )}
-                          </p>
-                          <p>{`${item.target}`}</p>
-                        </div>
-                        <div className={styles.item}>
-                          <p>Наличие зеркала:</p>
-                          <p className={styles.dotted}>
-                            {generateDot(
-                              "Наличие зеркала:",
-                              item.mirror ? "Есть" : "Нет",
-                              -10
-                            )}
-                          </p>
-                          <p>{item.mirror ? "Есть" : "Нет"}</p>
-                        </div>
+                        <Item
+                          children={[
+                            <p>Основной замок:</p>,
+                            <p>{item.main_lock ? "Есть" : "Нет"}</p>,
+                          ]}
+                        />
+                        <Item
+                          children={[
+                            <p>Дополнительный замок:</p>,
+                            <p>{item.additional_lock ? "Есть" : "Есть"}</p>,
+                          ]}
+                        />
+                        <Item
+                          children={[
+                            <p>Толщина дверного полотна:</p>,
+                            <p>{`${item.door_leaf_thickness} мм`}</p>,
+                          ]}
+                        />
+                        <Item
+                          children={[
+                            <p>Количество контуров уплотнения:</p>,
+                            <p>{`${item.sealing_contours}`}</p>,
+                          ]}
+                          targetValue={10}
+                        />
+                        <Item
+                          children={[
+                            <p>Цвет покраски:</p>,
+                            <p>{`${item.color}`}</p>,
+                          ]}
+                        />
+                        <Item
+                          children={[
+                            <p>Назначение двери:</p>,
+                            <p>{`${item.target}`}</p>,
+                          ]}
+                          targetValue={6}
+                        />
+                        <Item
+                          children={[
+                            <p>Наличие зеркала:</p>,
+                            <p>{item.mirror ? "Есть" : "Нет"}</p>,
+                          ]}
+                        />
+                        <Item
+                          children={[
+                            <p>Особенности:</p>,
+                            <p>{item.additional_features}</p>,
+                          ]}
+                          targetValue={6.5}
+                        />
+                        <Item
+                          children={[
+                            <p>Наличие дефектов:</p>,
+                            <p>{item.is_defect ? "Есть" : "Нет"}</p>,
+                          ]}
+                        />
                       </div>
-                      <button className={styles.viewPhotoBtn} onClick={showImageHandler}>
+                      <button
+                        className={styles.viewPhotoBtn}
+                        onClick={showImageHandler}
+                      >
                         Посмотреть фото
                       </button>
                       <p className={styles.description}>{item.description}</p>
@@ -365,7 +374,7 @@ const DoorItem: FC<IDoorItemProps> = ({ data }) => {
                     <div className={styles.adaptivePrices}>
                       <div className={styles.inStock}>
                         <img src={greenPoint} alt="зелёная точка" />
-                        <p>В наличии {item.in_stock} шт.</p>
+                        <p>В наличии</p>
                       </div>
                       <div className={styles.discount}>
                         <p>-{item.discount}%</p>
@@ -389,9 +398,27 @@ const DoorItem: FC<IDoorItemProps> = ({ data }) => {
           </>
         )}
       </div>
-      {
-        article && <ViewImageModal show={show} setShow={setShow} article={article} />
-      }
+      {article && (
+        <ViewImageModal show={show} setShow={setShow} article={article} />
+      )}
+      {article && (
+        <ViewImageModal
+          show={showDoor}
+          setShow={setShowDoor}
+          article={{
+            ...article,
+            images: [
+              {
+                url: data.image_entry,
+              },
+              {
+                url: data.image_exit,
+              },
+            ],
+          }}
+          articleView={false}
+        />
+      )}
     </>
   );
 };

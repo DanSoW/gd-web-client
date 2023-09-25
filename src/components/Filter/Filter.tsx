@@ -13,6 +13,7 @@ import Typography from "@mui/material/Typography";
 import Button from "../UI/Button";
 import CircularIndeterminate from "../CircularIndeterminate";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import questionSize from "src/resources/images/question_size.svg";
 
 const IOSSwitch = styled((props: SwitchProps) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -132,13 +133,19 @@ const BpCheckbox = (props: CheckboxProps) => {
 
 export interface ICustomCheckboxProps {
   title: string;
+  clickHandler?: (value: boolean) => void;
 }
 
-const CustomCheckbox: FC<ICustomCheckboxProps> = ({ title }) => {
+const CustomCheckbox: FC<ICustomCheckboxProps> = ({
+  title,
+  clickHandler = (_) => {},
+}) => {
   const [value, setValue] = useState<boolean>(false);
 
   const onChange = () => {
-    setValue(!value);
+    const res = !value;
+    setValue(res);
+    clickHandler(res);
   };
 
   return (
@@ -154,13 +161,18 @@ const CustomCheckbox: FC<ICustomCheckboxProps> = ({ title }) => {
 
 export interface ICustomSwitchProps {
   title: string;
+  clickHandler?: (value: boolean) => void;
 }
 
-const CustomSwitch: FC<ICustomSwitchProps> = ({ title }) => {
+const CustomSwitch: FC<ICustomSwitchProps> = ({
+  title,
+  clickHandler = (value) => {},
+}) => {
   const [value, setValue] = useState<boolean>(false);
 
   const onChange = (e: any) => {
     setValue(e.target.checked);
+    clickHandler(e.target.checked);
   };
 
   return (
@@ -175,19 +187,25 @@ export interface IFilterProps {
   showModal?: boolean;
   setShowModal?: React.Dispatch<React.SetStateAction<boolean>>;
   scrollHandler: () => void;
+  handleChangeFilterValues: (target: string, value: boolean) => void;
+  handleClickReloadFilterValues: () => void;
+  handleClickFilter: () => void;
 }
 
 const Filter: FC<IFilterProps> = ({
   scrollHandler,
   showModal,
   setShowModal,
+  handleChangeFilterValues,
+  handleClickReloadFilterValues,
+  handleClickFilter,
 }) => {
   const matches = useMediaQuery("(max-width: 1280px)");
   const [visible, setVisible] = useState<boolean>(true);
   const [loading, setLoading] = useState<boolean>(false);
 
   const clickHandler = () => {
-    setLoading(!loading);
+    handleClickFilter();
   };
 
   const targetRef = useRef(null);
@@ -232,39 +250,126 @@ const Filter: FC<IFilterProps> = ({
             <p className={styles.textH}>Фильтр моделей</p>
           </div>
           <div className={styles.item}>
-            <p className={styles.iTextH}>Размеры</p>
-            <CustomCheckbox title="Все размеры" />
-            <CustomCheckbox title="780х2000 мм" />
-            <CustomCheckbox title="800х2030 мм" />
-            <CustomCheckbox title="860х2050 мм" />
-            <CustomCheckbox title="900х2050 мм" />
-            <CustomCheckbox title="960х2070 мм" />
-            <CustomCheckbox title="980х2080 мм" />
-            <CustomCheckbox title="1050х2070 мм" />
+            <div className={styles.itemSize}>
+              <p className={styles.iTextH}>Размеры</p>
+              <img src={questionSize} alt="размеры" />
+            </div>
+            <CustomCheckbox
+              title="Все размеры"
+              clickHandler={(value) => {
+                handleChangeFilterValues("all_sizes", value);
+              }}
+            />
+            <CustomCheckbox
+              title="780х2000 мм"
+              clickHandler={(value) => {
+                handleChangeFilterValues("size780on2000", value);
+              }}
+            />
+            <CustomCheckbox
+              title="800х2030 мм"
+              clickHandler={(value) => {
+                handleChangeFilterValues("size800on2030", value);
+              }}
+            />
+            <CustomCheckbox
+              title="860х2050 мм"
+              clickHandler={(value) => {
+                handleChangeFilterValues("size860on2050", value);
+              }}
+            />
+            <CustomCheckbox
+              title="900х2050 мм"
+              clickHandler={(value) => {
+                handleChangeFilterValues("size900on2050", value);
+              }}
+            />
+            <CustomCheckbox
+              title="960х2070 мм"
+              clickHandler={(value) => {
+                handleChangeFilterValues("size960on2070", value);
+              }}
+            />
+            <CustomCheckbox
+              title="980х2080 мм"
+              clickHandler={(value) => {
+                handleChangeFilterValues("size980on2080", value);
+              }}
+            />
+            <CustomCheckbox
+              title="1050х2070 мм"
+              clickHandler={(value) => {
+                handleChangeFilterValues("size1050on2070", value);
+              }}
+            />
           </div>
           <div className={styles.item} style={{ marginTop: "15px" }}>
             <p className={styles.iTextH}>Назначение двери</p>
-            <CustomCheckbox title="Квартирная" />
-            <CustomCheckbox title="Для дома и дачи" />
+            <CustomCheckbox
+              title="Квартирная"
+              clickHandler={(value) => {
+                handleChangeFilterValues("for_apartment", value);
+              }}
+            />
+            <CustomCheckbox
+              title="Для дома и дачи"
+              clickHandler={(value) => {
+                handleChangeFilterValues("for_home", value);
+              }}
+            />
           </div>
           <div className={styles.item} style={{ marginTop: "15px" }}>
             <p className={styles.iTextH}>Открывание двери</p>
-            <CustomCheckbox title="Левое открывание" />
-            <CustomCheckbox title="Правое открывание" />
+            <CustomCheckbox
+              title="Левое открывание"
+              clickHandler={(value) => {
+                handleChangeFilterValues("left_opening", value);
+              }}
+            />
+            <CustomCheckbox
+              title="Правое открывание"
+              clickHandler={(value) => {
+                handleChangeFilterValues("right_opening", value);
+              }}
+            />
           </div>
           <div className={styles.item} style={{ marginTop: "15px" }}>
-            <CustomSwitch title="С зеркалом" />
+            <CustomSwitch
+              title="С зеркалом"
+              clickHandler={(value) => {
+                handleChangeFilterValues("mirror", value);
+              }}
+            />
+            <CustomSwitch
+              title="Без дефекта"
+              clickHandler={(value) => {
+                handleChangeFilterValues("without_defect", value);
+              }}
+            />
           </div>
           <div className={styles.item} style={{ marginTop: "15px" }}>
             <p className={styles.iTextH}>Дополнительные особенности</p>
-            <CustomCheckbox title="Без дефектов" />
-            <CustomCheckbox title="Витринный образец" />
-            <CustomCheckbox title="С дефектом" />
-            <CustomCheckbox title="Устаревшая модель" />
+            <CustomCheckbox
+              title="Витринный образец"
+              clickHandler={(value) => {
+                handleChangeFilterValues("showcase_sample", value);
+              }}
+            />
+            <CustomCheckbox
+              title="Устаревшая модель"
+              clickHandler={(value) => {
+                handleChangeFilterValues("outdated_model", value);
+              }}
+            />
           </div>
           <div className={styles.item}>
             <Button clickHandler={clickHandler} title="Фильтровать" />
-            <p className={styles.default}>Сбросить</p>
+            <p
+              className={styles.default}
+              onClick={handleClickReloadFilterValues}
+            >
+              Сбросить
+            </p>
           </div>
         </div>
       )}
@@ -287,39 +392,134 @@ const Filter: FC<IFilterProps> = ({
             Фильтр моделей
           </button>
           <div className={styles.item}>
-            <p className={styles.iTextH}>Размеры</p>
-            <CustomCheckbox title="Все размеры" />
-            <CustomCheckbox title="780х2000 мм" />
-            <CustomCheckbox title="800х2030 мм" />
-            <CustomCheckbox title="860х2050 мм" />
-            <CustomCheckbox title="900х2050 мм" />
-            <CustomCheckbox title="960х2070 мм" />
-            <CustomCheckbox title="980х2080 мм" />
-            <CustomCheckbox title="1050х2070 мм" />
+            <div className={styles.itemSize}>
+              <p className={styles.iTextH}>Размеры</p>
+              <img src={questionSize} alt="размеры" />
+            </div>
+            <CustomCheckbox
+              title="Все размеры"
+              clickHandler={(value) => {
+                handleChangeFilterValues("all_sizes", value);
+              }}
+            />
+            <CustomCheckbox
+              title="780х2000 мм"
+              clickHandler={(value) => {
+                handleChangeFilterValues("size780on2000", value);
+              }}
+            />
+            <CustomCheckbox
+              title="800х2030 мм"
+              clickHandler={(value) => {
+                handleChangeFilterValues("size800on2030", value);
+              }}
+            />
+            <CustomCheckbox
+              title="860х2050 мм"
+              clickHandler={(value) => {
+                handleChangeFilterValues("size860on2050", value);
+              }}
+            />
+            <CustomCheckbox
+              title="900х2050 мм"
+              clickHandler={(value) => {
+                handleChangeFilterValues("size900on2050", value);
+              }}
+            />
+            <CustomCheckbox
+              title="960х2070 мм"
+              clickHandler={(value) => {
+                handleChangeFilterValues("size960on2070", value);
+              }}
+            />
+            <CustomCheckbox
+              title="980х2080 мм"
+              clickHandler={(value) => {
+                handleChangeFilterValues("size980on2080", value);
+              }}
+            />
+            <CustomCheckbox
+              title="1050х2070 мм"
+              clickHandler={(value) => {
+                handleChangeFilterValues("size1050on2070", value);
+              }}
+            />
           </div>
           <div className={styles.item} style={{ marginTop: "15px" }}>
             <p className={styles.iTextH}>Назначение двери</p>
-            <CustomCheckbox title="Квартирная" />
-            <CustomCheckbox title="Для дома и дачи" />
+            <CustomCheckbox
+              title="Квартирная"
+              clickHandler={(value) => {
+                handleChangeFilterValues("for_apartment", value);
+              }}
+            />
+            <CustomCheckbox
+              title="Для дома и дачи"
+              clickHandler={(value) => {
+                handleChangeFilterValues("for_home", value);
+              }}
+            />
           </div>
           <div className={styles.item} style={{ marginTop: "15px" }}>
             <p className={styles.iTextH}>Открывание двери</p>
-            <CustomCheckbox title="Левое открывание" />
-            <CustomCheckbox title="Правое открывание" />
+            <CustomCheckbox
+              title="Левое открывание"
+              clickHandler={(value) => {
+                handleChangeFilterValues("left_opening", value);
+              }}
+            />
+            <CustomCheckbox
+              title="Правое открывание"
+              clickHandler={(value) => {
+                handleChangeFilterValues("right_opening", value);
+              }}
+            />
           </div>
           <div className={styles.item} style={{ marginTop: "15px" }}>
-            <CustomSwitch title="С зеркалом" />
+            <CustomSwitch
+              title="С зеркалом"
+              clickHandler={(value) => {
+                handleChangeFilterValues("mirror", value);
+              }}
+            />
+            <CustomSwitch
+              title="Без дефекта"
+              clickHandler={(value) => {
+                handleChangeFilterValues("without_defect", value);
+              }}
+            />
           </div>
           <div className={styles.item} style={{ marginTop: "15px" }}>
             <p className={styles.iTextH}>Дополнительные особенности</p>
-            <CustomCheckbox title="Без дефектов" />
-            <CustomCheckbox title="Витринный образец" />
-            <CustomCheckbox title="С дефектом" />
-            <CustomCheckbox title="Устаревшая модель" />
+            <CustomCheckbox
+              title="Витринный образец"
+              clickHandler={(value) => {
+                handleChangeFilterValues("showcase_sample", value);
+              }}
+            />
+            <CustomCheckbox
+              title="Устаревшая модель"
+              clickHandler={(value) => {
+                handleChangeFilterValues("outdated_model", value);
+              }}
+            />
           </div>
           <div className={styles.itemFilter}>
-            <Button clickHandler={clickHandler} title="Фильтровать" />
-            <p className={styles.default}>Сбросить</p>
+            <Button
+              clickHandler={() => {
+                clickHandler();
+                if (setShowModal) {
+                  setShowModal(false);
+                }
+              }}
+              title="Фильтровать"
+            />
+            <p
+              className={styles.default}
+              onClick={handleClickReloadFilterValues}
+            >
+              Сбросить
+            </p>
           </div>
         </div>
       )}

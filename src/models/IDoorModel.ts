@@ -29,7 +29,8 @@ export interface IArticleModel {
   price: number;
   price_without_discount: number;
   discount: number;
-  in_stock: number;
+  is_defect: boolean;
+  additional_features: string;
   images: Array<IImageModel>;
 }
 
@@ -49,7 +50,8 @@ export interface IArticleValues {
   price: number;
   price_without_discount: number;
   discount: number;
-  in_stock: number;
+  is_defect: boolean;
+  additional_features: string;
 }
 
 export interface IImageModel {

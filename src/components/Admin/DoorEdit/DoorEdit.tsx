@@ -147,7 +147,7 @@ const DoorEdit: FC<IDoorEditProps> = ({
         <Dialog open={open} onClose={handleClose}>
           {false && <CircularIndeterminate />}
           <DialogTitle>Редактирование двери {content?.title}</DialogTitle>
-          <DialogContent>
+          <DialogContent style={{ overflowX: "hidden", padding: 15, margin: 0 }}>
             <DialogContentText></DialogContentText>
             <div className={styles.content}>
               <br />

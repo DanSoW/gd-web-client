@@ -1,4 +1,18 @@
 @charset "UTF-8";
+.itemC {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.itemC p {
+  margin: 0;
+  padding: 0;
+}
+.itemC .dots {
+  display: flex;
+  align-items: flex-end;
+}
+
 .customSwiper {
   width: 100%;
 }
@@ -17,7 +31,7 @@
     height: max-content;
     justify-content: center;
     align-items: center;
-    width: 320px;
+    width: 330px;
   }
   .container .characteristic {
     width: 100%;
@@ -228,6 +242,7 @@
   display: flex;
   flex-direction: column;
   margin-left: 13px;
+  width: 380px;
 }
 @media only screen and (min-width: 300px) and (max-width: 1170px) {
   .characteristic {
@@ -258,6 +273,11 @@
   margin-top: 21px;
   width: -moz-max-content;
   width: max-content;
+}
+@media only screen and (min-width: 300px) and (max-width: 420px) {
+  .characteristic .property {
+    gap: 5px;
+  }
 }
 .characteristic .property .item {
   padding-left: 14px;
@@ -299,6 +319,7 @@
   gap: 0;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 .characteristic .info .item p {
   color: #333;

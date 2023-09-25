@@ -167,7 +167,8 @@ const doorCharacteristicAdd =
       // @ts-ignore
       formData.append("discount", values.discount);
       // @ts-ignore
-      formData.append("in_stock", values.in_stock);
+      formData.append("is_defect", values.is_defect);
+      formData.append("additional_features", values.additional_features);
 
       for (let i = 0; i < images.length; i++) {
         formData.append("images", images[i].file);
@@ -293,14 +294,14 @@ const doorCharacteristicEdit =
       }
 
       // Добавление новых изображений к объекту
-     /* if (saveImages && !(response.status != 200 && response.status != 201)) {
+      if (saveImages && !(response.status != 200 && response.status != 201)) {
         for (let i = 0; i < saveImages.length; i++) {
           const img = saveImages[i].file;
 
           const formData = new FormData();
           // @ts-ignore
           formData.append("articles_id", articles_id);
-          formData.append("file", img);
+          formData.append("image", img);
 
           const localResponse = await apiMainServer.post(
             AdminApi.DOOR_CHARACTERISTIC_IMAGE_ADD,
@@ -315,7 +316,7 @@ const doorCharacteristicEdit =
           const img = deleteImages[i];
           const local = {
             articles_id: articles_id,
-            image: img
+            image: img,
           };
 
           const localResponse = await apiMainServer.post(
@@ -323,7 +324,7 @@ const doorCharacteristicEdit =
             JSON.stringify(local)
           );
         }
-      }*/
+      }
 
       dispatch(adminSlice.actions.setDoors([]));
       dispatch(doorGetAll());

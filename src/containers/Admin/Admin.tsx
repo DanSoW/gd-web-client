@@ -66,7 +66,6 @@ const Admin: FC<any> = () => {
 
   return (
     <>
-      {!matches && <Filter scrollHandler={scrollToFilter} />}
       {adminSelector.isLoading && <CircularIndeterminate />}
       <div className={styles.container}>
         <div className={styles.itemAddBtn}>
@@ -77,29 +76,6 @@ const Admin: FC<any> = () => {
             }}
           />
         </div>
-        <div className={styles.item} style={{ marginTop: "24px" }}>
-          {!matches && (
-            <Element name="filter" className={styles.control}>
-              <p className={styles.textH}>По убыванию цены</p>
-              <img src={filterMin} alt="По убыванию цены" />
-            </Element>
-          )}
-          {matches && (
-            <div className={styles.controlInversion}>
-              <img src={filterMin} alt="По убыванию цены" />
-              <p className={styles.textH}>По убыванию цены</p>
-            </div>
-          )}
-        </div>
-        {matches && (
-          <div className={styles.item}>
-            <Filter
-              scrollHandler={scrollToFilter}
-              showModal={showModal}
-              setShowModal={setShowModal}
-            />
-          </div>
-        )}
         <div className={styles.item}>
           <div className={styles.doorList}>
             {adminSelector.doors.map((item) => {

@@ -1,5 +1,9 @@
 .content {
     display: flex;
     flex-direction: column;
+    
     width: 500px;
+    @media only screen and (max-width: 600px) {
+        width: 300px;
+    }
 }

@@ -131,6 +131,7 @@
             object-fit: cover;
             width: 134px;
             height: 286px;
+            cursor: pointer;
         }
     }
 
@@ -487,6 +488,7 @@
 }
 
 .adaptivePrices {
+    position: relative;
     margin-top: 22px;
     width: 100%;
     min-height: 132px;

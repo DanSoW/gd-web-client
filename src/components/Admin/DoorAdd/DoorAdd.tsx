@@ -138,7 +138,7 @@ const DoorAdd: FC<IDoorAddProps> = ({ open, setOpen, addHandler }) => {
         <Dialog open={open} onClose={handleClose}>
           {false && <CircularIndeterminate />}
           <DialogTitle>Добавление новой двери</DialogTitle>
-          <DialogContent>
+          <DialogContent style={{ overflowX: "hidden", padding: 15, margin: 0 }}>
             <DialogContentText></DialogContentText>
             <div className={styles.content}>
               <br />

@@ -8,9 +8,17 @@ import apiMainServer from "src/http/http";
 import { userSlice } from "../reducers/UserSlice";
 import Api from "src/constants/api";
 import axios from "axios";
+import { IFilterValues } from "src/models/IFilterModel";
 
 const doorGetAll =
-  (count = 0, limit = 10, add = false) =>
+  (
+    count = 0,
+    limit = 10,
+    filterByMin: boolean | null = null,
+    filterByMax: boolean | null = null,
+    values: IFilterValues | null = null,
+    add = false
+  ) =>
   async (dispatch: any) => {
     dispatch(userSlice.actions.loadingStart());
 
@@ -20,6 +28,9 @@ const doorGetAll =
         JSON.stringify({
           count: count,
           limit: limit,
+          filter_by_min_price: filterByMin,
+          filter_by_max_price: filterByMax,
+          ...values,
         }),
         {
           headers: {

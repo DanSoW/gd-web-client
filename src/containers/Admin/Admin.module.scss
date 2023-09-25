@@ -21,14 +21,15 @@
 
     display: flex;
     flex-direction: column;
-    gap: 23px;
+    gap: 32px;
 }
 
 .item {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: 100%;
-    padding-left: 235px;
 
     @media only screen and (max-width: 1280px) {
         padding-left: 0;
@@ -110,7 +111,7 @@
 .doorList {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 32px;
 }
 
 .doorBtn {

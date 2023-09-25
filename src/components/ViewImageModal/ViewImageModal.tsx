@@ -13,12 +13,14 @@ export interface IViewImageModalProps {
   show: boolean;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
   article: IArticleModel;
+  articleView?: boolean;
 }
 
 const ViewImageModal: FC<IViewImageModalProps> = ({
   show,
   setShow,
   article,
+  articleView = true,
 }) => {
   const matches = useMediaQuery(
     "only screen and (min-width: 300px) and (max-width: 500px)"
@@ -51,7 +53,9 @@ const ViewImageModal: FC<IViewImageModalProps> = ({
                   setShow(false);
                 }}
               />
-              <div className={styles.articleLabel}>{article.title}</div>
+              {articleView && (
+                <div className={styles.articleLabel}>{article.title}</div>
+              )}
               <Swiper
                 ref={swiperRef1}
                 style={{
@@ -107,7 +111,9 @@ const ViewImageModal: FC<IViewImageModalProps> = ({
                   setShow(false);
                 }}
               />
-              <div className={styles.articleLabel}>{article.title}</div>
+              {articleView && (
+                <div className={styles.articleLabel}>{article.title}</div>
+              )}
               <Swiper
                 spaceBetween={10}
                 pagination={true}

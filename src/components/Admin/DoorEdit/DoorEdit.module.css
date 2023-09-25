@@ -3,3 +3,8 @@
   flex-direction: column;
   width: 500px;
 }
+@media only screen and (max-width: 600px) {
+  .content {
+    width: 300px;
+  }
+}

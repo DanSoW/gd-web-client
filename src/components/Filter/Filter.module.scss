@@ -217,6 +217,16 @@
     gap: 13px;
 }
 
+.itemSize {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+
+    img {
+        cursor: pointer;
+    }
+}
+
 .selectItem {
     display: flex;
     flex-direction: row;
