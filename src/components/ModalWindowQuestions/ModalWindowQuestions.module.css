@@ -1,0 +1,241 @@
+.modalBody {
+  width: 80%;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  grid-gap: 20px;
+  padding: 7px;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 83px;
+}
+
+.headerTitle {
+  font-family: "Futura PT";
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 38.46px;
+  color: #333333;
+  margin: 0;
+}
+
+.headerText {
+  width: 363px;
+  font-family: "Futura PT";
+  font-weight: 450;
+  font-size: 18px;
+  line-height: 23.08px;
+  margin: 0;
+}
+
+.main {
+  width: 100%;
+  height: -moz-max-content;
+  height: max-content;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+  grid-gap: 20px;
+}
+
+.mainInput {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #C6C6C6;
+  border-radius: 6px;
+  font-family: "Futura PT";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23.08px;
+}
+
+.footer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-gap: 20px;
+  margin-top: 40px;
+}
+
+.subApply {
+  width: 238px;
+  height: 44px;
+  top: 0;
+  border-radius: 8px;
+  background-color: #12AB51;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  transition: 0.3s;
+  border: none;
+  outline: none;
+}
+.subApply:hover {
+  background-color: rgb(86, 86, 182);
+  transition: 0.3s;
+}
+.subApply img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.subApply p {
+  padding: 0;
+  margin: 0;
+  left: 0;
+}
+
+.headerMobileWrapBlock {
+  display: flex;
+}
+
+.phoneCallBlock {
+  width: auto;
+  height: auto;
+}
+
+.phoneCallIcon {
+  position: relative;
+  left: -38px;
+  top: -10px;
+}
+
+.sendApplytext {
+  width: 116px;
+  height: 17px;
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16.94px;
+  color: #FFFFFF;
+  position: relative;
+  left: -40px;
+  cursor: pointer;
+}
+
+.agreeText {
+  width: 238px;
+  height: 39px;
+  font-family: "Futura PT";
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 13px;
+  color: #121212;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 600px) {
+  .modalBody {
+    width: 100%;
+  }
+  .header {
+    align-items: center;
+  }
+  .headerTitle {
+    width: 301px;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 30.77px;
+    text-align: Center;
+  }
+  .headerText {
+    width: 301px;
+    font-size: 16px;
+    line-height: 20.51px;
+    text-align: center;
+  }
+  .main {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    grid-gap: 20px;
+    height: auto;
+    margin-top: 40px;
+  }
+  .mainInput {
+    width: 300px;
+  }
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    grid-gap: 20px;
+    margin-top: 40px;
+  }
+  .subApply {
+    width: 300px;
+    height: 50px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .subApply img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
+  .subApply p {
+    padding: 0;
+    margin: 0;
+    left: 0;
+  }
+  .agreeText {
+    text-align: center;
+    width: 300px;
+  }
+}
+.successForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  width: 80%;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.successForm p {
+  margin: 0;
+  font-family: "Futura PT";
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 109.5%;
+  color: rgb(23, 66, 23);
+}
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .successForm p {
+    font-size: 16px;
+    text-align: center;
+  }
+}
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  .successForm p {
+    font-size: 16px;
+    text-align: center;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .successForm p {
+    font-size: 16px;
+    text-align: center;
+  }
+}

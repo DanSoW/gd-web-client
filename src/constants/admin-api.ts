@@ -11,6 +11,7 @@ const AdminApi = {
   DOOR_CHARACTERISTIC_DELETE: "/admin/door/characteristic/delete",
   DOOR_IMAGE_ENTRY_EDIT: "/admin/door/image-entry/edit",
   DOOR_IMAGE_EXIT_EDIT: "/admin/door/image-exit/edit",
+  FILTER_INFO_ADD: "/admin/filter/info/add"
 };
 
 export default AdminApi;

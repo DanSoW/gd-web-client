@@ -10,6 +10,11 @@ import { useMediaQuery } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
 import ViewImageModal from "src/components/ViewImageModal";
+import ModalWindow from "src/components/ModalWindow";
+import ModalWindowQuestions from "src/components/ModalWindowQuestions";
+import useModal from "src/hooks/useModal";
+import { useAppDispatch } from "src/hooks/redux.hook";
+import messageQueueAction from "src/store/actions/MessageQueueAction";
 
 interface ItemProps {
   children: [React.ReactNode, React.ReactNode];
@@ -52,9 +57,10 @@ const Item: React.FC<ItemProps> = ({
 
 export interface IDoorItemProps {
   data: IDoorModel;
+  selectItem: (door_title: string, article_title: string) => void;
 }
 
-const DoorItem: FC<IDoorItemProps> = ({ data }) => {
+const DoorItem: FC<IDoorItemProps> = ({ data, selectItem }) => {
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
@@ -134,6 +140,8 @@ const DoorItem: FC<IDoorItemProps> = ({ data }) => {
   const showDoorHandler = () => {
     setShowDoor(true);
   };
+
+  const dispatch = useAppDispatch();
 
   return (
     <>
@@ -268,7 +276,22 @@ const DoorItem: FC<IDoorItemProps> = ({ data }) => {
               <p>В наличии</p>
             </div>
             <div className={styles.btnWrapper} style={{ marginTop: "18px" }}>
-              <BuyButton title="Заказать" clickHandler={() => {}} />{" "}
+              <BuyButton
+                title="Заказать"
+                clickHandler={() => {
+                  if (!article) {
+                    dispatch(
+                      messageQueueAction.addMessage(
+                        null,
+                        "error",
+                        "Необходимо выбрать артикул"
+                      )
+                    );
+                  }
+
+                  selectItem(data.title, article.title);
+                }}
+              />{" "}
             </div>
           </div>
         )}
@@ -389,7 +412,22 @@ const DoorItem: FC<IDoorItemProps> = ({ data }) => {
                           </s>
                         </p>
                       </div>
-                      <BuyButton title="Заказать" clickHandler={() => {}} />{" "}
+                      <BuyButton
+                        title="Заказать"
+                        clickHandler={() => {
+                          if (!article) {
+                            dispatch(
+                              messageQueueAction.addMessage(
+                                null,
+                                "error",
+                                "Необходимо выбрать артикул"
+                              )
+                            );
+                          }
+
+                          selectItem(data.title, article.title);
+                        }}
+                      />{" "}
                     </div>
                   </SwiperSlide>
                 );

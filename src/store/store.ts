@@ -17,6 +17,9 @@ import messageQueueReducer from "./reducers/MessageQueueSlice";
 import authReducer from "./reducers/AuthSlice";
 import adminReducer from "./reducers/AdminSlice";
 import userReducer from "./reducers/UserSlice";
+import mailerReducer from "./reducers/MailerSlice";
+import filterInfoReducer from "./reducers/FilterInfoSlice";
+import filterReducer from "./reducers/FilterSlice";
 import StoreConstants from "src/constants/store";
 
 /* Главный Reducer */
@@ -25,13 +28,23 @@ const rootReducer = combineReducers({
   authReducer,
   adminReducer,
   userReducer,
+  mailerReducer,
+  filterInfoReducer,
+  filterReducer
 });
 
 // Конфигурация Persist
 const persistConfig = {
   key: StoreConstants.MAIN_STORE,
   storage,
-  blacklist: ["messageQueueReducer", "adminReducer", "userReducer"],
+  blacklist: [
+    "messageQueueReducer",
+    "adminReducer",
+    "userReducer",
+    "mailerReducer",
+    "filterInfoReducer",
+    "filterReducer"
+  ],
 };
 
 // Создание Persist Reducer

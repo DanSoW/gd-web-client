@@ -21,55 +21,27 @@ import { useAppDispatch, useAppSelector } from "src/hooks/redux.hook";
 import UserAction from "src/store/actions/UserAction";
 import CircularIndeterminate from "src/components/CircularIndeterminate";
 import { IFilterValues } from "src/models/IFilterModel";
+import ModalWindow from "src/components/ModalWindow";
+import ModalWindowQuestions from "src/components/ModalWindowQuestions";
+import useModal from "src/hooks/useModal";
+import FilterAction from "src/store/actions/FilterAction";
+
+interface IOrderInfo {
+  door_title: string;
+  article_title: string;
+}
 
 const Main: FC<any> = () => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [filter, setFilter] = useState<boolean | null>(null);
-  const [filterValues, setFilterValues] = useState<IFilterValues>({
-    all_sizes: null,
-    size780on2000: null,
-    size800on2030: null,
-    size860on2050: null,
-    size900on2050: null,
-    size960on2070: null,
-    size980on2080: null,
-    size1050on2070: null,
-    for_apartment: null,
-    for_home: null,
-    left_opening: null,
-    right_opening: null,
-    mirror: null,
-    without_defect: null,
-    outdated_model: null,
-    showcase_sample: null,
-  });
+  const filterSelector = useAppSelector((s) => s.filterReducer);
 
   const handleChangeFilterValues = (target: string, value: boolean) => {
-    setFilterValues({
-      ...filterValues,
-      [target]: value,
-    });
+    dispatch(FilterAction.setProperty(target, value));
   };
 
   const handleClickReloadFilterValues = () => {
-    setFilterValues({
-      all_sizes: null,
-      size780on2000: null,
-      size800on2030: null,
-      size860on2050: null,
-      size900on2050: null,
-      size960on2070: null,
-      size980on2080: null,
-      size1050on2070: null,
-      for_apartment: null,
-      for_home: null,
-      left_opening: null,
-      right_opening: null,
-      mirror: null,
-      without_defect: null,
-      outdated_model: null,
-      showcase_sample: null,
-    });
+    dispatch(FilterAction.clearFilter());
   };
 
   const matches = useMediaQuery(
@@ -97,7 +69,7 @@ const Main: FC<any> = () => {
         5,
         filter ? true : null,
         !filter ? true : null,
-        filterValues,
+        filterSelector,
         true
       )
     );
@@ -112,14 +84,37 @@ const Main: FC<any> = () => {
         5,
         filter ? true : null,
         !filter ? true : null,
-        filterValues
+        filterSelector
       )
     );
+  };
+
+  const { isOpen, toggle } = useModal();
+  const [orderInfo, setOrderInfo] = useState<IOrderInfo>({
+    door_title: "",
+    article_title: "",
+  });
+  const selectItem = (door_title: string, article_title: string) => {
+    setOrderInfo({
+      door_title: door_title,
+      article_title: article_title,
+    });
+
+    toggle();
   };
 
   return (
     <>
       <Header />
+      <ModalWindow isOpen={isOpen} toggle={toggle}>
+        <ModalWindowQuestions
+          title="Ваш заказ"
+          text="Для покупки оставьте ваши данные и мы скоро с вами свяжемся"
+          type="order"
+          door_title={orderInfo.door_title}
+          article_title={orderInfo.article_title}
+        />
+      </ModalWindow>
       {!matches && (
         <Filter
           scrollHandler={scrollToFilter}
@@ -144,7 +139,7 @@ const Main: FC<any> = () => {
                     5,
                     localFilter ? true : null,
                     !localFilter ? true : null,
-                    filterValues,
+                    filterSelector,
                     false
                   )
                 );
@@ -176,7 +171,7 @@ const Main: FC<any> = () => {
                     5,
                     localFilter ? true : null,
                     !localFilter ? true : null,
-                    filterValues,
+                    filterSelector,
                     false
                   )
                 );
@@ -213,7 +208,7 @@ const Main: FC<any> = () => {
           <div className={styles.doorList}>
             {!userSelector.isLoading &&
               userSelector.doors.map((item) => {
-                return <DoorItem data={item} />;
+                return <DoorItem data={item} selectItem={selectItem} />;
               })}
           </div>
           <div className={styles.doorBtn}>

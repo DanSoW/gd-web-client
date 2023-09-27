@@ -1,6 +1,6 @@
 import { FC, memo, useEffect, useRef, useState } from "react";
 import styles from "./ViewImageModal.module.scss";
-import { IArticleModel } from "src/models/IDoorModel";
+import { IArticleModel, IImageModel } from "src/models/IDoorModel";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -12,15 +12,19 @@ import { useMediaQuery } from "@mui/material";
 export interface IViewImageModalProps {
   show: boolean;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
-  article: IArticleModel;
+  article?: IArticleModel | null;
+  thumbs?: boolean;
+  images?: Array<IImageModel>;
   articleView?: boolean;
 }
 
 const ViewImageModal: FC<IViewImageModalProps> = ({
   show,
   setShow,
-  article,
+  article = null,
   articleView = true,
+  images = null,
+  thumbs = true,
 }) => {
   const matches = useMediaQuery(
     "only screen and (min-width: 300px) and (max-width: 500px)"
@@ -54,7 +58,9 @@ const ViewImageModal: FC<IViewImageModalProps> = ({
                 }}
               />
               {articleView && (
-                <div className={styles.articleLabel}>{article.title}</div>
+                <div className={styles.articleLabel}>
+                  {article?.title || ""}
+                </div>
               )}
               <Swiper
                 ref={swiperRef1}
@@ -71,34 +77,57 @@ const ViewImageModal: FC<IViewImageModalProps> = ({
                 modules={[FreeMode, Navigation, Thumbs]}
                 className={styles.imageSwiper}
               >
-                {article.images.map((item) => {
-                  return (
-                    <SwiperSlide className={styles.slide}>
-                      <img src={item.url} />
-                    </SwiperSlide>
-                  );
-                })}
+                {article &&
+                  article.images.map((item) => {
+                    return (
+                      <SwiperSlide className={styles.slide}>
+                        <img src={item.url} />
+                      </SwiperSlide>
+                    );
+                  })}
+                {images &&
+                  images.map((item) => {
+                    return (
+                      <SwiperSlide className={styles.slide}>
+                        <img src={item.url} />
+                      </SwiperSlide>
+                    );
+                  })}
               </Swiper>
-              <Swiper
-                ref={swiperRef2}
-                slidesPerView={3}
-                spaceBetween={"20px"}
-                freeMode={true}
-                watchSlidesProgress={true}
-                modules={[FreeMode, Navigation, Thumbs]}
-                className={styles.thumbsSwiper}
-              >
-                {article.images.map((item, index) => {
-                  return (
-                    <SwiperSlide
-                      className={styles.slide}
-                      onClick={() => handleSlideClick(index)}
-                    >
-                      <img src={item.url} />
-                    </SwiperSlide>
-                  );
-                })}
-              </Swiper>
+              {thumbs && (
+                <Swiper
+                  ref={swiperRef2}
+                  slidesPerView={3}
+                  spaceBetween={"20px"}
+                  freeMode={true}
+                  watchSlidesProgress={true}
+                  modules={[FreeMode, Navigation, Thumbs]}
+                  className={styles.thumbsSwiper}
+                >
+                  {article &&
+                    article.images.map((item, index) => {
+                      return (
+                        <SwiperSlide
+                          className={styles.slide}
+                          onClick={() => handleSlideClick(index)}
+                        >
+                          <img src={item.url} />
+                        </SwiperSlide>
+                      );
+                    })}
+                  {images &&
+                    images.map((item, index) => {
+                      return (
+                        <SwiperSlide
+                          className={styles.slide}
+                          onClick={() => handleSlideClick(index)}
+                        >
+                          <img src={item.url} />
+                        </SwiperSlide>
+                      );
+                    })}
+                </Swiper>
+              )}
             </div>
           )}
           {matches && (
@@ -112,7 +141,9 @@ const ViewImageModal: FC<IViewImageModalProps> = ({
                 }}
               />
               {articleView && (
-                <div className={styles.articleLabel}>{article.title}</div>
+                <div className={styles.articleLabel}>
+                  {article?.title || ""}
+                </div>
               )}
               <Swiper
                 spaceBetween={10}
@@ -127,13 +158,22 @@ const ViewImageModal: FC<IViewImageModalProps> = ({
                 className={styles.imageSwiper}
                 slidesPerView={1}
               >
-                {article.images.map((item) => {
-                  return (
-                    <SwiperSlide className={styles.slide}>
-                      <img src={item.url} />
-                    </SwiperSlide>
-                  );
-                })}
+                {article &&
+                  article.images.map((item) => {
+                    return (
+                      <SwiperSlide className={styles.slide}>
+                        <img src={item.url} />
+                      </SwiperSlide>
+                    );
+                  })}
+                {images &&
+                  images.map((item) => {
+                    return (
+                      <SwiperSlide className={styles.slide}>
+                        <img src={item.url} />
+                      </SwiperSlide>
+                    );
+                  })}
               </Swiper>
             </div>
           )}

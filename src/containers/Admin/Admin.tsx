@@ -21,6 +21,8 @@ import { useAppDispatch, useAppSelector } from "src/hooks/redux.hook";
 import AdminAction from "src/store/actions/AdminAction";
 import messageQueueAction from "src/store/actions/MessageQueueAction";
 import CircularIndeterminate from "src/components/CircularIndeterminate";
+import ImageUpload from "src/components/ImageUpload";
+import FilterInfoAction from "src/store/actions/FilterInfoAction";
 
 const Admin: FC<any> = () => {
   const adminSelector = useAppSelector((s) => s.adminReducer);
@@ -64,13 +66,49 @@ const Admin: FC<any> = () => {
     dispatch(AdminAction.doorGetAll());
   }, []);
 
+  const filterInfoSelector = useAppSelector((s) => s.filterInfoReducer);
+  const [image, setImage] = React.useState<
+    Array<{ data_url: string; file?: File }>
+  >([
+    {
+      data_url: filterInfoSelector.url,
+    },
+  ]);
+
+  // @ts-ignore
+  const onChangeImage = async (imageList, addUpdateIndex) => {
+    setImage(imageList);
+    if (imageList.length > 0 && imageList[0].file) {
+      dispatch(FilterInfoAction.filterInfoAdd(imageList));
+    }
+  };
+
+  useEffect(() => {
+    dispatch(FilterInfoAction.getFilterInfo());
+  }, []);
+
+  useEffect(() => {
+    if (filterInfoSelector.url.length > 0) {
+      setImage([{ data_url: filterInfoSelector.url }]);
+    }
+  }, [filterInfoSelector.url]);
+
   return (
     <>
       {adminSelector.isLoading && <CircularIndeterminate />}
       <div className={styles.container}>
+        <div className={styles.item}>
+          <ImageUpload
+            title={"Подсказка для размеров *"}
+            subtitle={"Загрузить изображение"}
+            value={image}
+            onChange={onChangeImage}
+            multiple={false}
+          />
+        </div>
         <div className={styles.itemAddBtn}>
           <Button
-            title="Добавить"
+            title="Добавить дверь"
             clickHandler={() => {
               setDoorAdd(true);
             }}
