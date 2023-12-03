@@ -1,4 +1,4 @@
-import { FC, memo, useEffect, useRef, useState } from "react";
+import { FC, memo, useCallback, useEffect, useRef, useState } from "react";
 import styles from "./DoorItem.module.css";
 import { IArticleModel, IDoorModel } from "src/models/IDoorModel";
 import door from "src/resources/images/door.svg";
@@ -15,6 +15,7 @@ import ModalWindowQuestions from "src/components/ModalWindowQuestions";
 import useModal from "src/hooks/useModal";
 import { useAppDispatch } from "src/hooks/redux.hook";
 import messageQueueAction from "src/store/actions/MessageQueueAction";
+import React from "react";
 
 interface ItemProps {
   children: [React.ReactNode, React.ReactNode];
@@ -22,38 +23,45 @@ interface ItemProps {
   targetValue?: number;
 }
 
-const Item: React.FC<ItemProps> = ({
+const Item2: React.FC<ItemProps> = ({
   children,
-  targetSize = 380,
-  targetValue = 5.5,
+  targetValue = 4,
 }) => {
   const [p1, p2] = children;
+  const dotsRef = useRef<HTMLDivElement>(null);
   const p1Ref = useRef<HTMLParagraphElement>(null);
   const p2Ref = useRef<HTMLParagraphElement>(null);
-  const [dots, setDots] = useState<number>(0);
-  useEffect(() => {
-    if (p1Ref.current && p2Ref.current) {
-      const p1Width = p1Ref.current.offsetWidth;
-      const p2Width = p2Ref.current.offsetWidth;
+  const itemRef = useRef<HTMLDivElement>(null);
+  const [ready, setReady] = useState(false);
 
-      const availableWidth = targetSize - p1Width - p2Width;
-      const dotsCount = Math.floor(availableWidth / targetValue);
-      setDots(dotsCount);
+  useEffect(() => {
+    if (p1Ref.current && p2Ref.current && dotsRef.current && itemRef.current) {
+      dotsRef.current.innerText = '';
+
+      while ((p1Ref.current.offsetWidth + p2Ref.current.offsetWidth + dotsRef.current.offsetWidth) < (itemRef.current.offsetWidth - targetValue)) {
+        dotsRef.current.innerText = `${dotsRef.current.innerText}.`;
+      }
     }
-  }, [p1Ref, p2Ref]);
+  }, [children, ready]);
+
+  useEffect(() => {
+    if(!ready) {
+      setReady(true);
+    }
+  }, []);
 
   return (
-    <div className={styles.item}>
-      <p ref={p1Ref}>{p1}</p>
-      <p className={styles.dotted}>
-        {Array.from({ length: dots }).map((_, i) => (
-          <span key={i}>.</span>
-        ))}
-      </p>
-      <p ref={p2Ref}>{p2}</p>
-    </div>
+    <>
+      <div className={styles.item} ref={itemRef}>
+        <p ref={p1Ref}>{p1}</p>
+        <div className={styles.dotted} ref={dotsRef}></div>
+        <p ref={p2Ref}>{p2}</p>
+      </div>
+    </>
   );
 };
+
+const Item = React.memo(Item2);
 
 export interface IDoorItemProps {
   data: IDoorModel;
@@ -201,14 +209,14 @@ const DoorItem: FC<IDoorItemProps> = ({ data, selectItem }) => {
             <div className={styles.info}>
               <Item
                 children={[
-                  <p>Основной замок:</p>,
-                  <p>{article.main_lock ? "Есть" : "Нет"}</p>,
+                  <p>Основной замок:&nbsp;</p>,
+                  <p>&nbsp;{article.main_lock ? "Есть" : "Нет"}</p>,
                 ]}
               />
               <Item
                 children={[
-                  <p>Дополнительный замок:</p>,
-                  <p>{article.additional_lock ? "Есть" : "Есть"}</p>,
+                  <p>Дополнительный замок:&nbsp;</p>,
+                  <p>&nbsp;{article.additional_lock ? "Есть" : "Есть"}</p>,
                 ]}
               />
               {
@@ -223,35 +231,38 @@ const DoorItem: FC<IDoorItemProps> = ({ data, selectItem }) => {
               }
               <Item
                 children={[
-                  <p>Количество контуров уплотнения:</p>,
-                  <p>{`${article.sealing_contours}`}</p>,
-                ]}
-              />
-              <Item
-                children={[<p>Цвет покраски:</p>, <p>{`${article.color}`}</p>]}
-              />
-              <Item
-                children={[
-                  <p>Назначение двери:</p>,
-                  <p>{`${article.target}`}</p>,
+                  <p>Количество контуров уплотнения:&nbsp;</p>,
+                  <p>&nbsp;{`${article.sealing_contours}`}</p>,
                 ]}
               />
               <Item
                 children={[
-                  <p>Наличие зеркала:</p>,
-                  <p>{article.mirror ? "Есть" : "Нет"}</p>,
+                  <p>Цвет покраски:&nbsp;</p>,
+                  <p>&nbsp;{`${article.color}`}</p>
                 ]}
               />
               <Item
                 children={[
-                  <p>Особенности:</p>,
-                  <p>{article.additional_features}</p>,
+                  <p>Назначение двери:&nbsp;</p>,
+                  <p>&nbsp;{`${article.target}`}</p>,
                 ]}
               />
               <Item
                 children={[
-                  <p>Наличие дефектов:</p>,
-                  <p>{article.is_defect ? "Есть" : "Нет"}</p>,
+                  <p>Наличие зеркала:&nbsp;</p>,
+                  <p>&nbsp;{article.mirror ? "Есть" : "Нет"}</p>,
+                ]}
+              />
+              <Item
+                children={[
+                  <p>Особенности:&nbsp;</p>,
+                  <p>&nbsp;{article.additional_features}</p>,
+                ]}
+              />
+              <Item
+                children={[
+                  <p>Наличие дефектов:&nbsp;</p>,
+                  <p>&nbsp;{article.is_defect ? "Есть" : "Нет"}</p>,
                 ]}
               />
             </div>
@@ -312,7 +323,7 @@ const DoorItem: FC<IDoorItemProps> = ({ data, selectItem }) => {
             >
               {data.articles.map((item) => {
                 return (
-                  <SwiperSlide>
+                  <SwiperSlide className={styles.slide}>
                     <div className={styles.characteristic}>
                       <p className={styles.title}>Характеристика</p>
                       <div className={styles.property}>
@@ -334,14 +345,14 @@ const DoorItem: FC<IDoorItemProps> = ({ data, selectItem }) => {
                       <div className={styles.info}>
                         <Item
                           children={[
-                            <p>Основной замок:</p>,
-                            <p>{item.main_lock ? "Есть" : "Нет"}</p>,
+                            <p>Основной замок:&nbsp;</p>,
+                            <p>&nbsp;{article.main_lock ? "Есть" : "Нет"}</p>,
                           ]}
                         />
                         <Item
                           children={[
-                            <p>Дополнительный замок:</p>,
-                            <p>{item.additional_lock ? "Есть" : "Есть"}</p>,
+                            <p>Дополнительный замок:&nbsp;</p>,
+                            <p>&nbsp;{article.additional_lock ? "Есть" : "Есть"}</p>,
                           ]}
                         />
                         {
@@ -349,48 +360,45 @@ const DoorItem: FC<IDoorItemProps> = ({ data, selectItem }) => {
                           <Item
                           children={[
                             <p>Толщина дверного полотна:</p>,
-                            <p>{`${item.door_leaf_thickness} мм`}</p>,
+                            <p>{`${article.door_leaf_thickness} мм`}</p>,
                           ]}
                         />
                           */
                         }
                         <Item
                           children={[
-                            <p>Количество контуров уплотнения:</p>,
-                            <p>{`${item.sealing_contours}`}</p>,
-                          ]}
-                          targetValue={10}
-                        />
-                        <Item
-                          children={[
-                            <p>Цвет покраски:</p>,
-                            <p>{`${item.color}`}</p>,
+                            <p>Количество контуров уплотнения:&nbsp;</p>,
+                            <p>&nbsp;{`${article.sealing_contours}`}</p>,
                           ]}
                         />
                         <Item
                           children={[
-                            <p>Назначение двери:</p>,
-                            <p>{`${item.target}`}</p>,
-                          ]}
-                          targetValue={6}
-                        />
-                        <Item
-                          children={[
-                            <p>Наличие зеркала:</p>,
-                            <p>{item.mirror ? "Есть" : "Нет"}</p>,
+                            <p>Цвет покраски:&nbsp;</p>,
+                            <p>&nbsp;{`${article.color}`}</p>
                           ]}
                         />
                         <Item
                           children={[
-                            <p>Особенности:</p>,
-                            <p>{item.additional_features}</p>,
+                            <p>Назначение двери:&nbsp;</p>,
+                            <p>&nbsp;{`${article.target}`}</p>,
                           ]}
-                          targetValue={6.5}
                         />
                         <Item
                           children={[
-                            <p>Наличие дефектов:</p>,
-                            <p>{item.is_defect ? "Есть" : "Нет"}</p>,
+                            <p>Наличие зеркала:&nbsp;</p>,
+                            <p>&nbsp;{article.mirror ? "Есть" : "Нет"}</p>,
+                          ]}
+                        />
+                        <Item
+                          children={[
+                            <p>Особенности:&nbsp;</p>,
+                            <p>&nbsp;{article.additional_features}</p>,
+                          ]}
+                        />
+                        <Item
+                          children={[
+                            <p>Наличие дефектов:&nbsp;</p>,
+                            <p>&nbsp;{article.is_defect ? "Есть" : "Нет"}</p>,
                           ]}
                         />
                       </div>

@@ -41,7 +41,11 @@
         width: 100%;
 
         @media only screen and (max-width: 1280px) {
-            width: max-content;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
         }
     }
 }

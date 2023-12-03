@@ -4,8 +4,8 @@
 }
 
 .container {
-  height: -moz-max-content;
-  height: max-content;
+  min-height: 410px;
+  max-height: 490px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -140,6 +140,7 @@
   width: 329px;
   margin: 0;
   padding: 0;
+  height: 124px;
   word-wrap: break-word;
 }
 @media only screen and (min-width: 300px) and (max-width: 1170px) {
@@ -375,6 +376,7 @@
   margin-top: 19px;
   width: 376px;
   word-wrap: break-word;
+  height: 104px;
 }
 @media only screen and (min-width: 300px) and (max-width: 420px) {
   .characteristic .description {

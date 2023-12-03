@@ -1,12 +1,15 @@
 @import "../../../styles/colors";
 
+$height_custom: 124px;
+$height_custom2: 104px;
 
 .customSwiper {
     width: 100%;
 }
 
 .container {
-    height: max-content;
+    min-height: 410px;
+    max-height: 490px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -146,6 +149,7 @@
         width: 329px;
         margin: 0;
         padding: 0;
+        height: $height_custom;
 
         @media only screen and (min-width: 300px) and (max-width: 1170px) {
             width: 100%;
@@ -387,6 +391,7 @@
         margin-top: 19px;
         width: 376px;
         word-wrap: break-word;
+        height: $height_custom2;
 
         @media only screen and (min-width: 300px) and (max-width: 420px) {
             font-size: 14px;

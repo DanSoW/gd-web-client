@@ -57,9 +57,13 @@ const Main: FC<any> = () => {
 
   const userSelector = useAppSelector((s) => s.userReducer);
   const dispatch = useAppDispatch();
+  const [viewLoadBtn, setViewLoadBtn] = useState(true);
 
   useEffect(() => {
-    dispatch(UserAction.doorGetAll(0, 5, filter));
+    dispatch(UserAction.doorGetAll(0, 5, filter, null, null, false,
+      (value: boolean) => {
+        setViewLoadBtn(value);
+      }));
   }, []);
 
   const onMoreClick = () => {
@@ -70,7 +74,10 @@ const Main: FC<any> = () => {
         filter ? true : null,
         !filter ? true : null,
         filterSelector,
-        true
+        true,
+        (value: boolean) => {
+          setViewLoadBtn(value);
+        }
       )
     );
   };
@@ -211,9 +218,11 @@ const Main: FC<any> = () => {
                 return <DoorItem data={item} selectItem={selectItem} />;
               })}
           </div>
-          <div className={styles.doorBtn}>
-            <Button title="Загрузить ещё" clickHandler={onMoreClick} />
-          </div>
+          {
+            viewLoadBtn && <div className={styles.doorBtn}>
+              <Button title="Загрузить ещё" clickHandler={onMoreClick} />
+            </div>
+          }
         </div>
       </div>
       <Footer />

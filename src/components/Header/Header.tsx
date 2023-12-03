@@ -47,7 +47,7 @@ const Header: FC<any> = () => {
               <div className={styles.headerMobileWrapBlock}>
                 <div className={styles.contactMail}>
                   <img src={mailIcon} alt="mailIcon" />
-                  <p className={styles.contactText}>info@corp.com</p>
+                  <p className={styles.contactText}>granit_doors@mail.ru</p>
                 </div>
                 <div className={styles.subApply} onClick={toggle}>
                   {/* <div className={styles.phoneBlock}></div> */}

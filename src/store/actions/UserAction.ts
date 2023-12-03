@@ -17,7 +17,8 @@ const doorGetAll =
     filterByMin: boolean | null = null,
     filterByMax: boolean | null = null,
     values: IFilterValues | null = null,
-    add = false
+    add = false,
+    modify: any = null
   ) =>
   async (dispatch: any) => {
     dispatch(userSlice.actions.loadingStart());
@@ -42,6 +43,10 @@ const doorGetAll =
       if (response.status != 200 && response.status != 201) {
         dispatch(messageQueueAction.addMessage(response.data.message, "error"));
         return;
+      }
+
+      if(response.data.doors && response.data.doors.length === 0) {
+        modify && modify(false);
       }
 
       if (add) {

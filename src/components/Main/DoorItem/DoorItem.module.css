@@ -4,8 +4,8 @@
 }
 
 .container {
-  height: -moz-max-content;
-  height: max-content;
+  min-height: 410px;
+  max-height: 490px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -29,9 +29,11 @@
     flex-direction: column;
     height: -moz-max-content;
     height: max-content;
+    max-height: -moz-max-content;
+    max-height: max-content;
     justify-content: center;
     align-items: center;
-    width: 320px;
+    width: 340px;
   }
   .container .characteristic {
     width: 100%;
@@ -63,6 +65,8 @@
     flex-direction: column;
     height: -moz-max-content;
     height: max-content;
+    max-height: -moz-max-content;
+    max-height: max-content;
     justify-content: center;
     align-items: center;
     width: 400px;
@@ -151,6 +155,7 @@
   font-weight: 400;
   line-height: normal;
   width: 329px;
+  max-height: 124px;
   margin: 0;
   padding: 0;
   word-wrap: break-word;
@@ -306,8 +311,13 @@
   margin-top: 19px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  height: 216px;
+  overflow: hidden;
+  width: 380px;
 }
 .characteristic .info .item {
+  width: 100%;
   display: flex;
   flex-direction: row;
   gap: 0;
@@ -380,6 +390,7 @@
   margin: 0;
   margin-top: 19px;
   width: 376px;
+  max-height: 104px;
   word-wrap: break-word;
 }
 @media only screen and (min-width: 300px) and (max-width: 420px) {
@@ -577,4 +588,11 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+.slide {
+  width: 100%;
+}
+.slide .characteristic .info {
+  width: 100%;
 }
