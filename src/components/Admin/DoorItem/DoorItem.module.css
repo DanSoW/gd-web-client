@@ -10,15 +10,30 @@
   flex-direction: row;
   justify-content: flex-start;
   gap: 18px;
+  align-self: flex-end;
+}
+@media only screen and (min-width: 1680px) {
+  .container {
+    gap: 84px;
+    align-self: flex-end;
+  }
+}
+@media only screen and (min-width: 2000px) {
+  .container {
+    gap: 128px;
+    align-self: flex-end;
+  }
 }
 @media only screen and (min-width: 300px) and (max-width: 420px) {
   .container {
     flex-direction: column;
     height: -moz-max-content;
     height: max-content;
+    max-height: -moz-max-content;
+    max-height: max-content;
     justify-content: center;
     align-items: center;
-    width: 330px;
+    width: 340px;
   }
   .container .characteristic {
     width: 100%;
@@ -50,6 +65,8 @@
     flex-direction: column;
     height: -moz-max-content;
     height: max-content;
+    max-height: -moz-max-content;
+    max-height: max-content;
     justify-content: center;
     align-items: center;
     width: 400px;
@@ -100,7 +117,6 @@
   line-height: normal;
   padding: 0;
   margin: 0;
-  word-wrap: break-word;
 }
 @media only screen and (min-width: 300px) and (max-width: 420px) {
   .title .h {
@@ -123,6 +139,7 @@
      object-fit: cover;
   width: 134px;
   height: 286px;
+  cursor: pointer;
 }
 @media only screen and (min-width: 300px) and (max-width: 1170px) {
   .title .doors img {
@@ -138,9 +155,9 @@
   font-weight: 400;
   line-height: normal;
   width: 329px;
+  max-height: 124px;
   margin: 0;
   padding: 0;
-  height: 124px;
   word-wrap: break-word;
 }
 @media only screen and (min-width: 300px) and (max-width: 1170px) {
@@ -230,7 +247,6 @@
   display: flex;
   flex-direction: column;
   margin-left: 13px;
-  width: 380px;
 }
 @media only screen and (min-width: 300px) and (max-width: 1170px) {
   .characteristic {
@@ -261,11 +277,6 @@
   margin-top: 21px;
   width: -moz-max-content;
   width: max-content;
-}
-@media only screen and (min-width: 300px) and (max-width: 420px) {
-  .characteristic .property {
-    gap: 5px;
-  }
 }
 .characteristic .property .item {
   padding-left: 14px;
@@ -300,14 +311,18 @@
   margin-top: 19px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  height: 216px;
+  overflow: hidden;
+  width: 380px;
 }
 .characteristic .info .item {
+  width: 100%;
   display: flex;
   flex-direction: row;
   gap: 0;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
 }
 .characteristic .info .item p {
   color: #333;
@@ -375,8 +390,8 @@
   margin: 0;
   margin-top: 19px;
   width: 376px;
+  max-height: 104px;
   word-wrap: break-word;
-  height: 104px;
 }
 @media only screen and (min-width: 300px) and (max-width: 420px) {
   .characteristic .description {
@@ -575,41 +590,9 @@
   line-height: normal;
 }
 
-.titleWrapper {
-  display: flex;
-  flex-direction: row;
-  justify-self: center;
-  align-items: center;
+.slide {
+  width: 100%;
 }
-.titleWrapper .title {
-  color: #333;
-  font-family: Futura PT;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  -webkit-text-decoration-line: underline;
-          text-decoration-line: underline;
-  padding: 0;
-  margin: 0;
-}
-@media only screen and (min-width: 300px) and (max-width: 420px) {
-  .titleWrapper .title {
-    font-size: 16px;
-  }
-}
-.titleWrapper .h {
-  color: #333;
-  font-family: Futura PT;
-  font-size: 29px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  padding: 0;
-  margin: 0;
-}
-@media only screen and (min-width: 300px) and (max-width: 420px) {
-  .titleWrapper .h {
-    font-size: 23px;
-  }
+.slide .characteristic .info {
+  width: 100%;
 }

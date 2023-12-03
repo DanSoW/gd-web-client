@@ -19,7 +19,6 @@ import React from "react";
 
 interface ItemProps {
   children: [React.ReactNode, React.ReactNode];
-  targetSize?: number;
   targetValue?: number;
 }
 
@@ -45,10 +44,24 @@ const Item2: React.FC<ItemProps> = ({
   }, [children, ready]);
 
   useEffect(() => {
-    if(!ready) {
+    if (!ready) {
       setReady(true);
     }
   }, []);
+
+  useEffect(() => {
+    if (ready) {
+      setTimeout(() => {
+        if (p1Ref.current && p2Ref.current && dotsRef.current && itemRef.current) {
+          dotsRef.current.innerText = '';
+
+          while ((p1Ref.current.offsetWidth + p2Ref.current.offsetWidth + dotsRef.current.offsetWidth) < (itemRef.current.offsetWidth - targetValue)) {
+            dotsRef.current.innerText = `${dotsRef.current.innerText}.`;
+          }
+        }
+      }, 2000);
+    }
+  }, [ready]);
 
   return (
     <>

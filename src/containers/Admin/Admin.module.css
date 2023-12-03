@@ -39,6 +39,9 @@
   margin-top: 0;
   width: -moz-max-content;
   width: max-content;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
 }
 
 .itemAddBtn {

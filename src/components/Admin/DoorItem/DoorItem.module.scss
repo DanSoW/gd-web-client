@@ -2,6 +2,7 @@
 
 $height_custom: 124px;
 $height_custom2: 104px;
+$height_container_mobile: max-content;
 
 .customSwiper {
     width: 100%;
@@ -14,13 +15,25 @@ $height_custom2: 104px;
     flex-direction: row;
     justify-content: flex-start;
     gap: 18px;
+    align-self: flex-end;
+
+    @media only screen and (min-width: 1680px) {
+        gap: 84px;
+        align-self: flex-end;
+    }
+
+    @media only screen and (min-width: 2000px) {
+        gap: 128px;
+        align-self: flex-end;
+    }
 
     @media only screen and (min-width: 300px) and (max-width: 420px) {
         flex-direction: column;
         height: max-content;
+        max-height: max-content;
         justify-content: center;
         align-items: center;
-        width: 330px;
+        width: 340px;
 
         .characteristic {
             width: 100%;
@@ -55,6 +68,7 @@ $height_custom2: 104px;
     @media only screen and (min-width: 420px) and (max-width: 1170px) {
         flex-direction: column;
         height: max-content;
+        max-height: max-content;
         justify-content: center;
         align-items: center;
         width: 400px;
@@ -110,7 +124,6 @@ $height_custom2: 104px;
 
         padding: 0;
         margin: 0;
-        word-wrap: break-word;
 
         @media only screen and (min-width: 300px) and (max-width: 420px) {
             font-size: 23px;
@@ -136,6 +149,7 @@ $height_custom2: 104px;
             object-fit: cover;
             width: 134px;
             height: 286px;
+            cursor: pointer;
         }
     }
 
@@ -147,9 +161,9 @@ $height_custom2: 104px;
         font-weight: 400;
         line-height: normal;
         width: 329px;
+        max-height: $height_custom;
         margin: 0;
         padding: 0;
-        height: $height_custom;
 
         @media only screen and (min-width: 300px) and (max-width: 1170px) {
             width: 100%;
@@ -240,7 +254,6 @@ $height_custom2: 104px;
     display: flex;
     flex-direction: column;
     margin-left: 13px;
-    width: 380px;
 
     @media only screen and (min-width: 300px) and (max-width: 1170px) {
         margin-left: 0;
@@ -269,10 +282,6 @@ $height_custom2: 104px;
         gap: 15px;
         margin-top: 21px;
         width: max-content;
-
-        @media only screen and (min-width: 300px) and (max-width: 420px) {
-            gap: 5px;
-        }
 
         .item {
             padding-left: 14px;
@@ -309,14 +318,18 @@ $height_custom2: 104px;
         margin-top: 19px;
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        height: 216px;
+        overflow: hidden;
+        width: 380px;
 
         .item {
+            width: 100%;
             display: flex;
             flex-direction: row;
             gap: 0;
             align-items: center;
             justify-content: space-between;
-            width: 100%;
 
             p {
                 color: #333;
@@ -390,8 +403,8 @@ $height_custom2: 104px;
         margin: 0;
         margin-top: 19px;
         width: 376px;
+        max-height: $height_custom2;
         word-wrap: break-word;
-        height: $height_custom2;
 
         @media only screen and (min-width: 300px) and (max-width: 420px) {
             font-size: 14px;
@@ -602,43 +615,12 @@ $height_custom2: 104px;
     }
 }
 
+.slide {
+    width: 100%;
 
-.titleWrapper {
-    display: flex;
-    flex-direction: row;
-    justify-self: center;
-    align-items: center;
-
-    .title {
-        color: #333;
-        font-family: Futura PT;
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: normal;
-        text-decoration-line: underline;
-
-        padding: 0;
-        margin: 0;
-
-        @media only screen and (min-width: 300px) and (max-width: 420px) {
-            font-size: 16px;
-        }
-    }
-
-    .h {
-        color: #333;
-        font-family: Futura PT;
-        font-size: 29px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: normal;
-
-        padding: 0;
-        margin: 0;
-
-        @media only screen and (min-width: 300px) and (max-width: 420px) {
-            font-size: 23px;
+    .characteristic {
+        .info {
+            width: 100%;
         }
     }
 }

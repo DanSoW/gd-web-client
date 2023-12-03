@@ -40,6 +40,9 @@
     .doorList {
         margin-top: 0;
         width: max-content;
+        display: flex;
+        flex-direction: column;
+        gap: 64px;
     }
 }
 
