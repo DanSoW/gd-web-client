@@ -40,7 +40,7 @@ const Footer: FC<any> = () => {
             </div>
             <div className={styles.cintactPhone}>
               <img src={footerPhoneIcon} alt="phoneIcon" />
-              <p className={styles.contactText}>+7 (999) 999-99-99</p>
+              <p className={styles.contactText}>+7 (995) 155-43-27</p>
             </div>
             <div className={styles.contactMail}>
               <img src={footerMailIcon} alt="mailIcon" />
