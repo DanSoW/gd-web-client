@@ -6,6 +6,10 @@ export interface IFilterValues {
   size900on2050: boolean | null;
   size960on2070: boolean | null;
   size980on2080: boolean | null;
+  size990on2090: boolean | null;
+  size960on2060: boolean | null;
+  size990on2100: boolean | null;
+  size960on2050: boolean | null;
   size1050on2070: boolean | null;
   for_apartment: boolean | null;
   for_home: boolean | null;

@@ -285,13 +285,15 @@ const Filter: FC<IFilterProps> = ({
 
   useEffect(() => {
     const values = [
-      filterSelector.size1050on2070,
-      filterSelector.size780on2000,
+      filterSelector.size990on2090,
+      filterSelector.size980on2080,
+      filterSelector.size960on2060,
+      filterSelector.size990on2100,
       filterSelector.size800on2030,
       filterSelector.size860on2050,
-      filterSelector.size900on2050,
-      filterSelector.size960on2070,
-      filterSelector.size980on2080,
+      filterSelector.size960on2050,
+      filterSelector.size1050on2070,
+      filterSelector.size900on2050
     ];
 
     let flag = true;
@@ -305,13 +307,15 @@ const Filter: FC<IFilterProps> = ({
       dispatch(FilterAction.setProperty("all_sizes", false));
     }
   }, [
-    filterSelector.size1050on2070,
-    filterSelector.size780on2000,
+    filterSelector.size990on2090,
+    filterSelector.size980on2080,
+    filterSelector.size960on2060,
+    filterSelector.size990on2100,
     filterSelector.size800on2030,
     filterSelector.size860on2050,
-    filterSelector.size900on2050,
-    filterSelector.size960on2070,
-    filterSelector.size980on2080,
+    filterSelector.size960on2050,
+    filterSelector.size1050on2070,
+    filterSelector.size900on2050
   ]);
 
   return (
@@ -335,13 +339,15 @@ const Filter: FC<IFilterProps> = ({
               />
             </div>
             <CustomCheckbox title="Все размеры" property="all_sizes" />
-            <CustomCheckbox title="780х2000 мм" property="size780on2000" />
+            <CustomCheckbox title="990x2090 мм" property="size990on2090" />
+            <CustomCheckbox title="980х2080 мм" property="size980on2080" />
+            <CustomCheckbox title="960х2060 мм" property="size960on2060" />
+            <CustomCheckbox title="990х2100 мм" property="size990on2100" />
             <CustomCheckbox title="800х2030 мм" property="size800on2030" />
             <CustomCheckbox title="860х2050 мм" property="size860on2050" />
-            <CustomCheckbox title="900х2050 мм" property="size900on2050" />
-            <CustomCheckbox title="960х2070 мм" property="size960on2070" />
-            <CustomCheckbox title="980х2080 мм" property="size980on2080" />
+            <CustomCheckbox title="960х2050 мм" property="size960on2050" />
             <CustomCheckbox title="1050х2070 мм" property="size1050on2070" />
+            <CustomCheckbox title="900х2050 мм" property="size900on2050" />
           </div>
           <div className={styles.item} style={{ marginTop: "15px" }}>
             <p className={styles.iTextH}>Назначение двери</p>
@@ -414,13 +420,15 @@ const Filter: FC<IFilterProps> = ({
               />
             </div>
             <CustomCheckbox title="Все размеры" property="all_sizes" />
-            <CustomCheckbox title="780х2000 мм" property="size780on2000" />
+            <CustomCheckbox title="990x2090 мм" property="size990on2090" />
+            <CustomCheckbox title="980х2080 мм" property="size980on2080" />
+            <CustomCheckbox title="960х2060 мм" property="size960on2060" />
+            <CustomCheckbox title="990х2100 мм" property="size990on2100" />
             <CustomCheckbox title="800х2030 мм" property="size800on2030" />
             <CustomCheckbox title="860х2050 мм" property="size860on2050" />
-            <CustomCheckbox title="900х2050 мм" property="size900on2050" />
-            <CustomCheckbox title="960х2070 мм" property="size960on2070" />
-            <CustomCheckbox title="980х2080 мм" property="size980on2080" />
+            <CustomCheckbox title="960х2050 мм" property="size960on2050" />
             <CustomCheckbox title="1050х2070 мм" property="size1050on2070" />
+            <CustomCheckbox title="900х2050 мм" property="size900on2050" />
           </div>
           <div className={styles.item} style={{ marginTop: "15px" }}>
             <p className={styles.iTextH}>Назначение двери</p>

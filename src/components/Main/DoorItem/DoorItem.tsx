@@ -160,7 +160,7 @@ const DoorItem: FC<IDoorItemProps> = ({ data, selectItem }) => {
               onClick={showDoorHandler}
             />
           </div>
-          <p className={styles.description}>{data.description}</p>
+          <p className={styles.description}>{data.description.slice(0, 256)}</p>
         </div>
         <div className={styles.articles} ref={containerRef}>
           {data.articles.map((item) => {
@@ -211,12 +211,16 @@ const DoorItem: FC<IDoorItemProps> = ({ data, selectItem }) => {
                   <p>{article.additional_lock ? "Есть" : "Есть"}</p>,
                 ]}
               />
-              <Item
+              {
+                /*
+                <Item
                 children={[
                   <p>Толщина дверного полотна:</p>,
                   <p>{`${article.door_leaf_thickness} мм`}</p>,
                 ]}
               />
+                */
+              }
               <Item
                 children={[
                   <p>Количество контуров уплотнения:</p>,
@@ -254,7 +258,7 @@ const DoorItem: FC<IDoorItemProps> = ({ data, selectItem }) => {
             <button className={styles.viewPhotoBtn} onClick={showImageHandler}>
               Посмотреть фото
             </button>
-            <p className={styles.description}>{article.description}</p>
+            <p className={styles.description}>{article.description.slice(0, 256)}</p>
           </div>
         )}
         {article && !matches && (
@@ -340,12 +344,16 @@ const DoorItem: FC<IDoorItemProps> = ({ data, selectItem }) => {
                             <p>{item.additional_lock ? "Есть" : "Есть"}</p>,
                           ]}
                         />
-                        <Item
+                        {
+                          /*
+                          <Item
                           children={[
                             <p>Толщина дверного полотна:</p>,
                             <p>{`${item.door_leaf_thickness} мм`}</p>,
                           ]}
                         />
+                          */
+                        }
                         <Item
                           children={[
                             <p>Количество контуров уплотнения:</p>,
@@ -392,7 +400,7 @@ const DoorItem: FC<IDoorItemProps> = ({ data, selectItem }) => {
                       >
                         Посмотреть фото
                       </button>
-                      <p className={styles.description}>{item.description}</p>
+                      <p className={styles.description}>{item.description.slice(0, 256)}</p>
                     </div>
                     <div className={styles.adaptivePrices}>
                       <div className={styles.inStock}>

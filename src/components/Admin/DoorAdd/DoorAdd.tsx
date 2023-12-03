@@ -118,6 +118,15 @@ const DoorAdd: FC<IDoorAddProps> = ({ open, setOpen, addHandler }) => {
 
     addHandler(form, imageEntry, imageExit);
 
+    setImageEntry([]);
+    setImageExit([]);
+
+    setForm({
+      title: "",
+      description: ""
+    });
+
+
     /*dispatch(
       updateContent(
         {
@@ -177,9 +186,12 @@ const DoorAdd: FC<IDoorAddProps> = ({ open, setOpen, addHandler }) => {
                 variant="outlined"
                 name="description"
                 onChange={onChange}
+                multiline={true}
+                rows={4}
                 sx={{
                   width: "100%",
                 }}
+                inputProps={{ maxLength: 256 }}
               />
             </div>
           </DialogContent>

@@ -66,9 +66,9 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
   const [size, setSize] = useState<ISizeModel | null>(
     content
       ? {
-          width: content?.width,
-          height: content?.height,
-        }
+        width: content?.width,
+        height: content?.height,
+      }
       : null
   );
 
@@ -225,6 +225,7 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
                 sx={{
                   width: "100%",
                 }}
+                inputProps={{ maxLength: 256 }}
               />
               <br />
               <FormControl fullWidth>
@@ -241,43 +242,11 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
                   <MenuItem value={""}></MenuItem>
                   <MenuItem
                     value={JSON.stringify({
-                      width: 780,
-                      height: 2000,
+                      width: 990,
+                      height: 2090,
                     })}
                   >
-                    780х2000
-                  </MenuItem>
-                  <MenuItem
-                    value={JSON.stringify({
-                      width: 800,
-                      height: 2030,
-                    })}
-                  >
-                    800х2030
-                  </MenuItem>
-                  <MenuItem
-                    value={JSON.stringify({
-                      width: 860,
-                      height: 2050,
-                    })}
-                  >
-                    860х2050
-                  </MenuItem>
-                  <MenuItem
-                    value={JSON.stringify({
-                      width: 900,
-                      height: 2050,
-                    })}
-                  >
-                    900х2050
-                  </MenuItem>
-                  <MenuItem
-                    value={JSON.stringify({
-                      width: 960,
-                      height: 2070,
-                    })}
-                  >
-                    960х2070
+                    990x2090
                   </MenuItem>
                   <MenuItem
                     value={JSON.stringify({
@@ -285,7 +254,47 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
                       height: 2080,
                     })}
                   >
-                    980х2080
+                    980x2080
+                  </MenuItem>
+                  <MenuItem
+                    value={JSON.stringify({
+                      width: 960,
+                      height: 2060,
+                    })}
+                  >
+                    960x2060
+                  </MenuItem>
+                  <MenuItem
+                    value={JSON.stringify({
+                      width: 990,
+                      height: 2100,
+                    })}
+                  >
+                    990x2100
+                  </MenuItem>
+                  <MenuItem
+                    value={JSON.stringify({
+                      width: 800,
+                      height: 2030,
+                    })}
+                  >
+                    800x2030
+                  </MenuItem>
+                  <MenuItem
+                    value={JSON.stringify({
+                      width: 860,
+                      height: 2050,
+                    })}
+                  >
+                    860x2050
+                  </MenuItem>
+                  <MenuItem
+                    value={JSON.stringify({
+                      width: 960,
+                      height: 2050,
+                    })}
+                  >
+                    960x2050
                   </MenuItem>
                   <MenuItem
                     value={JSON.stringify({
@@ -293,13 +302,21 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
                       height: 2070,
                     })}
                   >
-                    1050х2070
+                    1050x2070
+                  </MenuItem>
+                  <MenuItem
+                    value={JSON.stringify({
+                      width: 900,
+                      height: 2050,
+                    })}
+                  >
+                    900x2050
                   </MenuItem>
                 </Select>
               </FormControl>
               <br />
               <Checkbox
-                title="Открывание (левое / правое)"
+                title="Открывание (по умолчанию - левое)"
                 value={form.opening_direction}
                 setValue={(value) => {
                   setDisable(false);
@@ -311,7 +328,7 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
               />
               <br />
               <Checkbox
-                title="Основной замок (Нет / Есть)"
+                title="Основной замок (по умолчанию - нет)"
                 // @ts-ignore
                 value={form.main_lock}
                 setValue={(value) => {
@@ -324,7 +341,7 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
               />
               <br />
               <Checkbox
-                title="Дополнительный замок (Нет / Есть)"
+                title="Дополнительный замок (по умолчанию - нет)"
                 value={form.additional_lock}
                 setValue={(value) => {
                   setDisable(false);
@@ -336,7 +353,7 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
               />
               <br />
               <Checkbox
-                title="Наличие зеркала (Нет / Есть)"
+                title="Наличие зеркала (по умолчанию - нет)"
                 value={form.mirror}
                 setValue={(value) => {
                   setDisable(false);
@@ -351,6 +368,7 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
                 title="Без дефекта (по умолчанию - с дефектом)"
                 value={form.is_defect}
                 setValue={(value) => {
+                  setDisable(false);
                   setForm({
                     ...form,
                     is_defect: value,
@@ -359,7 +377,9 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
               />
               <br />
               <br />
-              <TextField
+              {
+                /*
+                <TextField
                 required={true}
                 id="outlined-basic"
                 label="Толщина дверного полотна (мм)"
@@ -373,6 +393,8 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
                 }}
               />
               <br />
+                */
+              }
               <TextField
                 required={true}
                 id="outlined-basic"
@@ -479,10 +501,10 @@ const CharacteristicEdit: FC<ICreateContentProps> = ({
                 value={
                   form.price_without_discount && form.price
                     ? Math.round(
-                        ((form.price_without_discount - form.price) /
-                          form.price_without_discount) *
-                          100
-                      )
+                      ((form.price_without_discount - form.price) /
+                        form.price_without_discount) *
+                      100
+                    )
                     : 0
                 }
                 onChange={onChange}

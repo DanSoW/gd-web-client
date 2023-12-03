@@ -41,7 +41,7 @@ const Header: FC<any> = () => {
             <div className={styles.headerContactsWrapper}>
               <div className={styles.cintactPhone}>
                 <img src={phoneIcon} alt="phoneIcon" />
-                <p className={styles.contactText}>+7 (999) 999-99-99</p>
+                <p className={styles.contactText}>+7 (995) 155-43-27</p>
               </div>
 
               <div className={styles.headerMobileWrapBlock}>

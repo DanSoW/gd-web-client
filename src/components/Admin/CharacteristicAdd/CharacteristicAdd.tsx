@@ -166,7 +166,7 @@ const CharactetisticAdd: FC<ICreateContentProps> = ({
         discount: Math.round(
           ((form.price_without_discount - form.price) /
             form.price_without_discount) *
-            100
+          100
         ),
       },
       images
@@ -209,6 +209,7 @@ const CharactetisticAdd: FC<ICreateContentProps> = ({
                 sx={{
                   width: "100%",
                 }}
+                inputProps={{ maxLength: 256 }}
               />
               <br />
               <FormControl fullWidth>
@@ -225,43 +226,11 @@ const CharactetisticAdd: FC<ICreateContentProps> = ({
                   <MenuItem value={""}></MenuItem>
                   <MenuItem
                     value={JSON.stringify({
-                      width: 780,
-                      height: 2000,
+                      width: 990,
+                      height: 2090,
                     })}
                   >
-                    780х2000
-                  </MenuItem>
-                  <MenuItem
-                    value={JSON.stringify({
-                      width: 800,
-                      height: 2030,
-                    })}
-                  >
-                    800х2030
-                  </MenuItem>
-                  <MenuItem
-                    value={JSON.stringify({
-                      width: 860,
-                      height: 2050,
-                    })}
-                  >
-                    860х2050
-                  </MenuItem>
-                  <MenuItem
-                    value={JSON.stringify({
-                      width: 900,
-                      height: 2050,
-                    })}
-                  >
-                    900х2050
-                  </MenuItem>
-                  <MenuItem
-                    value={JSON.stringify({
-                      width: 960,
-                      height: 2070,
-                    })}
-                  >
-                    960х2070
+                    990x2090
                   </MenuItem>
                   <MenuItem
                     value={JSON.stringify({
@@ -269,7 +238,47 @@ const CharactetisticAdd: FC<ICreateContentProps> = ({
                       height: 2080,
                     })}
                   >
-                    980х2080
+                    980x2080
+                  </MenuItem>
+                  <MenuItem
+                    value={JSON.stringify({
+                      width: 960,
+                      height: 2060,
+                    })}
+                  >
+                    960x2060
+                  </MenuItem>
+                  <MenuItem
+                    value={JSON.stringify({
+                      width: 990,
+                      height: 2100,
+                    })}
+                  >
+                    990x2100
+                  </MenuItem>
+                  <MenuItem
+                    value={JSON.stringify({
+                      width: 800,
+                      height: 2030,
+                    })}
+                  >
+                    800x2030
+                  </MenuItem>
+                  <MenuItem
+                    value={JSON.stringify({
+                      width: 860,
+                      height: 2050,
+                    })}
+                  >
+                    860x2050
+                  </MenuItem>
+                  <MenuItem
+                    value={JSON.stringify({
+                      width: 960,
+                      height: 2050,
+                    })}
+                  >
+                    960x2050
                   </MenuItem>
                   <MenuItem
                     value={JSON.stringify({
@@ -277,7 +286,15 @@ const CharactetisticAdd: FC<ICreateContentProps> = ({
                       height: 2070,
                     })}
                   >
-                    1050х2070
+                    1050x2070
+                  </MenuItem>
+                  <MenuItem
+                    value={JSON.stringify({
+                      width: 900,
+                      height: 2050,
+                    })}
+                  >
+                    900x2050
                   </MenuItem>
                 </Select>
               </FormControl>
@@ -327,7 +344,7 @@ const CharactetisticAdd: FC<ICreateContentProps> = ({
               />
               <br />
               <Checkbox
-                title="Без дефекта (по умолчанию - с дефектом)"
+                title="С дефектом (по умолчанию - без дефекта)"
                 value={form?.is_defect || false}
                 setValue={(value) => {
                   setForm({
@@ -337,6 +354,8 @@ const CharactetisticAdd: FC<ICreateContentProps> = ({
                 }}
               />
               <br />
+              {
+                /*
               <br />
               <TextField
                 required={true}
@@ -350,6 +369,8 @@ const CharactetisticAdd: FC<ICreateContentProps> = ({
                   width: "100%",
                 }}
               />
+                */
+              }
               <br />
               <TextField
                 required={true}
@@ -453,10 +474,10 @@ const CharactetisticAdd: FC<ICreateContentProps> = ({
                 value={
                   form.price_without_discount && form.price
                     ? Math.round(
-                        ((form.price_without_discount - form.price) /
-                          form.price_without_discount) *
-                          100
-                      )
+                      ((form.price_without_discount - form.price) /
+                        form.price_without_discount) *
+                      100
+                    )
                     : 0
                 }
                 sx={{
