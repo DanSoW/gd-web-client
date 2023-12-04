@@ -45,8 +45,13 @@ const doorGetAll =
         return;
       }
 
-      if(response.data.doors && response.data.doors.length === 0) {
+      console.log(response.data.doors.length, count);
+      if(response.data.doors && (response.data.doors.length === 0) || (response.data.length === 0)) {
         modify && modify(false);
+      } else if(response.data.doors.length < limit) {
+        modify && modify(false);
+      } else {
+        modify && modify(true);
       }
 
       if (add) {

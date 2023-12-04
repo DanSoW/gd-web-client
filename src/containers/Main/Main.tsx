@@ -91,7 +91,11 @@ const Main: FC<any> = () => {
         5,
         filter ? true : null,
         !filter ? true : null,
-        filterSelector
+        filterSelector,
+        false,
+        (value: boolean) => {
+          setViewLoadBtn(value);
+        }
       )
     );
   };
@@ -147,7 +151,10 @@ const Main: FC<any> = () => {
                     localFilter ? true : null,
                     !localFilter ? true : null,
                     filterSelector,
-                    false
+                    false,
+                    (value: boolean) => {
+                      setViewLoadBtn(value);
+                    }
                   )
                 );
               }}
@@ -179,7 +186,10 @@ const Main: FC<any> = () => {
                     localFilter ? true : null,
                     !localFilter ? true : null,
                     filterSelector,
-                    false
+                    false,
+                    (value: boolean) => {
+                      setViewLoadBtn(value);
+                    }
                   )
                 );
               }}
