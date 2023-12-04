@@ -27,7 +27,7 @@ const Item2: React.FC<ItemProps> = ({
   targetValue = 4,
 }) => {
   const [p1, p2] = children;
-  const dotsRef = useRef<HTMLDivElement>(null);
+  /*const dotsRef = useRef<HTMLDivElement>(null);
   const p1Ref = useRef<HTMLParagraphElement>(null);
   const p2Ref = useRef<HTMLParagraphElement>(null);
   const itemRef = useRef<HTMLDivElement>(null);
@@ -61,14 +61,22 @@ const Item2: React.FC<ItemProps> = ({
         }
       }, 2000);
     }
-  }, [ready]);
+  }, [ready]);*/
 
   return (
     <>
-      <div className={styles.item} ref={itemRef}>
-        <p ref={p1Ref}>{p1}</p>
+      <div className={styles.item}>
+        <p>{p1}</p>
+        <div className={styles.dotted}></div>
+        <p>{p2}</p>
+        
+        {
+          /*
+           <p ref={p1Ref}>{p1}</p>
         <div className={styles.dotted} ref={dotsRef}></div>
         <p ref={p2Ref}>{p2}</p>
+          */
+        }
       </div>
     </>
   );

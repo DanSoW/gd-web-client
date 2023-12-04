@@ -33,6 +33,7 @@
     max-height: max-content;
     justify-content: center;
     align-items: center;
+    align-self: center;
     width: 340px;
   }
   .container .characteristic {
@@ -69,6 +70,7 @@
     max-height: max-content;
     justify-content: center;
     align-items: center;
+    align-self: center;
     width: 400px;
   }
   .container .characteristic {
@@ -317,10 +319,7 @@
   width: 380px;
 }
 .characteristic .info .item {
-  width: 100%;
   display: flex;
-  flex-direction: row;
-  gap: 0;
   align-items: center;
   justify-content: space-between;
 }
@@ -340,19 +339,11 @@
   }
 }
 .characteristic .info .item .dotted {
+  flex: 1 0;
+  height: 46%;
   padding: 0;
   margin: 0;
-  color: #C3C3C3;
-  font-family: Futura PT;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 450;
-  line-height: 25px;
-}
-@media only screen and (min-width: 300px) and (max-width: 420px) {
-  .characteristic .info .item .dotted {
-    font-size: 14px;
-  }
+  border-bottom: 2px dotted #C3C3C3;
 }
 .characteristic .viewPhotoBtn {
   margin-top: 20px;

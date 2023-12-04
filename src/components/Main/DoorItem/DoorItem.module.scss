@@ -33,7 +33,47 @@ $height_container_mobile: max-content;
         max-height: max-content;
         justify-content: center;
         align-items: center;
-        width: 340px;
+        align-self: center;
+        width: 100%;
+
+        .characteristic {
+            width: 100%;
+        }
+
+        .articles {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            gap: 12px;
+            overflow-y: hidden;
+            overflow-x: scroll;
+            padding-bottom: 15px;
+            padding-left: 0px;
+
+
+            /* Для стилизации полосы прокрутки (опционально) */
+            &::-webkit-scrollbar {
+                height: 6px;
+                border-radius: 13px;
+                background: #F5F5F5;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                height: 6px;
+                border-radius: 13px;
+                background: #C3C3C3;
+            }
+        }
+    }
+    
+    @media only screen and (min-width: 600px) and (max-width: 1170px) {
+        flex-direction: column;
+        height: max-content;
+        max-height: max-content;
+        justify-content: center;
+        align-items: center;
+        align-self: center;
+        width: 380px;
 
         .characteristic {
             width: 100%;
@@ -65,13 +105,13 @@ $height_container_mobile: max-content;
         }
     }
 
-    @media only screen and (min-width: 420px) and (max-width: 1170px) {
+    @media only screen and (min-width: 420px) and (max-width: 600px) {
         flex-direction: column;
         height: max-content;
         max-height: max-content;
         justify-content: center;
         align-items: center;
-        width: 400px;
+        width: 100%;
 
         .characteristic {
             width: 100%;
@@ -324,6 +364,35 @@ $height_container_mobile: max-content;
         width: 380px;
 
         .item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            p {
+                color: #333;
+                font-family: Futura PT;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 450;
+                line-height: 25px;
+                margin: 0;
+                padding: 0;
+
+                @media only screen and (min-width: 300px) and (max-width: 420px) {
+                    font-size: 14px;
+                }
+            }
+
+            .dotted {
+                flex: 1 0;
+                height: 46%;
+                padding: 0;
+                margin: 0;
+                border-bottom: 2px dotted #C3C3C3;
+            }
+        }
+
+        /*.item {
             width: 100%;
             display: flex;
             flex-direction: row;
@@ -360,7 +429,7 @@ $height_container_mobile: max-content;
                     font-size: 14px;
                 }
             }
-        }
+        }*/
 
 
     }

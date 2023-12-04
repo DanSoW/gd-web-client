@@ -21,6 +21,19 @@
   gap: 32px;
 }
 
+.itemImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+@media only screen and (max-width: 1280px) {
+  .itemImage {
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 .item {
   display: flex;
   flex-direction: column;

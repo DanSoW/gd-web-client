@@ -15,6 +15,23 @@
   border-radius: 0px;
   background-color: transparent;
 }
+@media only screen and (max-width: 1280px) {
+  .upload_image_wrapper {
+    width: 14em;
+    height: 12.5em;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+@media only screen and (max-width: 1280px) {
+  .list {
+    justify-content: center;
+    align-items: center;
+  }
+}
 
 .image-wrapper {
   margin-top: 8px;
@@ -37,9 +54,15 @@
 .upload_image {
   cursor: pointer;
   width: 18em;
-  height: 15em;
+  height: 14.5em;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 0px;
   border: 2px solid #000000;
+}
+@media only screen and (max-width: 1280px) {
+  .upload_image {
+    width: 14em;
+    height: 12.5em;
+  }
 }

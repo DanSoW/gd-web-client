@@ -97,7 +97,7 @@ const Admin: FC<any> = () => {
     <>
       {adminSelector.isLoading && <CircularIndeterminate />}
       <div className={styles.container}>
-        <div className={styles.item}>
+        <div className={styles.itemImage}>
           <ImageUpload
             title={"Подсказка для размеров *"}
             subtitle={"Загрузить изображение"}

@@ -31,7 +31,7 @@ const ImageUpload: FC<IImageUploadProps> = ({
   onChange = (
     value: ImageListType,
     addUpdatedIndex?: number[] | undefined
-  ) => {},
+  ) => { },
   multiple = false,
 }) => {
   return (
@@ -61,8 +61,8 @@ const ImageUpload: FC<IImageUploadProps> = ({
                     multiple && imageList.length > 0
                       ? "block"
                       : !multiple && imageList.length > 0
-                      ? "none"
-                      : "block",
+                        ? "none"
+                        : "block",
                 }}
                 className={styles["upload_image_wrapper"]}
                 onClick={onImageUpload}
@@ -70,46 +70,48 @@ const ImageUpload: FC<IImageUploadProps> = ({
               >
                 <span className="span__text__gray">{subtitle}</span>
               </button>
-              {imageList.map((image, index) => {
-                return (
-                  <div key={index} className={styles["image-wrapper"]}>
-                    <img
-                      src={image.data_url}
-                      alt=""
-                      className={styles["upload_image"]}
-                    />
-                    <div
-                      style={{
-                        display: "grid",
-                        gridAutoFlow: "row",
-                        gap: "0",
-                        height: "min-content",
-                        marginTop: "0.4em",
-                      }}
-                    >
+              <div className={styles.list}>
+                {imageList.map((image, index) => {
+                  return (
+                    <div key={index} className={styles["image-wrapper"]}>
                       <img
-                        src={cross}
-                        onClick={() => {
-                          onImageRemove(index);
-                        }}
-                        width="22em"
-                        height="22em"
+                        src={image.data_url}
+                        alt=""
+                        className={styles["upload_image"]}
                       />
-                      <img
+                      <div
                         style={{
+                          display: "grid",
+                          gridAutoFlow: "row",
+                          gap: "0",
+                          height: "min-content",
                           marginTop: "0.4em",
                         }}
-                        src={update}
-                        onClick={() => {
-                          onImageUpdate(index);
-                        }}
-                        width="25em"
-                        height="25em"
-                      />
+                      >
+                        <img
+                          src={cross}
+                          onClick={() => {
+                            onImageRemove(index);
+                          }}
+                          width="22em"
+                          height="22em"
+                        />
+                        <img
+                          style={{
+                            marginTop: "0.4em",
+                          }}
+                          src={update}
+                          onClick={() => {
+                            onImageUpdate(index);
+                          }}
+                          width="25em"
+                          height="25em"
+                        />
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           )}
         </ImageUploading>
