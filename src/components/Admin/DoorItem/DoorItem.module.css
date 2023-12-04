@@ -34,7 +34,7 @@
     justify-content: center;
     align-items: center;
     align-self: center;
-    width: 340px;
+    width: 320px;
   }
   .container .characteristic {
     width: 100%;
@@ -293,6 +293,14 @@
   border-radius: 10px;
   background: rgba(245, 245, 245, 0.9);
   height: 43px;
+}
+@media only screen and (min-width: 300px) and (max-width: 420px) {
+  .characteristic .property .item {
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
 }
 .characteristic .property .item span {
   color: #333;

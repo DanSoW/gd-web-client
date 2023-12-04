@@ -65,7 +65,7 @@ $height_container_mobile: max-content;
             }
         }
     }
-    
+
     @media only screen and (min-width: 600px) and (max-width: 1170px) {
         flex-direction: column;
         height: max-content;
@@ -336,6 +336,13 @@ $height_container_mobile: max-content;
             border-radius: 10px;
             background: rgba(245, 245, 245, 0.90);
             height: 43px;
+
+            @media only screen and (min-width: 300px) and (max-width: 420px) {
+                padding-left: 7px;
+                padding-right: 7px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
 
             span {
                 color: #333;
