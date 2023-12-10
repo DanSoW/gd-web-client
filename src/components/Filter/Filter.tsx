@@ -339,15 +339,15 @@ const Filter: FC<IFilterProps> = ({
               />
             </div>
             <CustomCheckbox title="Все размеры" property="all_sizes" />
-            <CustomCheckbox title="990x2090 мм" property="size990on2090" />
-            <CustomCheckbox title="980х2080 мм" property="size980on2080" />
-            <CustomCheckbox title="960х2060 мм" property="size960on2060" />
-            <CustomCheckbox title="990х2100 мм" property="size990on2100" />
             <CustomCheckbox title="800х2030 мм" property="size800on2030" />
             <CustomCheckbox title="860х2050 мм" property="size860on2050" />
-            <CustomCheckbox title="960х2050 мм" property="size960on2050" />
-            <CustomCheckbox title="1050х2070 мм" property="size1050on2070" />
             <CustomCheckbox title="900х2050 мм" property="size900on2050" />
+            <CustomCheckbox title="960х2050 мм" property="size960on2050" />
+            <CustomCheckbox title="960х2060 мм" property="size960on2060" />
+            <CustomCheckbox title="980х2080 мм" property="size980on2080" />
+            <CustomCheckbox title="990x2090 мм" property="size990on2090" />
+            <CustomCheckbox title="990х2100 мм" property="size990on2100" />
+            <CustomCheckbox title="1050х2070 мм" property="size1050on2070" />
           </div>
           <div className={styles.item} style={{ marginTop: "15px" }}>
             <p className={styles.iTextH}>Назначение двери</p>
@@ -420,15 +420,15 @@ const Filter: FC<IFilterProps> = ({
               />
             </div>
             <CustomCheckbox title="Все размеры" property="all_sizes" />
-            <CustomCheckbox title="990x2090 мм" property="size990on2090" />
-            <CustomCheckbox title="980х2080 мм" property="size980on2080" />
-            <CustomCheckbox title="960х2060 мм" property="size960on2060" />
-            <CustomCheckbox title="990х2100 мм" property="size990on2100" />
             <CustomCheckbox title="800х2030 мм" property="size800on2030" />
             <CustomCheckbox title="860х2050 мм" property="size860on2050" />
-            <CustomCheckbox title="960х2050 мм" property="size960on2050" />
-            <CustomCheckbox title="1050х2070 мм" property="size1050on2070" />
             <CustomCheckbox title="900х2050 мм" property="size900on2050" />
+            <CustomCheckbox title="960х2050 мм" property="size960on2050" />
+            <CustomCheckbox title="960х2060 мм" property="size960on2060" />
+            <CustomCheckbox title="980х2080 мм" property="size980on2080" />
+            <CustomCheckbox title="990x2090 мм" property="size990on2090" />
+            <CustomCheckbox title="990х2100 мм" property="size990on2100" />
+            <CustomCheckbox title="1050х2070 мм" property="size1050on2070" />
           </div>
           <div className={styles.item} style={{ marginTop: "15px" }}>
             <p className={styles.iTextH}>Назначение двери</p>

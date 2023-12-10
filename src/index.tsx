@@ -9,13 +9,13 @@ import store, { persistor } from "./store/store";
 import App from "./containers/App/App";
 
 /* Стили */
-import "./styles/normalize.css";
-import "./styles/index.scss";
 import 'swiper/css';
 import 'swiper/css/pagination';
 import "swiper/css/navigation";
 import 'swiper/css/free-mode';
 import 'swiper/css/thumbs';
+import "./styles/normalize.css";
+import "./styles/index.scss";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

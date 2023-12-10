@@ -93,7 +93,7 @@
 
     .imageSwiper {
         z-index: 1002;
-        
+
         height: max-content;
 
         .slide {
@@ -108,9 +108,26 @@
 }
 
 .imageSwiper {
+    margin-top: 12px;
     width: 400px;
     height: 507px;
     margin-bottom: 25px;
+
+    @media only screen and (min-width: 300px) and (max-width: 500px) {
+        width: 100%;
+
+        .slide {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            img {
+                width: 100%;
+                height: 507px;
+                object-fit: contain;
+            }
+        }
+    }
 
     .slide {
         img {
@@ -134,4 +151,8 @@
             object-fit: contain;
         }
     }
+}
+
+.bulletActiveClass {
+    background-color: yellow;
 }

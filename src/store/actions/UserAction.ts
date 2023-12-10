@@ -45,10 +45,15 @@ const doorGetAll =
         return;
       }
 
-      console.log(response.data.doors.length, count);
-      if(response.data.doors && (response.data.doors.length === 0) || (response.data.length === 0)) {
+      if (
+        (response.data.doors && response.data.doors.length === 0) ||
+        response.data.length === 0
+      ) {
         modify && modify(false);
-      } else if(response.data.doors.length < limit) {
+      } else if (
+        (response.data.doors && response.data.doors.length < limit) ||
+        (!response.data.doors && typeof response.data === "object")
+      ) {
         modify && modify(false);
       } else {
         modify && modify(true);

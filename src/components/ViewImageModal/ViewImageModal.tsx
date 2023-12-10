@@ -67,7 +67,6 @@ const ViewImageModal: FC<IViewImageModalProps> = ({
                 style={{
                   // @ts-ignore
                   "--swiper-navigation-color": "#fff",
-                  "--swiper-pagination-color": "#fff",
                 }}
                 spaceBetween={10}
                 navigation={true}
@@ -146,7 +145,7 @@ const ViewImageModal: FC<IViewImageModalProps> = ({
                 </div>
               )}
               <Swiper
-                spaceBetween={10}
+                spaceBetween={25}
                 pagination={true}
                 navigation={true}
                 style={{

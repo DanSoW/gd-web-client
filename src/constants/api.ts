@@ -1,5 +1,5 @@
 const Api = {
-    MAIN_SERVER: "http://localhost:5000/api",//"https://discount.skladgranit.ru/api",
+    MAIN_SERVER: "http://localhost:5000/api", //"https://discount.skladgranit.ru/api", //"http://localhost:5000/api",
     SIGN_IN: "/auth/sign-in",
     SIGN_UP: "/auth/sign-up",
     REFRESH_TOKEN: "/auth/refresh/token",

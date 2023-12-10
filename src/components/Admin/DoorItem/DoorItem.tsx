@@ -201,14 +201,6 @@ const DoorItem: FC<IDoorItemProps> = ({ data }) => {
     );
   };
 
-  const editCharactetistic = (
-    values: IArticleValues,
-    images: Array<{ data_url: string; file?: File }>
-  ) => {
-    console.log(values);
-    console.log(images);
-  };
-
   const deleteCharacteristic = () => {
     if (!article) {
       dispatch(

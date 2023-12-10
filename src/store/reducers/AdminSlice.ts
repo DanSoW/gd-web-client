@@ -63,7 +63,6 @@ export const adminSlice = createSlice({
         );
         if (findIndexArticle >= 0) {
           if (state.doors[findIndex].articles.length > 1) {
-            console.log(findIndexArticle);
             state.doors[findIndex].articles = state.doors[
               findIndex
             ].articles.splice(findIndexArticle, 1);
